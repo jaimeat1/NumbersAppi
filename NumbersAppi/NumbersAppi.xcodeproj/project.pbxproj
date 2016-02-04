@@ -14,6 +14,7 @@
 		6FFBD1D11C61DD25008CCE7A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FFBD1CF1C61DD25008CCE7A /* LaunchScreen.storyboard */; };
 		6FFBD1DC1C61DD25008CCE7A /* NumbersAppiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFBD1DB1C61DD25008CCE7A /* NumbersAppiTests.swift */; };
 		6FFBD1E71C61DD25008CCE7A /* NumbersAppiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFBD1E61C61DD25008CCE7A /* NumbersAppiUITests.swift */; };
+		8B3874F52B0C71A69BF5A9C5 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 794AE5B62650598A8E55F9C7 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,9 @@
 		6FFBD1E21C61DD25008CCE7A /* NumbersAppiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NumbersAppiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FFBD1E61C61DD25008CCE7A /* NumbersAppiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumbersAppiUITests.swift; sourceTree = "<group>"; };
 		6FFBD1E81C61DD25008CCE7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		794AE5B62650598A8E55F9C7 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		983ACE85567C58F710C2892E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		F289FF80505EBDACA6087A26 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B3874F52B0C71A69BF5A9C5 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +86,8 @@
 				6FFBD1DA1C61DD25008CCE7A /* NumbersAppiTests */,
 				6FFBD1E51C61DD25008CCE7A /* NumbersAppiUITests */,
 				6FFBD1C41C61DD25008CCE7A /* Products */,
+				CB5A3AB946B07469ACD5EFE5 /* Pods */,
+				B405CAE2EC00C8D1546B306B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +132,23 @@
 			path = NumbersAppiUITests;
 			sourceTree = "<group>";
 		};
+		B405CAE2EC00C8D1546B306B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				794AE5B62650598A8E55F9C7 /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CB5A3AB946B07469ACD5EFE5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				983ACE85567C58F710C2892E /* Pods.debug.xcconfig */,
+				F289FF80505EBDACA6087A26 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +156,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6FFBD1EB1C61DD25008CCE7A /* Build configuration list for PBXNativeTarget "NumbersAppi" */;
 			buildPhases = (
+				4462497D79D14EAF94B8CD5D /* Check Pods Manifest.lock */,
 				6FFBD1BF1C61DD25008CCE7A /* Sources */,
 				6FFBD1C01C61DD25008CCE7A /* Frameworks */,
 				6FFBD1C11C61DD25008CCE7A /* Resources */,
+				960EA4802FB0B06E781E2C82 /* Embed Pods Frameworks */,
+				FECA55BA38A17A77996D7F86 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -251,6 +278,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4462497D79D14EAF94B8CD5D /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		960EA4802FB0B06E781E2C82 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FECA55BA38A17A77996D7F86 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6FFBD1BF1C61DD25008CCE7A /* Sources */ = {
@@ -398,6 +473,7 @@
 		};
 		6FFBD1EC1C61DD25008CCE7A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 983ACE85567C58F710C2892E /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -410,6 +486,7 @@
 		};
 		6FFBD1ED1C61DD25008CCE7A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F289FF80505EBDACA6087A26 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
