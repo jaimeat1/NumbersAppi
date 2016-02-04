@@ -193,6 +193,7 @@
 				TargetAttributes = {
 					6FFBD1C21C61DD25008CCE7A = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = X7FQ3DUR48;
 					};
 					6FFBD1D61C61DD25008CCE7A = {
 						CreatedOnToolsVersion = 7.2;
@@ -399,6 +400,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = NumbersAppi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jaimearanaz.NumbersAppi;
@@ -410,6 +412,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = NumbersAppi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jaimearanaz.NumbersAppi;
@@ -484,6 +487,7 @@
 				6FFBD1ED1C61DD25008CCE7A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6FFBD1EE1C61DD25008CCE7A /* Build configuration list for PBXNativeTarget "NumbersAppiTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +496,7 @@
 				6FFBD1F01C61DD25008CCE7A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6FFBD1F11C61DD25008CCE7A /* Build configuration list for PBXNativeTarget "NumbersAppiUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +505,7 @@
 				6FFBD1F31C61DD25008CCE7A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
