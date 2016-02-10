@@ -2,7 +2,7 @@
 //  ApiRequest.swift
 //  NumbersAppi
 //
-//  Created by Jaime on 07/02/16.
+//  Created by Jaime Aranaz on 07/02/16.
 //  Copyright © 2016 Jaime Aranaz. All rights reserved.
 //
 
