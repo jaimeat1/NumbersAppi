@@ -13,6 +13,7 @@ enum ApiRequestType: NSString {
     case Math = "math"
     case Date = "date"
     case Year = "year"
+    case Unknown = "unknown"
 }
 
 class ApiRequest {
