@@ -13,9 +13,9 @@ private let jsonFlag = "?json"
 
 class ApiServices {
     
-    // MARK: - Public methods
-    
     static let sharedInstance = ApiServices()
+    
+    // MARK: - Public methods
     
     func sendRequest(request: ApiRequest, completion: (response: ApiResponse, error: NSError?) -> Void) {
         
