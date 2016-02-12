@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  NumbersAppi
 //
-//  Created by Jaime on 03/02/16.
+//  Created by Jaime Aranaz on 03/02/16.
 //  Copyright © 2016 Jaime Aranaz. All rights reserved.
 //
 
@@ -13,9 +13,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        let request = ApiRequest()
+        
+        request.type = ApiRequestType.Year
+        request.number = -1234
+        
+        ApiServices.sharedInstance.sendRequest(request, completion: { (response, error) -> Void in
+
+            if (error != nil) {
+                NSLog("response failed")
+            } else {
+                NSLog("response successful")
+            }
+        })
+        
         return true
     }
 
