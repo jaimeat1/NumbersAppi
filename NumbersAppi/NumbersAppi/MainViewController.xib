@@ -28,7 +28,22 @@
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cvl-Wm-ek3" userLabel="Main view" customClass="MainView" customModule="NumbersAppi" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pull to see About NumberAppi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hoc-rY-OpA">
+                            <rect key="frame" x="185" y="8" width="230" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="width" priority="750" constant="230" id="RL6-hb-lgm"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="hoc-rY-OpA" firstAttribute="top" secondItem="Cvl-Wm-ek3" secondAttribute="top" constant="8" id="4qS-0f-320"/>
+                        <constraint firstItem="hoc-rY-OpA" firstAttribute="centerX" secondItem="Cvl-Wm-ek3" secondAttribute="centerX" id="gEW-M8-En5"/>
+                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
