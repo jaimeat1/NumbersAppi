@@ -11,4 +11,6 @@ import UIKit
 
 class MainViewController: UIViewController {
 
+    @IBOutlet weak var mainView: MainView!
+    
 }
