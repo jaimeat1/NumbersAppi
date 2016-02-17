@@ -11,8 +11,8 @@ import UIKit
 
 class MainView: UIView {
     
-    @IBOutlet var view:UIView!
-    @IBOutlet var label:UILabel!
+    @IBOutlet var view: UIView!
+    @IBOutlet var label: UILabel!
     
     // MARK: - Lifecycle methods
 

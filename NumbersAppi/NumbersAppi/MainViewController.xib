@@ -7,8 +7,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController" customModule="NumbersAppi" customModuleProvider="target">
             <connections>
-                <outlet property="mainView" destination="Cvl-Wm-ek3" id="sce-W9-b4y"/>
-                <outlet property="view" destination="iN0-l3-epB" id="wrh-R7-oGq"/>
+                <outlet property="aboutLabel" destination="HvY-oJ-1eo" id="5Ws-yh-FWX"/>
+                <outlet property="mainView" destination="Cvl-Wm-ek3" id="DcJ-Jk-C1C"/>
+                <outlet property="view" destination="iN0-l3-epB" id="IrN-fl-fci"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

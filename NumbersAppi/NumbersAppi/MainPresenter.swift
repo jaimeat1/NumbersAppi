@@ -8,6 +8,22 @@
 
 import Foundation
 
-class MainPresenter: NSObject {
+class MainPresenter: NSObject, MainPresenterDelegate {
 
+    var controllerDelegate: MainViewControllerDelegate
+    
+    // MARK: - Lifecycle methods
+    
+    init(controllerDelegate: MainViewControllerDelegate) {
+        
+        self.controllerDelegate = controllerDelegate
+    }
+    
+    // MARK: - MainPresenterDelegate methods
+    
+    func userSelectedAbout() {
+        
+        // TODO: show about view controller
+        NSLog("userSelectedAbout()")
+    }
 }
