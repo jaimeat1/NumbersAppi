@@ -11,12 +11,14 @@ import UIKit
 
 class PullController {
 
+    private let maxPullableDistance: CGFloat = 100.0
+    private let animationDuration: NSTimeInterval = 0.3
+    
     private var pullableView: UIView
     private var translucentView: UIView
     private var delegate: PullControllerDelegate?
     private var isAlreadySetup = false
     private var pointOfOrigin: CGPoint?
-    private let maxPullableDistance: CGFloat = 100.0
     private var pullGestureEnabled = true
     
     // MARK: - Lifecycle methods
@@ -66,9 +68,9 @@ class PullController {
             
             case UIGestureRecognizerState.Changed:
             
-                if (!hasReachedMaximumDistance()) {
+                if (yDistance > 0) && (!hasReachedMaximumDistance()) {
                     
-                    pullableView.frame.origin.y = abs (pointOfOrigin!.y + yDistance)
+                    pullableView.frame.origin.y = (pointOfOrigin!.y + yDistance)
 
                     // TODO: change alpha in translucentView
                 }
@@ -114,7 +116,7 @@ class PullController {
     
     func animatePullableViewToOrigin() {
         
-        UIView.animateWithDuration(0.5, animations: { () -> Void in
+        UIView.animateWithDuration(animationDuration, animations: { () -> Void in
             
             if let yOrigin = self.pointOfOrigin?.y {
                 self.pullableView.frame.origin.y = yOrigin
