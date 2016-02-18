@@ -20,6 +20,7 @@ class MainView: UIView {
         super.awakeFromNib()
 
         NSBundle.mainBundle().loadNibNamed("MainView", owner: self, options: nil)
+        view.backgroundColor = UIColor.redColor()
         view.frame = self.bounds
         addSubview(view)
     }

@@ -11,9 +11,13 @@ import UIKit
 
 class PullController {
 
-    var pullableView: UIView
-    var translucentView: UIView
-    var delegate: PullControllerDelegate?
+    private var pullableView: UIView
+    private var translucentView: UIView
+    private var delegate: PullControllerDelegate?
+    private var isAlreadySetup = false
+    private var pointOfOrigin: CGPoint?
+    private let maxPullableDistance: CGFloat = 100.0
+    private var pullGestureEnabled = true
     
     // MARK: - Lifecycle methods
     
@@ -23,12 +27,98 @@ class PullController {
         self.translucentView = translucentView
         self.delegate = delegate
 
-        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer.init(target: self, action: "didTap")
-        self.pullableView.addGestureRecognizer(tapGesture)
+        setupDragGesture()
     }
+    
+    // MARK: - Public methods
+    
+    func enablePullable() {
+        
+        pullGestureEnabled = true
+    }
+    
+    func disablePullable() {
+        
+        pullGestureEnabled = false
+        animatePullableViewToOrigin()
+    }
+    
+    // MARK: - Action methods
     
     @IBAction func didTap() {
         
         delegate?.viewWasPulled()
+    }
+    
+    @IBAction func didDraggView(gestureRecognizer: UIPanGestureRecognizer) {
+        
+        if (!pullGestureEnabled) {
+            return
+        }
+        
+        let yDistance = gestureRecognizer.translationInView(pullableView).y
+
+        switch(gestureRecognizer.state) {
+            
+            case UIGestureRecognizerState.Began:
+            
+                pointOfOrigin = pullableView.frame.origin
+            
+            case UIGestureRecognizerState.Changed:
+            
+                if (!hasReachedMaximumDistance()) {
+                    
+                    pullableView.frame.origin.y = abs (pointOfOrigin!.y + yDistance)
+
+                    // TODO: change alpha in translucentView
+                }
+            
+            case UIGestureRecognizerState.Ended:
+            
+                if (hasReachedMaximumDistance()) {
+                
+                    delegate?.viewWasPulled()
+                }
+            
+                animatePullableViewToOrigin()
+
+                // TODO: animate pullable view to origin
+            
+            default: ()
+        }
+    }
+    
+    func hasReachedMaximumDistance() -> Bool {
+        
+        if let yOrigin = pointOfOrigin?.y {
+            
+            if (abs(yOrigin - pullableView.frame.origin.y) > maxPullableDistance) {
+                return true
+            }
+        }
+        
+        return false
+    }
+    
+    // MARK: - Private methods
+    
+    func setupDragGesture() {
+
+        if (!isAlreadySetup) {
+        
+            isAlreadySetup = true
+            let panGesture = UIPanGestureRecognizer.init(target: self, action: "didDraggView:")
+            pullableView.addGestureRecognizer(panGesture)
+        }
+    }
+    
+    func animatePullableViewToOrigin() {
+        
+        UIView.animateWithDuration(0.5, animations: { () -> Void in
+            
+            if let yOrigin = self.pointOfOrigin?.y {
+                self.pullableView.frame.origin.y = yOrigin
+            }
+        })
     }
 }
