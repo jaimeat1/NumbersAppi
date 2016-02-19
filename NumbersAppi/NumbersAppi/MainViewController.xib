@@ -7,7 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController" customModule="NumbersAppi" customModuleProvider="target">
             <connections>
-                <outlet property="aboutLabel" destination="HvY-oJ-1eo" id="5Ws-yh-FWX"/>
+                <outlet property="aboutLabel" destination="hoc-rY-OpA" id="wVB-G0-oTo"/>
+                <outlet property="fadingView" destination="twL-On-7Rb" id="Vbe-Iu-lft"/>
                 <outlet property="mainView" destination="Cvl-Wm-ek3" id="DcJ-Jk-C1C"/>
                 <outlet property="view" destination="iN0-l3-epB" id="IrN-fl-fci"/>
             </connections>
@@ -17,44 +18,33 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is the main view controller" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HvY-oJ-1eo">
-                    <rect key="frame" x="182" y="290" width="236" height="21"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="21" id="Pd8-Nv-dzT"/>
-                        <constraint firstAttribute="width" constant="236" id="oGq-Jz-nZD"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pull to see About NumberAppi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hoc-rY-OpA" userLabel="Pull label">
+                    <rect key="frame" x="178" y="35" width="245" height="21"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="twL-On-7Rb" userLabel="Pull fading view">
+                    <rect key="frame" x="178" y="35" width="245" height="21"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cvl-Wm-ek3" userLabel="Main view" customClass="MainView" customModule="NumbersAppi" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pull to see About NumberAppi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hoc-rY-OpA">
-                            <rect key="frame" x="185" y="8" width="230" height="21"/>
-                            <constraints>
-                                <constraint firstAttribute="width" priority="750" constant="230" id="RL6-hb-lgm"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstItem="hoc-rY-OpA" firstAttribute="top" secondItem="Cvl-Wm-ek3" secondAttribute="top" constant="8" id="4qS-0f-320"/>
-                        <constraint firstItem="hoc-rY-OpA" firstAttribute="centerX" secondItem="Cvl-Wm-ek3" secondAttribute="centerX" id="gEW-M8-En5"/>
-                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="hoc-rY-OpA" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="35" id="7gY-WB-ZjQ"/>
+                <constraint firstItem="twL-On-7Rb" firstAttribute="height" secondItem="hoc-rY-OpA" secondAttribute="height" id="Ogd-yA-Ufg"/>
+                <constraint firstItem="twL-On-7Rb" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Qpw-kr-iiC"/>
                 <constraint firstItem="Cvl-Wm-ek3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="UhH-YZ-xiD"/>
-                <constraint firstItem="HvY-oJ-1eo" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="hXE-4g-JA9"/>
+                <constraint firstItem="twL-On-7Rb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="35" id="bUq-Kl-Tde"/>
                 <constraint firstAttribute="trailing" secondItem="Cvl-Wm-ek3" secondAttribute="trailing" id="mEs-kk-52K"/>
+                <constraint firstItem="twL-On-7Rb" firstAttribute="width" secondItem="hoc-rY-OpA" secondAttribute="width" id="niQ-Ub-32c"/>
                 <constraint firstAttribute="bottom" secondItem="Cvl-Wm-ek3" secondAttribute="bottom" id="r53-Sx-NBt"/>
                 <constraint firstItem="Cvl-Wm-ek3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="wec-y2-kGO"/>
-                <constraint firstItem="HvY-oJ-1eo" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="yjO-BU-iTe"/>
+                <constraint firstItem="hoc-rY-OpA" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="y9X-0u-gDg"/>
             </constraints>
         </view>
     </objects>

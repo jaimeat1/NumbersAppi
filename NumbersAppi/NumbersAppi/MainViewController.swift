@@ -13,6 +13,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate, PullCont
 
     @IBOutlet private var mainView: MainView!
     @IBOutlet private var aboutLabel: UILabel!
+    @IBOutlet private var fadingView: UIView!
     
     var presenterDelegate: MainPresenterDelegate?
     
@@ -32,7 +33,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate, PullCont
         
         super.viewDidLoad()
         
-        pullController = PullController(pullableView: mainView, translucentView: aboutLabel, delegate: self)
+        pullController = PullController(pullableView: mainView, translucentView: fadingView, delegate: self)
     }
     
     // MARK: - MainViewControllerDelegate methods

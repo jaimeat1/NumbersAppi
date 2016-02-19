@@ -11,8 +11,10 @@ import UIKit
 
 class PullController {
 
-    private let maxPullableDistance: CGFloat = 100.0
+    private let maxPullableDistance: CGFloat = 80.0
     private let animationDuration: NSTimeInterval = 0.3
+    private let minimunAlpha: CGFloat = 0.8
+    private let factorToShowTranslucentView: CGFloat = 0.90
     
     private var pullableView: UIView
     private var translucentView: UIView
@@ -29,6 +31,7 @@ class PullController {
         self.translucentView = translucentView
         self.delegate = delegate
 
+        self.translucentView.alpha = minimunAlpha
         setupDragGesture()
     }
     
@@ -72,19 +75,19 @@ class PullController {
                     
                     pullableView.frame.origin.y = (pointOfOrigin!.y + yDistance)
 
-                    // TODO: change alpha in translucentView
+                    if translucentViewShouldBeVisible() {
+                        animateTranslucentViewShowing()
+                    }
                 }
             
             case UIGestureRecognizerState.Ended:
             
-                if (hasReachedMaximumDistance()) {
-                
+                if hasReachedMaximumDistance() {
                     delegate?.viewWasPulled()
                 }
             
                 animatePullableViewToOrigin()
-
-                // TODO: animate pullable view to origin
+                animateTranslucentViewHiding()
             
             default: ()
         }
@@ -94,7 +97,8 @@ class PullController {
         
         if let yOrigin = pointOfOrigin?.y {
             
-            if (abs(yOrigin - pullableView.frame.origin.y) > maxPullableDistance) {
+            let distance = abs(yOrigin - pullableView.frame.origin.y)
+            if (distance > maxPullableDistance) {
                 return true
             }
         }
@@ -106,7 +110,7 @@ class PullController {
     
     func setupDragGesture() {
 
-        if (!isAlreadySetup) {
+        if !isAlreadySetup {
         
             isAlreadySetup = true
             let panGesture = UIPanGestureRecognizer.init(target: self, action: "didDraggView:")
@@ -122,5 +126,25 @@ class PullController {
                 self.pullableView.frame.origin.y = yOrigin
             }
         })
+    }
+    
+    func animateTranslucentViewHiding() {
+        
+        UIView.animateWithDuration(animationDuration, animations: { () -> Void in
+            self.translucentView.alpha = self.minimunAlpha;
+        })
+    }
+    
+    func animateTranslucentViewShowing() {
+        
+        UIView.animateWithDuration(animationDuration, animations: { () -> Void in
+            self.translucentView.alpha = 0;
+        })
+    }
+    
+    func translucentViewShouldBeVisible() -> Bool {
+        
+        let distance = (pullableView.frame.origin.y - pointOfOrigin!.y)
+        return (distance >= (maxPullableDistance * factorToShowTranslucentView))
     }
 }
