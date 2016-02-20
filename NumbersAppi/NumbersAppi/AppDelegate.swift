@@ -15,20 +15,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        let request = ApiRequest()
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
-        request.type = ApiRequestType.Year
-        request.number = -1234
-        
-        ApiServices.sharedInstance.sendRequest(request, completion: { (response, error) -> Void in
+        if let window = window {
+            window.backgroundColor = UIColor.whiteColor()
+            window.rootViewController = Coordinator.sharedInstance.getMainViewController()
+            window.makeKeyAndVisible()
+        }
 
-            if (error != nil) {
-                NSLog("response failed")
-            } else {
-                NSLog("response successful")
-            }
-        })
-        
         return true
     }
 
