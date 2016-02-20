@@ -28,6 +28,15 @@
 		6F77D47F1C79049B00D755BF /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F77D47E1C79049B00D755BF /* Coordinator.swift */; };
 		6F77D4801C79049B00D755BF /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F77D47E1C79049B00D755BF /* Coordinator.swift */; };
 		6F77D4811C79049B00D755BF /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F77D47E1C79049B00D755BF /* Coordinator.swift */; };
+		6F77D4831C79082800D755BF /* AboutPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F77D4821C79082800D755BF /* AboutPresenter.swift */; };
+		6F77D4841C79082800D755BF /* AboutPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F77D4821C79082800D755BF /* AboutPresenter.swift */; };
+		6F77D4851C79082800D755BF /* AboutPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F77D4821C79082800D755BF /* AboutPresenter.swift */; };
+		6F77D4871C79085F00D755BF /* AboutPresenterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F77D4861C79085F00D755BF /* AboutPresenterDelegate.swift */; };
+		6F77D4881C79085F00D755BF /* AboutPresenterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F77D4861C79085F00D755BF /* AboutPresenterDelegate.swift */; };
+		6F77D4891C79085F00D755BF /* AboutPresenterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F77D4861C79085F00D755BF /* AboutPresenterDelegate.swift */; };
+		6F77D48B1C79088300D755BF /* AboutViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F77D48A1C79088300D755BF /* AboutViewControllerDelegate.swift */; };
+		6F77D48C1C79088300D755BF /* AboutViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F77D48A1C79088300D755BF /* AboutViewControllerDelegate.swift */; };
+		6F77D48D1C79088300D755BF /* AboutViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F77D48A1C79088300D755BF /* AboutViewControllerDelegate.swift */; };
 		6FF289291C70E0F40075F269 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF289281C70E0F40075F269 /* MainViewController.swift */; };
 		6FF2892A1C70E0F40075F269 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF289281C70E0F40075F269 /* MainViewController.swift */; };
 		6FF2892B1C70E0F40075F269 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF289281C70E0F40075F269 /* MainViewController.swift */; };
@@ -90,6 +99,9 @@
 		6F67D00D1C744B6000DB7327 /* PullController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullController.swift; sourceTree = "<group>"; };
 		6F67D0111C744CB300DB7327 /* PullControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullControllerDelegate.swift; sourceTree = "<group>"; };
 		6F77D47E1C79049B00D755BF /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		6F77D4821C79082800D755BF /* AboutPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutPresenter.swift; sourceTree = "<group>"; };
+		6F77D4861C79085F00D755BF /* AboutPresenterDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutPresenterDelegate.swift; sourceTree = "<group>"; };
+		6F77D48A1C79088300D755BF /* AboutViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewControllerDelegate.swift; sourceTree = "<group>"; };
 		6FF289281C70E0F40075F269 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		6FF2892C1C70E1060075F269 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		6FF289321C70E8200075F269 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
@@ -165,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				6FF2893A1C70E8A50075F269 /* MainViewControllerDelegate.swift */,
+				6F77D48A1C79088300D755BF /* AboutViewControllerDelegate.swift */,
 			);
 			name = "View controllers delegates";
 			sourceTree = "<group>";
@@ -173,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				6FF2893E1C70E8EA0075F269 /* MainPresenter.swift */,
+				6F77D4821C79082800D755BF /* AboutPresenter.swift */,
 			);
 			name = Presenters;
 			sourceTree = "<group>";
@@ -181,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				6FF289421C70E9080075F269 /* MainPresenterDelegate.swift */,
+				6F77D4861C79085F00D755BF /* AboutPresenterDelegate.swift */,
 			);
 			name = "Presenters delegates";
 			sourceTree = "<group>";
@@ -486,7 +501,9 @@
 				6FF289331C70E8200075F269 /* AboutViewController.swift in Sources */,
 				6F67D00E1C744B6000DB7327 /* PullController.swift in Sources */,
 				6F77D47F1C79049B00D755BF /* Coordinator.swift in Sources */,
+				6F77D48B1C79088300D755BF /* AboutViewControllerDelegate.swift in Sources */,
 				6F5BD5601C67A6A700775424 /* ApiResponse.swift in Sources */,
+				6F77D4831C79082800D755BF /* AboutPresenter.swift in Sources */,
 				6FFBD1C71C61DD25008CCE7A /* AppDelegate.swift in Sources */,
 				6FF289471C70E9350075F269 /* MainView.swift in Sources */,
 				6FF2893F1C70E8EA0075F269 /* MainPresenter.swift in Sources */,
@@ -495,6 +512,7 @@
 				6FF289431C70E9080075F269 /* MainPresenterDelegate.swift in Sources */,
 				6F5BD55C1C67A34600775424 /* ApiRequest.swift in Sources */,
 				6F5BD5641C67A89D00775424 /* ApiServices.swift in Sources */,
+				6F77D4871C79085F00D755BF /* AboutPresenterDelegate.swift in Sources */,
 				6F67D0121C744CB300DB7327 /* PullControllerDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -506,7 +524,9 @@
 				6FF289341C70E8200075F269 /* AboutViewController.swift in Sources */,
 				6F67D00F1C744B6000DB7327 /* PullController.swift in Sources */,
 				6F77D4801C79049B00D755BF /* Coordinator.swift in Sources */,
+				6F77D48C1C79088300D755BF /* AboutViewControllerDelegate.swift in Sources */,
 				6F5BD5611C67A6A700775424 /* ApiResponse.swift in Sources */,
+				6F77D4841C79082800D755BF /* AboutPresenter.swift in Sources */,
 				6F5BD55D1C67A34600775424 /* ApiRequest.swift in Sources */,
 				6FF289481C70E9350075F269 /* MainView.swift in Sources */,
 				6FF289401C70E8EA0075F269 /* MainPresenter.swift in Sources */,
@@ -515,6 +535,7 @@
 				6FF289441C70E9080075F269 /* MainPresenterDelegate.swift in Sources */,
 				6FFBD1DC1C61DD25008CCE7A /* NumbersAppiTests.swift in Sources */,
 				6FF2892A1C70E0F40075F269 /* MainViewController.swift in Sources */,
+				6F77D4881C79085F00D755BF /* AboutPresenterDelegate.swift in Sources */,
 				6F67D0131C744CB300DB7327 /* PullControllerDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -526,7 +547,9 @@
 				6FF289351C70E8200075F269 /* AboutViewController.swift in Sources */,
 				6F67D0101C744B6000DB7327 /* PullController.swift in Sources */,
 				6F77D4811C79049B00D755BF /* Coordinator.swift in Sources */,
+				6F77D48D1C79088300D755BF /* AboutViewControllerDelegate.swift in Sources */,
 				6F5BD5621C67A6A700775424 /* ApiResponse.swift in Sources */,
+				6F77D4851C79082800D755BF /* AboutPresenter.swift in Sources */,
 				6F5BD55E1C67A34600775424 /* ApiRequest.swift in Sources */,
 				6FF289491C70E9350075F269 /* MainView.swift in Sources */,
 				6FF289411C70E8EA0075F269 /* MainPresenter.swift in Sources */,
@@ -535,6 +558,7 @@
 				6FF289451C70E9080075F269 /* MainPresenterDelegate.swift in Sources */,
 				6FFBD1E71C61DD25008CCE7A /* NumbersAppiUITests.swift in Sources */,
 				6FF2892B1C70E0F40075F269 /* MainViewController.swift in Sources */,
+				6F77D4891C79085F00D755BF /* AboutPresenterDelegate.swift in Sources */,
 				6F67D0141C744CB300DB7327 /* PullControllerDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

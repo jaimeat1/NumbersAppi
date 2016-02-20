@@ -9,6 +9,14 @@
 import Foundation
 import UIKit
 
-class AboutViewController: UIViewController {
+class AboutViewController: UIViewController, AboutViewControllerDelegate {
     
+    var presenterDelegate: AboutPresenterDelegate!
+    
+    // MARK: Action methods
+    
+    @IBAction func backButtonPressed() {
+        
+        presenterDelegate.backButtonPressed()
+    }
 }

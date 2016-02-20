@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MainPresenter: NSObject, MainPresenterDelegate {
+class MainPresenter: MainPresenterDelegate {
 
     var controllerDelegate: MainViewControllerDelegate
     
@@ -23,7 +23,6 @@ class MainPresenter: NSObject, MainPresenterDelegate {
     
     func userSelectedAbout() {
         
-        // TODO: show about view controller
-        NSLog("userSelectedAbout()")
+        Coordinator.sharedInstance.presentAboutFromMain()
     }
 }

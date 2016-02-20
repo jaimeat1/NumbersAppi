@@ -15,7 +15,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate, PullCont
     @IBOutlet private var aboutLabel: UILabel!
     @IBOutlet private var fadingView: UIView!
     
-    var presenterDelegate: MainPresenterDelegate?
+    var presenterDelegate: MainPresenterDelegate!
     
     private var pullController: PullController?
     
