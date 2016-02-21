@@ -7,3 +7,8 @@
 */
 
 "PULL_ABOUT" = "Suelta para ver About NumbersAppi";
+
+"TYPE_TRIVIA" = "Trivia";
+"TYPE_MATH" = "Math";
+"TYPE_YEAR" = "Year";
+"TYPE_DATE" = "Date";
