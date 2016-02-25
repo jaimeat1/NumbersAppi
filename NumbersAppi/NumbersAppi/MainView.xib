@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainView" customModule="NumbersAppi" customModuleProvider="target">
             <connections>
+                <outlet property="numberPickerView" destination="pHb-Dn-kff" id="TdG-l6-dSP"/>
                 <outlet property="typeSelector" destination="FdR-c3-II5" id="NLv-ba-evv"/>
                 <outlet property="view" destination="iN0-l3-epB" id="KEa-nQ-Jd6"/>
             </connections>
@@ -31,11 +32,21 @@
                         <action selector="typeSelectorHasChanged" destination="-1" eventType="valueChanged" id="nqJ-tN-fNt"/>
                     </connections>
                 </segmentedControl>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pHb-Dn-kff" userLabel="Number picker view" customClass="NumberPickerView" customModule="NumbersAppi" customModuleProvider="target">
+                    <rect key="frame" x="140" y="190" width="320" height="120"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="120" id="teu-BE-4hL"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="pHb-Dn-kff" firstAttribute="centerX" secondItem="FdR-c3-II5" secondAttribute="centerX" id="HdQ-ix-5lR"/>
                 <constraint firstItem="FdR-c3-II5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="90" id="Men-8y-Eul"/>
                 <constraint firstItem="FdR-c3-II5" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="QRD-sL-x3g"/>
+                <constraint firstItem="pHb-Dn-kff" firstAttribute="top" secondItem="FdR-c3-II5" secondAttribute="bottom" constant="72" id="bd9-hJ-MHG"/>
+                <constraint firstItem="pHb-Dn-kff" firstAttribute="width" secondItem="FdR-c3-II5" secondAttribute="width" id="fkc-vB-x2d"/>
             </constraints>
         </view>
     </objects>

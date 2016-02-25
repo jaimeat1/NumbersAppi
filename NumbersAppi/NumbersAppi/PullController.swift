@@ -108,7 +108,7 @@ class PullController {
     
     // MARK: - Private methods
     
-    func setupDragGesture() {
+    private func setupDragGesture() {
 
         if !isAlreadySetup {
         
@@ -118,7 +118,7 @@ class PullController {
         }
     }
     
-    func animatePullableViewToOrigin() {
+    private func animatePullableViewToOrigin() {
         
         UIView.animateWithDuration(animationDuration, animations: { () -> Void in
             
@@ -128,21 +128,21 @@ class PullController {
         })
     }
     
-    func animateTranslucentViewHiding() {
+    private func animateTranslucentViewHiding() {
         
         UIView.animateWithDuration(animationDuration, animations: { () -> Void in
             self.translucentView.alpha = self.minimunAlpha;
         })
     }
     
-    func animateTranslucentViewShowing() {
+    private func animateTranslucentViewShowing() {
         
         UIView.animateWithDuration(animationDuration, animations: { () -> Void in
             self.translucentView.alpha = 0;
         })
     }
     
-    func translucentViewShouldBeVisible() -> Bool {
+    private func translucentViewShouldBeVisible() -> Bool {
         
         let distance = (pullableView.frame.origin.y - pointOfOrigin!.y)
         return (distance >= (maxPullableDistance * factorToShowTranslucentView))
