@@ -23,12 +23,13 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     private var upperContainer: UIView!
     private var bottomContainer: UIView!
     
+    private var buttons: [UIButton] = Array()
+    
     // MARK: Lifecycle objets
 
     required init?(coder aDecoder: NSCoder) {
         
         super.init(coder: aDecoder)
-        
 
         setupAndAddPickerView()
         setupAndAddSelectorViews()
@@ -37,68 +38,18 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         pickerView.backgroundColor = UIColor.lightGrayColor()
     }
     
-    func setHeight(height: CGFloat, inView: UIView) {
-        
-    }
-    
     override func updateConstraints() {
         
         super.updateConstraints()
 
         ConstraintHelper.centerInSuperview(pickerView)
         ConstraintHelper.sameSizeThanSuperview(pickerView)
+        ConstraintHelper.viewHeight(upperContainer, equalsTo: containerHeight)
+        ConstraintHelper.equalWidthInView(upperContainer, thanInView: pickerView)
+        ConstraintHelper.equalLeadingForViews(upperContainer, view2: pickerView)
+        ConstraintHelper.verticalSpaceToParent(upperContainer, equalTo: 0)
         
-        // TODO: set container view height to selectorSize
-        
-        let heightConstraint = NSLayoutConstraint(
-            item: upperContainer,
-            attribute: NSLayoutAttribute.Height,
-            relatedBy: NSLayoutRelation.Equal,
-            toItem: nil,
-            attribute: NSLayoutAttribute.NotAnAttribute,
-            multiplier: 1.0,
-            constant: containerHeight)
-        
-        upperContainer.addConstraint(heightConstraint)
-        
-        // TODO: set container view width to picker view
-        
-        let widthConstraint = NSLayoutConstraint(
-            item: upperContainer,
-            attribute: NSLayoutAttribute.Width,
-            relatedBy: NSLayoutRelation.Equal,
-            toItem: pickerView,
-            attribute: NSLayoutAttribute.Width,
-            multiplier: 1.0,
-            constant: 0)
-        
-        addConstraint(widthConstraint)
-        
-        // TODO: align container view left side to picker view left side
-        
-        let alignLeft = NSLayoutConstraint(
-            item: upperContainer,
-            attribute: NSLayoutAttribute.Leading,
-            relatedBy: NSLayoutRelation.Equal,
-            toItem: pickerView,
-            attribute: NSLayoutAttribute.Leading,
-            multiplier: 1.0,
-            constant: 0.0)
-        
-        addConstraint(alignLeft)
-        
-        // TODO: set container view vertical space to picker view to zero
-        
-        let verticalSpace = NSLayoutConstraint(
-            item: upperContainer,
-            attribute: NSLayoutAttribute.Top,
-            relatedBy: NSLayoutRelation.Equal,
-            toItem: self,
-            attribute: NSLayoutAttribute.Top,
-            multiplier: 1.0,
-            constant: 0.0)
-        
-        addConstraint(verticalSpace)
+        updateConstraintsForButtons()
     }
 
     // MARK: public methods
@@ -156,8 +107,6 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     
     private func setupAndAddSelectorViews() {
 
-        // TODO: build container view
-        
         let frame = CGRectMake(0, 0, 0, 0)
         upperContainer = UIView(frame: frame)
         upperContainer.translatesAutoresizingMaskIntoConstraints = false
@@ -165,49 +114,41 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
  
         let image: UIImage = UIImage(imageLiteral: "arrow_up")
         
-        for i in 1 ... pickerNumberOfComponents {
+        for _ in 1 ... pickerNumberOfComponents {
             
             let button = UIButton(frame: CGRectMake(0, 0, buttonSize, buttonSize))
             button.translatesAutoresizingMaskIntoConstraints = false
             button.setImage(image, forState: UIControlState.Normal)
             upperContainer.addSubview(button)
             
-            ConstraintHelper.centerVerticalyInSuperview(button)
-
-            let realPickerWidth = pickerComponentWidth + pickerComponentExtraWidth
-            let multiplier = CGFloat(i)
-            let availableSpace = pickerComponentWidth - buttonSize
-            
-            if i == 1 {
-                
-                let horizontalSpace = NSLayoutConstraint(
-                    item: button,
-                    attribute: NSLayoutAttribute.Left,
-                    relatedBy: NSLayoutRelation.Equal,
-                    toItem: upperContainer,
-                    attribute: NSLayoutAttribute.Left,
-                    multiplier: 1.0,
-                    constant: realPickerWidth + availableSpace)
-                
-                addConstraint(horizontalSpace)
-                
-            } else {
-                
-                let horizontalSpace = NSLayoutConstraint(
-                    item: button,
-                    attribute: NSLayoutAttribute.Left,
-                    relatedBy: NSLayoutRelation.Equal,
-                    toItem: upperContainer,
-                    attribute: NSLayoutAttribute.Left,
-                    multiplier: 1.0,
-                    constant: (realPickerWidth * multiplier) + availableSpace)
-                
-                addConstraint(horizontalSpace)
-            }
-
+            buttons.append(button)
         }
         
         addSubview(upperContainer)
     }
-
+    
+    private func updateConstraintsForButtons() {
+        
+        var index = 1
+        for oneButton in buttons {
+            
+            ConstraintHelper.centerVerticalyInSuperview(oneButton)
+            
+            let realPickerWidth = pickerComponentWidth + pickerComponentExtraWidth
+            let availableSpace = pickerComponentWidth - buttonSize
+            
+            if index == 1 {
+                
+                let horizontalSpace = realPickerWidth + availableSpace
+                ConstraintHelper.horizontalSpaceToParent(oneButton, equalTo: horizontalSpace)
+                
+            } else {
+                
+                let horizontalSpace = (realPickerWidth * CGFloat(index)) + availableSpace
+                ConstraintHelper.horizontalSpaceToParent(oneButton, equalTo: horizontalSpace)
+            }
+            
+            index++
+        }
+    }
 }

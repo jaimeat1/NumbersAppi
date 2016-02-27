@@ -13,6 +13,96 @@ class ConstraintHelper {
     
     // MARK: Public methods
     
+    static func viewHeight(view: UIView, equalsTo height: CGFloat) {
+        
+        let heightConstraint = NSLayoutConstraint(
+            item: view,
+            attribute: NSLayoutAttribute.Height,
+            relatedBy: NSLayoutRelation.Equal,
+            toItem: nil,
+            attribute: NSLayoutAttribute.NotAnAttribute,
+            multiplier: 1.0,
+            constant: height)
+        
+        view.addConstraint(heightConstraint)
+    }
+    
+    static func verticalSpaceToParent(subview: UIView, equalTo verticalSpace: CGFloat) {
+        
+        if let superview = subview.superview {
+            
+            let verticalSpace = NSLayoutConstraint(
+                item: subview,
+                attribute: NSLayoutAttribute.Top,
+                relatedBy: NSLayoutRelation.Equal,
+                toItem: superview,
+                attribute: NSLayoutAttribute.Top,
+                multiplier: 1.0,
+                constant: 0.0)
+            
+            superview.addConstraint(verticalSpace)
+        }
+    }
+    
+    static func horizontalSpaceToParent(subview: UIView, equalTo horizontalSpace: CGFloat) {
+        
+        if let superview = subview.superview {
+            
+            let horizantalConstraint = NSLayoutConstraint(
+                item: subview,
+                attribute: NSLayoutAttribute.Left,
+                relatedBy: NSLayoutRelation.Equal,
+                toItem: superview,
+                attribute: NSLayoutAttribute.Left,
+                multiplier: 1.0,
+                constant: horizontalSpace)
+            
+            superview.addConstraint(horizantalConstraint)
+        }
+    }
+    
+     static func equalWidthInView(view1: UIView, thanInView view2: UIView) {
+        
+        // TODO: check if both views are in the same hierarchy tree, not only brothers
+        
+        if let parentView = view1.superview {
+            
+            if parentView == view2.superview {
+                
+                let widthConstraint = NSLayoutConstraint(
+                    item: view1,
+                    attribute: NSLayoutAttribute.Width,
+                    relatedBy: NSLayoutRelation.Equal,
+                    toItem: view2,
+                    attribute: NSLayoutAttribute.Width,
+                    multiplier: 1.0,
+                    constant: 0)
+                
+                parentView.addConstraint(widthConstraint)
+            }
+        }
+    }
+    
+    static func equalLeadingForViews(view1: UIView, view2: UIView) {
+        
+        if let parentView = view1.superview {
+            
+            if parentView == view2.superview {
+                
+                let alignLeft = NSLayoutConstraint(
+                    item: view1,
+                    attribute: NSLayoutAttribute.Leading,
+                    relatedBy: NSLayoutRelation.Equal,
+                    toItem: view2,
+                    attribute: NSLayoutAttribute.Leading,
+                    multiplier: 1.0,
+                    constant: 0.0)
+                
+                parentView.addConstraint(alignLeft)
+            }
+        }
+    }
+    
     static func centerInSuperview(subview: UIView) {
         
         if subview.superview != nil {
