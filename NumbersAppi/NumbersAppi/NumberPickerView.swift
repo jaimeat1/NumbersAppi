@@ -23,7 +23,8 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     private var upperContainer: UIView!
     private var bottomContainer: UIView!
     
-    private var buttons: [UIButton] = Array()
+    private var upperButtons = NSArray()
+    private var bottomButtons = NSArray()
     
     // MARK: Lifecycle objets
 
@@ -44,12 +45,19 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
 
         ConstraintHelper.centerInSuperview(pickerView)
         ConstraintHelper.sameSizeThanSuperview(pickerView)
+        
         ConstraintHelper.viewHeight(upperContainer, equalsTo: containerHeight)
         ConstraintHelper.equalWidthInView(upperContainer, thanInView: pickerView)
         ConstraintHelper.equalLeadingForViews(upperContainer, view2: pickerView)
-        ConstraintHelper.verticalSpaceToParent(upperContainer, equalTo: 0)
+        ConstraintHelper.topSpaceToContainer(upperContainer, equalTo: 0)
         
-        updateConstraintsForButtons()
+        ConstraintHelper.viewHeight(bottomContainer, equalsTo: containerHeight)
+        ConstraintHelper.equalWidthInView(bottomContainer, thanInView: pickerView)
+        ConstraintHelper.equalLeadingForViews(bottomContainer, view2: pickerView)
+        ConstraintHelper.bottomSpaceToContainer(bottomContainer, equalTo: 0.0)
+        
+        updateButtonsConstraints(bottomButtons)
+        updateButtonsConstraints(upperButtons)
     }
 
     // MARK: public methods
@@ -107,30 +115,54 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     
     private func setupAndAddSelectorViews() {
 
+        upperContainer = setupSelectorViewWithImage("arrow_up")
+        upperButtons = buttonsInView(upperContainer)
+        addSubview(upperContainer)
+
+        bottomContainer = setupSelectorViewWithImage("arrow_down")
+        bottomButtons = buttonsInView(bottomContainer)
+        addSubview(bottomContainer)
+    }
+    
+    private func setupSelectorViewWithImage(imageName: String) -> UIView {
+        
         let frame = CGRectMake(0, 0, 0, 0)
-        upperContainer = UIView(frame: frame)
-        upperContainer.translatesAutoresizingMaskIntoConstraints = false
-        upperContainer.backgroundColor = UIColor.yellowColor()
- 
-        let image: UIImage = UIImage(imageLiteral: "arrow_up")
+        let selectorView = UIView(frame: frame)
+        selectorView.translatesAutoresizingMaskIntoConstraints = false
+        selectorView.backgroundColor = UIColor.yellowColor()
+        
+        let image: UIImage = UIImage(imageLiteral: imageName)
         
         for _ in 1 ... pickerNumberOfComponents {
             
             let button = UIButton(frame: CGRectMake(0, 0, buttonSize, buttonSize))
             button.translatesAutoresizingMaskIntoConstraints = false
             button.setImage(image, forState: UIControlState.Normal)
-            upperContainer.addSubview(button)
-            
-            buttons.append(button)
+            selectorView.addSubview(button)
         }
         
-        addSubview(upperContainer)
+        return selectorView
     }
     
-    private func updateConstraintsForButtons() {
+    private func buttonsInView(view: UIView) -> NSArray {
+    
+        var buttons: [UIButton] = Array()
+        
+        for subview in view.subviews {
+            
+            if subview.isKindOfClass(UIButton) {
+                buttons.append(subview as! UIButton)
+            }
+        }
+        
+        return buttons
+    }
+    
+    private func updateButtonsConstraints(buttons: NSArray) {
         
         var index = 1
-        for oneButton in buttons {
+
+        for oneButton in buttons as! [UIButton] {
             
             ConstraintHelper.centerVerticalyInSuperview(oneButton)
             

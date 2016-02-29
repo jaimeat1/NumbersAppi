@@ -27,20 +27,37 @@ class ConstraintHelper {
         view.addConstraint(heightConstraint)
     }
     
-    static func verticalSpaceToParent(subview: UIView, equalTo verticalSpace: CGFloat) {
+    static func topSpaceToContainer(subview: UIView, equalTo topSpace: CGFloat) {
         
         if let superview = subview.superview {
             
-            let verticalSpace = NSLayoutConstraint(
+            let topSpaceConstraint = NSLayoutConstraint(
                 item: subview,
                 attribute: NSLayoutAttribute.Top,
                 relatedBy: NSLayoutRelation.Equal,
                 toItem: superview,
                 attribute: NSLayoutAttribute.Top,
                 multiplier: 1.0,
-                constant: 0.0)
+                constant: topSpace)
             
-            superview.addConstraint(verticalSpace)
+            superview.addConstraint(topSpaceConstraint)
+        }
+    }
+    
+    static func bottomSpaceToContainer(subview: UIView, equalTo bottomSpace: CGFloat) {
+        
+        if let superview = subview.superview {
+            
+            let bottomSpaceConstraint = NSLayoutConstraint(
+                item: subview,
+                attribute: NSLayoutAttribute.Bottom,
+                relatedBy: NSLayoutRelation.Equal,
+                toItem: superview,
+                attribute: NSLayoutAttribute.Bottom,
+                multiplier: 1.0,
+                constant: bottomSpace)
+            
+            superview.addConstraint(bottomSpaceConstraint)
         }
     }
     
