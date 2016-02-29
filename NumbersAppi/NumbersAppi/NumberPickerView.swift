@@ -35,29 +35,20 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         setupAndAddPickerView()
         setupAndAddSelectorViews()
         
+        // TODO: delete
         backgroundColor = UIColor.grayColor()
         pickerView.backgroundColor = UIColor.lightGrayColor()
+        upperContainer.backgroundColor = UIColor.yellowColor()
+        bottomContainer.backgroundColor = UIColor.yellowColor()
     }
     
     override func updateConstraints() {
         
         super.updateConstraints()
 
-        ConstraintHelper.centerInSuperview(pickerView)
-        ConstraintHelper.sameSizeThanSuperview(pickerView)
-        
-        ConstraintHelper.viewHeight(upperContainer, equalsTo: containerHeight)
-        ConstraintHelper.equalWidthInView(upperContainer, thanInView: pickerView)
-        ConstraintHelper.equalLeadingForViews(upperContainer, view2: pickerView)
-        ConstraintHelper.topSpaceToContainer(upperContainer, equalTo: 0)
-        
-        ConstraintHelper.viewHeight(bottomContainer, equalsTo: containerHeight)
-        ConstraintHelper.equalWidthInView(bottomContainer, thanInView: pickerView)
-        ConstraintHelper.equalLeadingForViews(bottomContainer, view2: pickerView)
-        ConstraintHelper.bottomSpaceToContainer(bottomContainer, equalTo: 0.0)
-        
-        updateButtonsConstraints(bottomButtons)
-        updateButtonsConstraints(upperButtons)
+        updatePickerConstraints()
+        updateUpperContainerConstraints()
+        updateBottomContainerConstraints()
     }
 
     // MARK: public methods
@@ -129,7 +120,6 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         let frame = CGRectMake(0, 0, 0, 0)
         let selectorView = UIView(frame: frame)
         selectorView.translatesAutoresizingMaskIntoConstraints = false
-        selectorView.backgroundColor = UIColor.yellowColor()
         
         let image: UIImage = UIImage(imageLiteral: imageName)
         
@@ -156,6 +146,32 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         }
         
         return buttons
+    }
+    
+    private func updatePickerConstraints() {
+        
+        ConstraintHelper.centerInSuperview(pickerView)
+        ConstraintHelper.sameSizeThanSuperview(pickerView)
+    }
+    
+    private func updateUpperContainerConstraints() {
+        
+        ConstraintHelper.viewHeight(upperContainer, equalsTo: containerHeight)
+        ConstraintHelper.equalWidthInView(upperContainer, thanInView: pickerView)
+        ConstraintHelper.equalLeadingForViews(upperContainer, view2: pickerView)
+        ConstraintHelper.topSpaceToContainer(upperContainer, equalTo: 0)
+        
+        updateButtonsConstraints(upperButtons)
+    }
+    
+    private func updateBottomContainerConstraints() {
+        
+        ConstraintHelper.viewHeight(bottomContainer, equalsTo: containerHeight)
+        ConstraintHelper.equalWidthInView(bottomContainer, thanInView: pickerView)
+        ConstraintHelper.equalLeadingForViews(bottomContainer, view2: pickerView)
+        ConstraintHelper.bottomSpaceToContainer(bottomContainer, equalTo: 0.0)
+        
+        updateButtonsConstraints(bottomButtons)
     }
     
     private func updateButtonsConstraints(buttons: NSArray) {
