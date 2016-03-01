@@ -64,6 +64,22 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         // TODO: set number in picker
     }
     
+    // MARK: Action methods
+    
+    @IBAction func selectorButtonPressed(sender: UIButton) {
+        
+        if (isUpperButton(sender)) {
+            
+            let component = upperButtons.indexOfObject(sender)
+            incrementComponent(component)
+            
+        } else {
+            
+            let component = bottomButtons.indexOfObject(sender)
+            decrementComponent(component)
+        }
+    }
+    
     // MARK: UIPickerViewDelegate methods
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
@@ -101,6 +117,7 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         pickerView.translatesAutoresizingMaskIntoConstraints = false
         pickerView.delegate = self
         pickerView.dataSource = self
+        pickerView.userInteractionEnabled = false
         addSubview(pickerView)
     }
     
@@ -129,6 +146,8 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
             button.translatesAutoresizingMaskIntoConstraints = false
             button.setImage(image, forState: UIControlState.Normal)
             selectorView.addSubview(button)
+            
+            button.addTarget(self, action: "selectorButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
         }
         
         return selectorView
@@ -198,5 +217,22 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
             
             index++
         }
+    }
+    
+    private func isUpperButton(button: UIButton) -> Bool {
+        
+        return (upperButtons.indexOfObject(button) != NSNotFound)
+    }
+    
+    private func incrementComponent(component: Int) {
+        
+        let newSelectedRow = pickerView.selectedRowInComponent(component) + 1
+        pickerView.selectRow(newSelectedRow, inComponent: component, animated: true)
+    }
+    
+    private func decrementComponent(component: Int) {
+        
+        let newSelectedRow = pickerView.selectedRowInComponent(component) - 1
+        pickerView.selectRow(newSelectedRow, inComponent: component, animated: true)
     }
 }
