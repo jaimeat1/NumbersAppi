@@ -12,12 +12,31 @@ import UIKit
 class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     
     private let pickerNumberOfComponents: Int = 5
+    private let pickerNumberOfOriginalValues: Int = 10
+    private let pickerTimesToRepeatValues: Int = 3
+    
+    /*
+    // TODO: how declare a let value depending on other let values?
+     I want to declare something that:
+    - is readonly
+    - is defined with other let values
+    - can be defined somehow with a function, not in the declaration area like here
+    */
+    private var pickerNumberOfRows: Int {
+        get{
+            return pickerNumberOfOriginalValues * pickerTimesToRepeatValues
+        }
+    }
+    
     private let pickerComponentWidth: CGFloat = 40.0
     private let pickerComponentExtraWidth: CGFloat = 5.0
     private let pickerRowHeigth: CGFloat = 50.0
 
     private let containerHeight: CGFloat = 40.0
     private let buttonSize: CGFloat = 30.0
+    
+    private let timeToReset: NSTimeInterval = 1.0
+    private var resetTimer: NSTimer?
     
     private var pickerView: UIPickerView!
     private var upperContainer: UIView!
@@ -31,7 +50,7 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     required init?(coder aDecoder: NSCoder) {
         
         super.init(coder: aDecoder)
-
+        
         setupAndAddPickerView()
         setupAndAddSelectorViews()
         
@@ -45,7 +64,7 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     override func updateConstraints() {
         
         super.updateConstraints()
-
+        
         updatePickerConstraints()
         updateUpperContainerConstraints()
         updateBottomContainerConstraints()
@@ -78,13 +97,17 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
             let component = bottomButtons.indexOfObject(sender)
             decrementComponent(component)
         }
+        
+        setTimerToResetSelectors()
     }
     
     // MARK: UIPickerViewDelegate methods
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
-        return String(row)
+        let number = row % pickerNumberOfOriginalValues
+        
+        return String(number)
     }
     
     func pickerView(pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
@@ -106,7 +129,7 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
-        return 10;
+        return pickerNumberOfOriginalValues * pickerTimesToRepeatValues;
     }
     
     // MARK: Private methods
@@ -118,7 +141,24 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         pickerView.delegate = self
         pickerView.dataSource = self
         pickerView.userInteractionEnabled = false
+        
         addSubview(pickerView)
+        centerAllPickerComponents()
+    }
+    
+    @objc private func centerAllPickerComponents() {
+        
+        for component in 0 ..< pickerNumberOfComponents {
+            
+            let selectedRow = pickerView.selectedRowInComponent(component)
+            let number = selectedRow % pickerNumberOfOriginalValues
+            let centerComponent = (pickerNumberOfComponents / 2)
+            let centeredSelectedRow = (centerComponent * pickerNumberOfOriginalValues) + number
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                self.pickerView.selectRow(centeredSelectedRow, inComponent: component, animated: false)
+            }
+        }
     }
     
     private func setupAndAddSelectorViews() {
@@ -232,7 +272,20 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     
     private func decrementComponent(component: Int) {
         
+        
         let newSelectedRow = pickerView.selectedRowInComponent(component) - 1
         pickerView.selectRow(newSelectedRow, inComponent: component, animated: true)
+    }
+    
+    private func setTimerToResetSelectors() {
+        
+        resetTimer?.invalidate()
+        
+        resetTimer = NSTimer.scheduledTimerWithTimeInterval(
+            timeToReset,
+            target: self,
+            selector: "centerAllPickerComponents",
+            userInfo: nil,
+            repeats: false);
     }
 }
