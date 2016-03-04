@@ -74,8 +74,14 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     
     func getSelectedNumber() -> Int {
         
-        // TODO: get number from picker
-        return 0
+        var stringNumber: String = ""
+        for component in 0 ..< pickerNumberOfComponents {
+            
+            let numberInComponent = (pickerView.selectedRowInComponent(component) % pickerNumberOfOriginalValues)
+            stringNumber = stringNumber + String(numberInComponent)
+        }
+        
+        return Int(stringNumber) ?? 0
     }
     
     func setSelectedNumber(number: Int, animated: Bool) {
