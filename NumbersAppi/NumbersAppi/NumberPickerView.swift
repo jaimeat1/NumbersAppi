@@ -6,6 +6,7 @@
 //  Copyright © 2016 Jaime Aranaz. All rights reserved.
 //
 
+import Darwin
 import Foundation
 import UIKit
 
@@ -74,19 +75,20 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     
     func getSelectedNumber() -> Int {
         
-        var stringNumber: String = ""
-        for component in 0 ..< pickerNumberOfComponents {
-            
-            let numberInComponent = (pickerView.selectedRowInComponent(component) % pickerNumberOfOriginalValues)
-            stringNumber = stringNumber + String(numberInComponent)
+        var selectedNumber: Int = 0
+        let maximumIndex = pickerNumberOfComponents - 1
+        
+        for var component = maximumIndex; component >= 0; component-- {
+            let numberInComponent = pickerView.selectedRowInComponent(component) % pickerNumberOfOriginalValues
+            let decimalPow = Int((pow(Double(10), Double(maximumIndex - component))))
+            selectedNumber += numberInComponent * decimalPow
         }
         
-        return Int(stringNumber) ?? 0
+        return selectedNumber
     }
     
     func setSelectedNumber(number: Int, animated: Bool) {
         
-        // TODO: set number in picker
     }
     
     // MARK: Action methods
