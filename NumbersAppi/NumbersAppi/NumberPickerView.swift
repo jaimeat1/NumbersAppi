@@ -54,12 +54,6 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         
         setupAndAddPickerView()
         setupAndAddSelectorViews()
-        
-        // TODO: delete
-        backgroundColor = UIColor.grayColor()
-        pickerView.backgroundColor = UIColor.lightGrayColor()
-        upperContainer.backgroundColor = UIColor.yellowColor()
-        bottomContainer.backgroundColor = UIColor.yellowColor()
     }
     
     override func updateConstraints() {
@@ -194,6 +188,7 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         
         let frame = CGRectMake(0, 0, 0, 0)
         let selectorView = UIView(frame: frame)
+        selectorView.backgroundColor = UIColor.whiteColor()
         selectorView.translatesAutoresizingMaskIntoConstraints = false
         
         let image: UIImage = UIImage(imageLiteral: imageName)
