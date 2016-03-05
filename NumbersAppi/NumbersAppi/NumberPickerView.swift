@@ -16,13 +16,7 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     private let pickerNumberOfOriginalValues: Int = 10
     private let pickerTimesToRepeatValues: Int = 3
     
-    /*
-    // TODO: how declare a let value depending on other let values?
-     I want to declare something that:
-    - is readonly
-    - is defined with other let values
-    - can be defined somehow with a function, not in the declaration area like here
-    */
+    // TODO: how declare a let value depending on other let values? (readonly, defined through a function and not here)
     private var pickerNumberOfRows: Int {
         get{
             return pickerNumberOfOriginalValues * pickerTimesToRepeatValues
@@ -72,7 +66,8 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         var selectedNumber: Int = 0
         let maximumIndex = pickerNumberOfComponents - 1
         
-        for var component = maximumIndex; component >= 0; component-- {
+        for component in (0 ..< pickerNumberOfComponents).reverse() {
+  
             let numberInComponent = pickerView.selectedRowInComponent(component) % pickerNumberOfOriginalValues
             let decimalPow = Int((pow(Double(10), Double(maximumIndex - component))))
             selectedNumber += numberInComponent * decimalPow
