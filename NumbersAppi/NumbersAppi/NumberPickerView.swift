@@ -87,8 +87,18 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         return selectedNumber
     }
     
-    func setSelectedNumber(number: Int, animated: Bool) {
+    func setSelectedNumber(var number: Int, animated: Bool) {
+
+        for component in 0 ..< pickerNumberOfComponents {
+
+            let decimalPow = Int((pow(Double(10), Double((pickerNumberOfComponents - 1) - component))))
+            let numberInComponent = number / decimalPow
+            number -= numberInComponent * decimalPow
+
+            pickerView.selectRow(numberInComponent, inComponent: component, animated: animated)
+        }
         
+        setTimerToResetSelectors()
     }
     
     // MARK: Action methods
