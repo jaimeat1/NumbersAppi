@@ -13,6 +13,7 @@ class MainView: UIView {
     
     @IBOutlet var view: UIView!
     @IBOutlet var typeSelector: UISegmentedControl!
+    @IBOutlet var numberPickerView: NumberPickerView!
     
     private var dateTypeIndex: Int!
     
@@ -41,7 +42,7 @@ class MainView: UIView {
     
     // MARK: - Private methods
     
-    func setupTypeSelector() {
+    private func setupTypeSelector() {
         
         let triviaTitle = NSLocalizedString("TYPE_TRIVIA", comment: "Trivia type in the selector")
         typeSelector.setTitle(triviaTitle, forSegmentAtIndex: 0)
