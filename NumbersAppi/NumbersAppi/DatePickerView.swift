@@ -9,7 +9,79 @@
 import Foundation
 import UIKit
 
-class DatePickerView: UIView {
+class DatePickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
+    
+    var monthContainer: UIView!
+    var monthPicker: UIPickerView!
+    var monthUpButton: UIButton!
+    var monthDownButton: UIButton!
+    
+    var dayContainer: UIView!
+    var dayPicker: UIPickerView!
+    var dayUpButton: UIButton!
+    var dayDownButton: UIButton!
+    
+    // MARK: Lifecycle objets
+    
+    required init?(coder aDecoder: NSCoder) {
+        
+        super.init(coder: aDecoder)
+        
+        setupView()
+    }
+    
+    override func updateConstraints() {
+        
+        super.updateConstraints()
+        
+        // TODO: update constraints
+    }
+    
+    // MARK: Public methods
+    
+    func setDate() {
+        
+        // TODO: set given date in pickers view
+    }
+    
+    func getDate() {
+        
+        // TODO: get current date in pickers view
+    }
+    
+    // MARK: UIPickerViewDataSource methods
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        
+        // TODO: return number of components
+        return 0;
+    }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        
+        // TODO: return number of original values
+        return 0;
+    }
+    
+    // MARK: UIPickerViewDelegate methods
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+
+        // TODO: return days or months
+        return ""
+    }
+    
+    func pickerView(pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        
+        // TODO: return componnent height
+        return 0
+    }
+    
+    func pickerView(pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
+        
+        // TODO: return componnent width
+        return 0
+    }
     
     // MARK: Private methods
     
@@ -25,5 +97,10 @@ class DatePickerView: UIView {
         let January = 1
         
         return (Int(dateComponents[0]) == January)
+    }
+    
+    private func setupView() {
+        
+        // TODO: setup containers, pickers, buttons
     }
 }
