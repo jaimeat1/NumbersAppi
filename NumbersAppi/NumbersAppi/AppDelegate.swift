@@ -22,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window.rootViewController = Coordinator.sharedInstance.getMainViewController()
             window.makeKeyAndVisible()
         }
+        
+        NSLog("month should be at the beginning: \(hasDateMonthAtBeginning())")
 
         return true
     }
