@@ -14,6 +14,7 @@ class MainView: UIView {
     @IBOutlet var view: UIView!
     @IBOutlet var typeSelector: UISegmentedControl!
     @IBOutlet var numberPickerView: NumberPickerView!
+    @IBOutlet var datePickerView: DatePickerView!
     
     private var dateTypeIndex: Int!
     

@@ -9,9 +9,25 @@
 import Foundation
 import UIKit
 
+// TODO: publish it as library
+// TODO: add error messages if constraint can't be applied
 class ConstraintHelper {
     
     // MARK: Public methods
+    
+    static func viewWidth(view: UIView, equalsTo width: CGFloat) {
+        
+        let widthConstraint = NSLayoutConstraint(
+            item: view,
+            attribute: NSLayoutAttribute.Width,
+            relatedBy: NSLayoutRelation.Equal,
+            toItem: nil,
+            attribute: NSLayoutAttribute.NotAnAttribute,
+            multiplier: 1.0,
+            constant: width)
+        
+        view.addConstraint(widthConstraint)
+    }
     
     static func viewHeight(view: UIView, equalsTo height: CGFloat) {
         

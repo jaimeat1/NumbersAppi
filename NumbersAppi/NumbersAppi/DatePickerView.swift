@@ -11,6 +11,13 @@ import UIKit
 
 class DatePickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
     
+    let buttonSize: CGFloat = 30
+    let pickerRowHeight: CGFloat = 50
+    let monthPickerWidth: CGFloat = 120
+    let dayPickerWidth: CGFloat = 50
+    let pickersHorizontalSpace: CGFloat = 20
+    let mainContainerHeight: CGFloat = 130
+    
     var monthContainer: UIView!
     var monthPicker: UIPickerView!
     var monthUpButton: UIButton!
@@ -21,6 +28,8 @@ class DatePickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
     var dayUpButton: UIButton!
     var dayDownButton: UIButton!
     
+    var mainContainer: UIView!
+    
     // MARK: Lifecycle objets
     
     required init?(coder aDecoder: NSCoder) {
@@ -28,11 +37,42 @@ class DatePickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
         super.init(coder: aDecoder)
         
         setupView()
+        
+        backgroundColor = UIColor.grayColor()
+        
+        mainContainer = UIView()
+        mainContainer.translatesAutoresizingMaskIntoConstraints = false
+        mainContainer.backgroundColor = UIColor.blueColor()
+
+//        let isMonthFirst = hasRegionalDateMonthAtBeginning()
+//        let monthXOrigin = isMonthFirst ? 0 : dayPickerWidth + pickersHorizontalSpace
+//        
+//        let monthFrame = CGRectMake(monthXOrigin, 0, monthPickerWidth, pickerHeight)
+//        monthPicker = UIPickerView(frame: monthFrame)
+//        monthPicker.dataSource = self
+//        monthPicker.delegate = self
+//        monthPicker.backgroundColor = UIColor.greenColor()
+//        mainContainer.addSubview(monthPicker)
+//        
+//        let dayXOrigin = isMonthFirst ? 0 : monthPickerWidth + pickersHorizontalSpace
+//        let dayFrame = CGRectMake(dayXOrigin, 0, dayPickerWidth, pickerHeight)
+//        dayPicker = UIPickerView(frame: dayFrame)
+//        dayPicker.dataSource = self
+//        dayPicker.delegate = self
+//        dayPicker.backgroundColor = UIColor.redColor()
+//        mainContainer.addSubview(dayPicker)
+        
+        addSubview(mainContainer)
     }
     
     override func updateConstraints() {
         
         super.updateConstraints()
+        
+        let mainContainerWidth = monthPickerWidth + dayPickerWidth
+        ConstraintHelper.viewWidth(mainContainer, equalsTo: mainContainerWidth)
+        ConstraintHelper.viewHeight(mainContainer, equalsTo: mainContainerHeight)
+        ConstraintHelper.centerInSuperview(mainContainer)
         
         // TODO: update constraints
     }
