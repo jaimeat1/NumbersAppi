@@ -11,24 +11,29 @@ import UIKit
 
 class DatePickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    let buttonSize: CGFloat = 30
-    let pickerRowHeight: CGFloat = 50
-    let monthPickerWidth: CGFloat = 120
-    let dayPickerWidth: CGFloat = 50
-    let pickersHorizontalSpace: CGFloat = 20
-    let mainContainerHeight: CGFloat = 130
+    private var months: [String]!
     
-    var monthContainer: UIView!
-    var monthPicker: UIPickerView!
-    var monthUpButton: UIButton!
-    var monthDownButton: UIButton!
+    private let monthPickerNumberOfRows: Int = 12
+    private let dayPickerNumberOfRows: Int = 31
     
-    var dayContainer: UIView!
-    var dayPicker: UIPickerView!
-    var dayUpButton: UIButton!
-    var dayDownButton: UIButton!
+    private let buttonSize: CGFloat = 30
+    private let pickerRowHeight: CGFloat = 50
+    private let monthPickerWidth: CGFloat = 150
+    private let dayPickerWidth: CGFloat = 60
+    private let pickersHorizontalSpace: CGFloat = 20
+    private let mainContainerHeight: CGFloat = 130
     
-    var mainContainer: UIView!
+    private var monthContainer: UIView!
+    private var monthPicker: UIPickerView!
+    private var monthUpButton: UIButton!
+    private var monthDownButton: UIButton!
+    
+    private var dayContainer: UIView!
+    private var dayPicker: UIPickerView!
+    private var dayUpButton: UIButton!
+    private var dayDownButton: UIButton!
+    
+    private var mainContainer: UIView!
     
     // MARK: Lifecycle objets
     
@@ -36,31 +41,34 @@ class DatePickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
         
         super.init(coder: aDecoder)
         
+        months = getLocalizedMonths()
+        
         setupView()
         
         backgroundColor = UIColor.grayColor()
+        
         
         mainContainer = UIView()
         mainContainer.translatesAutoresizingMaskIntoConstraints = false
         mainContainer.backgroundColor = UIColor.blueColor()
 
-//        let isMonthFirst = hasRegionalDateMonthAtBeginning()
-//        let monthXOrigin = isMonthFirst ? 0 : dayPickerWidth + pickersHorizontalSpace
-//        
-//        let monthFrame = CGRectMake(monthXOrigin, 0, monthPickerWidth, pickerHeight)
-//        monthPicker = UIPickerView(frame: monthFrame)
-//        monthPicker.dataSource = self
-//        monthPicker.delegate = self
-//        monthPicker.backgroundColor = UIColor.greenColor()
-//        mainContainer.addSubview(monthPicker)
-//        
-//        let dayXOrigin = isMonthFirst ? 0 : monthPickerWidth + pickersHorizontalSpace
-//        let dayFrame = CGRectMake(dayXOrigin, 0, dayPickerWidth, pickerHeight)
-//        dayPicker = UIPickerView(frame: dayFrame)
-//        dayPicker.dataSource = self
-//        dayPicker.delegate = self
-//        dayPicker.backgroundColor = UIColor.redColor()
-//        mainContainer.addSubview(dayPicker)
+        let isMonthFirst = hasRegionalDateMonthAtBeginning()
+        let monthXOrigin = isMonthFirst ? 0 : dayPickerWidth + pickersHorizontalSpace
+        
+        let monthFrame = CGRectMake(monthXOrigin, 0, monthPickerWidth, mainContainerHeight)
+        monthPicker = UIPickerView(frame: monthFrame)
+        monthPicker.dataSource = self
+        monthPicker.delegate = self
+        monthPicker.backgroundColor = UIColor.greenColor()
+        mainContainer.addSubview(monthPicker)
+        
+        let dayXOrigin = isMonthFirst ? monthPickerWidth + pickersHorizontalSpace : 0
+        let dayFrame = CGRectMake(dayXOrigin, 0, dayPickerWidth, mainContainerHeight)
+        dayPicker = UIPickerView(frame: dayFrame)
+        dayPicker.dataSource = self
+        dayPicker.delegate = self
+        dayPicker.backgroundColor = UIColor.redColor()
+        mainContainer.addSubview(dayPicker)
         
         addSubview(mainContainer)
     }
@@ -69,7 +77,7 @@ class DatePickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
         
         super.updateConstraints()
         
-        let mainContainerWidth = monthPickerWidth + dayPickerWidth
+        let mainContainerWidth = monthPickerWidth + dayPickerWidth + pickersHorizontalSpace
         ConstraintHelper.viewWidth(mainContainer, equalsTo: mainContainerWidth)
         ConstraintHelper.viewHeight(mainContainer, equalsTo: mainContainerHeight)
         ConstraintHelper.centerInSuperview(mainContainer)
@@ -93,34 +101,41 @@ class DatePickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         
-        // TODO: return number of components
-        return 0;
+        return 1
     }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        
-        // TODO: return number of original values
-        return 0;
+
+        if (pickerView == monthPicker) {
+            return monthPickerNumberOfRows
+        } else {
+            return dayPickerNumberOfRows
+        }
     }
     
     // MARK: UIPickerViewDelegate methods
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
 
-        // TODO: return days or months
-        return ""
+        if (pickerView == monthPicker) {
+            return months[row]
+        } else {
+            return String(row)
+        }
     }
     
     func pickerView(pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         
-        // TODO: return componnent height
-        return 0
+        return pickerRowHeight
     }
     
     func pickerView(pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
         
-        // TODO: return componnent width
-        return 0
+        if (pickerView == monthPicker) {
+            return monthPickerWidth
+        } else {
+            return dayPickerWidth
+        }
     }
     
     // MARK: Private methods
@@ -142,5 +157,25 @@ class DatePickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
     private func setupView() {
         
         // TODO: setup containers, pickers, buttons
+    }
+    
+    private func getLocalizedMonths() -> [String] {
+        
+        let months = [
+            NSLocalizedString("JANUARY", comment: ""),
+            NSLocalizedString("FEBRUARY", comment: ""),
+            NSLocalizedString("MARCH", comment: ""),
+            NSLocalizedString("APRIL", comment: ""),
+            NSLocalizedString("MAY", comment: ""),
+            NSLocalizedString("JUNE", comment: ""),
+            NSLocalizedString("JULY", comment: ""),
+            NSLocalizedString("AUGUST", comment: ""),
+            NSLocalizedString("SEPTEMBER", comment: ""),
+            NSLocalizedString("OCTOBER", comment: ""),
+            NSLocalizedString("NOVEMBER", comment: ""),
+            NSLocalizedString("DECEMBER", comment: "")
+        ]
+        
+        return months
     }
 }
