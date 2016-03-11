@@ -47,28 +47,16 @@ class DatePickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
         
         backgroundColor = UIColor.grayColor()
         
+
+
+
+    }
+    
+    private func setupAndAddMainView() {
         
         mainContainer = UIView()
         mainContainer.translatesAutoresizingMaskIntoConstraints = false
         mainContainer.backgroundColor = UIColor.blueColor()
-
-        let isMonthFirst = hasRegionalDateMonthAtBeginning()
-        let monthXOrigin = isMonthFirst ? 0 : dayPickerWidth + pickersHorizontalSpace
-        
-        let monthFrame = CGRectMake(monthXOrigin, 0, monthPickerWidth, mainContainerHeight)
-        monthPicker = UIPickerView(frame: monthFrame)
-        monthPicker.dataSource = self
-        monthPicker.delegate = self
-        monthPicker.backgroundColor = UIColor.greenColor()
-        mainContainer.addSubview(monthPicker)
-        
-        let dayXOrigin = isMonthFirst ? monthPickerWidth + pickersHorizontalSpace : 0
-        let dayFrame = CGRectMake(dayXOrigin, 0, dayPickerWidth, mainContainerHeight)
-        dayPicker = UIPickerView(frame: dayFrame)
-        dayPicker.dataSource = self
-        dayPicker.delegate = self
-        dayPicker.backgroundColor = UIColor.redColor()
-        mainContainer.addSubview(dayPicker)
         
         addSubview(mainContainer)
     }
@@ -81,8 +69,6 @@ class DatePickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
         ConstraintHelper.viewWidth(mainContainer, equalsTo: mainContainerWidth)
         ConstraintHelper.viewHeight(mainContainer, equalsTo: mainContainerHeight)
         ConstraintHelper.centerInSuperview(mainContainer)
-        
-        // TODO: update constraints
     }
     
     // MARK: Public methods
@@ -120,7 +106,7 @@ class DatePickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
         if (pickerView == monthPicker) {
             return months[row]
         } else {
-            return String(row)
+            return String(row + 1)
         }
     }
     
@@ -138,7 +124,98 @@ class DatePickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
         }
     }
     
+    // MARK: Action methods
+    
+    func didSelectMonthUp() {
+        
+        let newMonth = monthPicker.selectedRowInComponent(0) + 1
+        monthPicker.selectRow(newMonth, inComponent: 0, animated: true)
+    }
+    
+    func didSelectMonthDown() {
+        
+        let newMonth = monthPicker.selectedRowInComponent(0) - 1
+        monthPicker.selectRow(newMonth, inComponent: 0, animated: true)
+    }
+    
+    func didSelectDayUp() {
+     
+        let newDay = dayPicker.selectedRowInComponent(0) + 1
+        dayPicker.selectRow(newDay, inComponent: 0, animated: true)
+    }
+    
+    func didSelectDayDown() {
+        
+        let newDay = dayPicker.selectedRowInComponent(0) - 1
+        dayPicker.selectRow(newDay, inComponent: 0, animated: true)
+    }
+    
     // MARK: Private methods
+    
+    private func setupView() {
+        
+        setupAndAddMainView()
+        setupAndAddPickers()
+        setupAndAddButtons()
+    }
+    
+    private func setupAndAddPickers() {
+        
+        let isMonthFirst = hasRegionalDateMonthAtBeginning()
+        let monthXOrigin = isMonthFirst ? 0 : dayPickerWidth + pickersHorizontalSpace
+        
+        let monthFrame = CGRectMake(monthXOrigin, 0, monthPickerWidth, mainContainerHeight)
+        monthPicker = UIPickerView(frame: monthFrame)
+        monthPicker.dataSource = self
+        monthPicker.delegate = self
+        monthPicker.backgroundColor = UIColor.greenColor()
+        mainContainer.addSubview(monthPicker)
+        
+        let dayXOrigin = isMonthFirst ? monthPickerWidth + pickersHorizontalSpace : 0
+        let dayFrame = CGRectMake(dayXOrigin, 0, dayPickerWidth, mainContainerHeight)
+        dayPicker = UIPickerView(frame: dayFrame)
+        dayPicker.dataSource = self
+        dayPicker.delegate = self
+        dayPicker.backgroundColor = UIColor.redColor()
+        mainContainer.addSubview(dayPicker)
+    }
+    
+    private func setupAndAddButtons() {
+     
+        let isMonthFirst = hasRegionalDateMonthAtBeginning()
+        let monthXOrigin = isMonthFirst ? 0 : dayPickerWidth + pickersHorizontalSpace
+        let opaqueBackgroundHeight = (mainContainerHeight - pickerRowHeight) / 2
+        
+        var frame = CGRectMake(monthXOrigin, 0, monthPickerWidth, opaqueBackgroundHeight)
+        setupAndAddTypeOfButton(isUp: true, withFrame: frame, action: "didSelectMonthUp")
+        
+        frame = CGRectMake(monthXOrigin, mainContainerHeight - opaqueBackgroundHeight, monthPickerWidth, opaqueBackgroundHeight)
+        setupAndAddTypeOfButton(isUp: false, withFrame: frame, action: "didSelectMonthDown")
+        
+        let dayXOrigin = isMonthFirst ? monthPickerWidth + pickersHorizontalSpace : 0
+        
+        frame = CGRectMake(dayXOrigin, 0, dayPickerWidth, opaqueBackgroundHeight)
+        setupAndAddTypeOfButton(isUp: true, withFrame: frame, action: "didSelectDayUp")
+        
+        frame = CGRectMake(dayXOrigin, mainContainerHeight - opaqueBackgroundHeight, dayPickerWidth, opaqueBackgroundHeight)
+        setupAndAddTypeOfButton(isUp: false, withFrame: frame, action: "didSelectDayDown")
+    }
+    
+    private func setupAndAddTypeOfButton(isUp isUp: Bool, withFrame frame: CGRect, action: String) {
+     
+        let opaqueBackground = UIView(frame: frame)
+        opaqueBackground.backgroundColor = UIColor.orangeColor()
+        let buttonFrame = CGRectMake(0, 0, buttonSize, buttonSize)
+        let button = UIButton(frame: buttonFrame)
+        let image = isUp ? "arrow_up" : "arrow_down"
+        button.setImage(UIImage(named: image), forState: UIControlState.Normal)
+        
+        mainContainer.addSubview(opaqueBackground)
+        mainContainer.addSubview(button)
+        button.center = opaqueBackground.center
+        
+        button.addTarget(self, action: Selector(action), forControlEvents: UIControlEvents.TouchUpInside)
+    }
     
     private func hasRegionalDateMonthAtBeginning() -> Bool {
         
@@ -152,11 +229,6 @@ class DatePickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
         let January = 1
         
         return (Int(dateComponents[0]) == January)
-    }
-    
-    private func setupView() {
-        
-        // TODO: setup containers, pickers, buttons
     }
     
     private func getLocalizedMonths() -> [String] {
