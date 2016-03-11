@@ -42,7 +42,6 @@ class DatePickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
         
         months = getLocalizedMonths()
         setupView()
-        backgroundColor = UIColor.grayColor()
     }
     
     override func updateConstraints() {
@@ -151,7 +150,6 @@ class DatePickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
         
         mainContainer = UIView()
         mainContainer.translatesAutoresizingMaskIntoConstraints = false
-        mainContainer.backgroundColor = UIColor.blueColor()
         
         addSubview(mainContainer)
     }
@@ -165,7 +163,6 @@ class DatePickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
         monthPicker = UIPickerView(frame: monthFrame)
         monthPicker.dataSource = self
         monthPicker.delegate = self
-        monthPicker.backgroundColor = UIColor.greenColor()
         mainContainer.addSubview(monthPicker)
         
         let dayXOrigin = isMonthFirst ? monthPickerWidth + pickersHorizontalSpace : 0
@@ -173,7 +170,6 @@ class DatePickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
         dayPicker = UIPickerView(frame: dayFrame)
         dayPicker.dataSource = self
         dayPicker.delegate = self
-        dayPicker.backgroundColor = UIColor.redColor()
         mainContainer.addSubview(dayPicker)
     }
     
@@ -201,7 +197,7 @@ class DatePickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
     private func setupAndAddTypeOfButton(isUp isUp: Bool, withFrame frame: CGRect, action: String) {
      
         let opaqueBackground = UIView(frame: frame)
-        opaqueBackground.backgroundColor = UIColor.orangeColor()
+        opaqueBackground.backgroundColor = UIColor.whiteColor()
         let buttonFrame = CGRectMake(0, 0, buttonSize, buttonSize)
         let button = UIButton(frame: buttonFrame)
         let image = isUp ? "arrow_up" : "arrow_down"

@@ -16,6 +16,8 @@ class MainView: UIView {
     @IBOutlet var numberPickerView: NumberPickerView!
     @IBOutlet var datePickerView: DatePickerView!
     
+    private let animationDuration = 0.5
+    
     private var dateTypeIndex: Int!
     
     // MARK: - Lifecycle methods
@@ -35,9 +37,9 @@ class MainView: UIView {
     @IBAction func typeSelectorHasChanged() {
 
         if typeSelector.selectedSegmentIndex == dateTypeIndex {
-            // TODO: show date selector
+            showDateSelector()
         } else {
-            // TODO: show common selector
+            showNumberSelector()
         }
     }
     
@@ -57,6 +59,24 @@ class MainView: UIView {
         let dateTitle = NSLocalizedString("TYPE_DATE", comment: "Date type in the selector")
         typeSelector.setTitle(dateTitle, forSegmentAtIndex: 3)
         dateTypeIndex = 3
+    }
+    
+    private func showNumberSelector() {
+        
+        UIView.animateWithDuration(animationDuration) { () -> Void in
+            
+            self.numberPickerView.alpha = 1
+            self.datePickerView.alpha = 0
+        }
+    }
+    
+    private func showDateSelector() {
+        
+        UIView.animateWithDuration(animationDuration) { () -> Void in
+            
+            self.numberPickerView.alpha = 0
+            self.datePickerView.alpha = 1
+        }
     }
 
 }

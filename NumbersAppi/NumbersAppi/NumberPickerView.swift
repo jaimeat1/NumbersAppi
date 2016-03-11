@@ -149,7 +149,6 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         pickerView.delegate = self
         pickerView.dataSource = self
         pickerView.userInteractionEnabled = false
-        pickerView.backgroundColor = UIColor.grayColor()
         
         addSubview(pickerView)
         centerAllPickerComponents()
@@ -173,12 +172,10 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     private func setupAndAddSelectorViews() {
 
         upperContainer = setupSelectorViewWithImage("arrow_up")
-        upperContainer.backgroundColor = UIColor.blueColor()
         upperButtons = buttonsInView(upperContainer)
         addSubview(upperContainer)
 
         bottomContainer = setupSelectorViewWithImage("arrow_down")
-        bottomContainer.backgroundColor = UIColor.blueColor()
         bottomButtons = buttonsInView(bottomContainer)
         addSubview(bottomContainer)
     }

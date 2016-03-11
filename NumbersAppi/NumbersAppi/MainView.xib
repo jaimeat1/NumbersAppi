@@ -33,14 +33,14 @@
                         <action selector="typeSelectorHasChanged" destination="-1" eventType="valueChanged" id="nqJ-tN-fNt"/>
                     </connections>
                 </segmentedControl>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pHb-Dn-kff" userLabel="Number picker view" customClass="NumberPickerView" customModule="NumbersAppi" customModuleProvider="target">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pHb-Dn-kff" userLabel="Number picker view" customClass="NumberPickerView" customModule="NumbersAppi" customModuleProvider="target">
                     <rect key="frame" x="140" y="190" width="320" height="120"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="120" id="teu-BE-4hL"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LWW-Ma-7RG" userLabel="Date picker view" customClass="DatePickerView" customModule="NumbersAppi" customModuleProvider="target">
+                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LWW-Ma-7RG" userLabel="Date picker view" customClass="DatePickerView" customModule="NumbersAppi" customModuleProvider="target">
                     <rect key="frame" x="140" y="190" width="320" height="120"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
