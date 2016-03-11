@@ -73,14 +73,18 @@ class DatePickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
     
     // MARK: Public methods
     
-    func setDate() {
+    func setDate(month month: Int, day: Int) {
         
-        // TODO: set given date in pickers view
+        monthPicker.selectRow(month - 1, inComponent: 0, animated: true)
+        dayPicker.selectRow(day - 1, inComponent: 0, animated: true)
     }
     
-    func getDate() {
+    func getDate() -> (month: Int, day: Int) {
         
-        // TODO: get current date in pickers view
+        let month = monthPicker.selectedRowInComponent(0) + 1
+        let day = dayPicker.selectedRowInComponent(0) + 1
+        
+        return (month, day)
     }
     
     // MARK: UIPickerViewDataSource methods
