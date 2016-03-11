@@ -12,16 +12,15 @@ import UIKit
 class DatePickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
     
     private var months: [String]!
+    private let buttonSize: CGFloat = 30
+    private let mainContainerHeight: CGFloat = 130
     
     private let monthPickerNumberOfRows: Int = 12
     private let dayPickerNumberOfRows: Int = 31
-    
-    private let buttonSize: CGFloat = 30
     private let pickerRowHeight: CGFloat = 50
     private let monthPickerWidth: CGFloat = 150
     private let dayPickerWidth: CGFloat = 60
     private let pickersHorizontalSpace: CGFloat = 20
-    private let mainContainerHeight: CGFloat = 130
     
     private var monthContainer: UIView!
     private var monthPicker: UIPickerView!
@@ -42,23 +41,8 @@ class DatePickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
         super.init(coder: aDecoder)
         
         months = getLocalizedMonths()
-        
         setupView()
-        
         backgroundColor = UIColor.grayColor()
-        
-
-
-
-    }
-    
-    private func setupAndAddMainView() {
-        
-        mainContainer = UIView()
-        mainContainer.translatesAutoresizingMaskIntoConstraints = false
-        mainContainer.backgroundColor = UIColor.blueColor()
-        
-        addSubview(mainContainer)
     }
     
     override func updateConstraints() {
@@ -155,12 +139,21 @@ class DatePickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     // MARK: Private methods
-    
+
     private func setupView() {
         
         setupAndAddMainView()
         setupAndAddPickers()
         setupAndAddButtons()
+    }
+    
+    private func setupAndAddMainView() {
+        
+        mainContainer = UIView()
+        mainContainer.translatesAutoresizingMaskIntoConstraints = false
+        mainContainer.backgroundColor = UIColor.blueColor()
+        
+        addSubview(mainContainer)
     }
     
     private func setupAndAddPickers() {
@@ -238,18 +231,18 @@ class DatePickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
     private func getLocalizedMonths() -> [String] {
         
         let months = [
-            NSLocalizedString("JANUARY", comment: ""),
-            NSLocalizedString("FEBRUARY", comment: ""),
-            NSLocalizedString("MARCH", comment: ""),
-            NSLocalizedString("APRIL", comment: ""),
-            NSLocalizedString("MAY", comment: ""),
-            NSLocalizedString("JUNE", comment: ""),
-            NSLocalizedString("JULY", comment: ""),
-            NSLocalizedString("AUGUST", comment: ""),
-            NSLocalizedString("SEPTEMBER", comment: ""),
-            NSLocalizedString("OCTOBER", comment: ""),
-            NSLocalizedString("NOVEMBER", comment: ""),
-            NSLocalizedString("DECEMBER", comment: "")
+            NSLocalizedString("JANUARY", comment: "January month"),
+            NSLocalizedString("FEBRUARY", comment: "February month"),
+            NSLocalizedString("MARCH", comment: "March month"),
+            NSLocalizedString("APRIL", comment: "April month"),
+            NSLocalizedString("MAY", comment: "May month"),
+            NSLocalizedString("JUNE", comment: "June month"),
+            NSLocalizedString("JULY", comment: "July month"),
+            NSLocalizedString("AUGUST", comment: "August month"),
+            NSLocalizedString("SEPTEMBER", comment: "September month"),
+            NSLocalizedString("OCTOBER", comment: "October month"),
+            NSLocalizedString("NOVEMBER", comment: "November month"),
+            NSLocalizedString("DECEMBER", comment: "December month")
         ]
         
         return months
