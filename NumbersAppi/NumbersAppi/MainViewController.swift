@@ -44,4 +44,26 @@ class MainViewController: UIViewController, MainViewControllerDelegate, PullCont
         
         presenterDelegate?.userSelectedAbout()
     }
+    
+    // MARK: - MainViewDelegate methods
+
+    func didRequestNumber(number: Int) {
+        
+        // TODO: request number
+    }
+    
+    func didRequestDate(month month: Int, day: Int) {
+        
+        // TODO: request date
+    }
+    
+    func didRequestRandomNumber() {
+        
+        // TODO: request random number
+    }
+    
+    func didRequestRandomDate() {
+        
+        // TODO: request randome date
+    }
 }

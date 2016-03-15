@@ -9,6 +9,17 @@
 import Foundation
 import UIKit
 
+protocol MainViewDelegate {
+    
+    func didRequestNumber(number: Int)
+    
+    func didRequestDate(month month: Int, day: Int)
+    
+    func didRequestRandomNumber()
+    
+    func didRequestRandomDate()
+}
+
 class MainView: UIView {
     
     @IBOutlet var view: UIView!
@@ -21,6 +32,7 @@ class MainView: UIView {
     private let animationDuration = 0.5
     
     private var dateTypeIndex: Int!
+    private var delegate: MainViewDelegate!
     
     // MARK: - Lifecycle methods
 
