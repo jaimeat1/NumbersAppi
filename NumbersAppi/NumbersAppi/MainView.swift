@@ -15,6 +15,10 @@ class MainView: UIView {
     @IBOutlet var typeSelector: UISegmentedControl!
     @IBOutlet var numberPickerView: NumberPickerView!
     @IBOutlet var datePickerView: DatePickerView!
+    @IBOutlet var textResult: UILabel!
+    @IBOutlet var doubleTapInfo: UILabel!
+    
+    private let animationDuration = 0.5
     
     private var dateTypeIndex: Int!
     
@@ -28,6 +32,10 @@ class MainView: UIView {
         addSubview(view)
         
         setupTypeSelector()
+        setupTextResult()
+        addDoubleTapGesture()
+        
+        doubleTapInfo.text = NSLocalizedString("DOUBLE_TAP", comment: "Info message for double tap and random number")
     }
     
     // MARK: - Action methods
@@ -35,10 +43,16 @@ class MainView: UIView {
     @IBAction func typeSelectorHasChanged() {
 
         if typeSelector.selectedSegmentIndex == dateTypeIndex {
-            // TODO: show date selector
+            showDateSelector()
         } else {
-            // TODO: show common selector
+            showNumberSelector()
         }
+    }
+    
+    func didDoubleTap(gesture: UITapGestureRecognizer) {
+        
+        // TODO: do animation
+        // TODO: launch random request
     }
     
     // MARK: - Private methods
@@ -57,6 +71,38 @@ class MainView: UIView {
         let dateTitle = NSLocalizedString("TYPE_DATE", comment: "Date type in the selector")
         typeSelector.setTitle(dateTitle, forSegmentAtIndex: 3)
         dateTypeIndex = 3
+    }
+    
+    private func showNumberSelector() {
+        
+        UIView.animateWithDuration(animationDuration) { () -> Void in
+            
+            self.numberPickerView.alpha = 1
+            self.datePickerView.alpha = 0
+        }
+    }
+    
+    private func showDateSelector() {
+        
+        UIView.animateWithDuration(animationDuration) { () -> Void in
+            
+            self.numberPickerView.alpha = 0
+            self.datePickerView.alpha = 1
+        }
+    }
+    
+    private func addDoubleTapGesture() {
+        
+        let doubleTap = UITapGestureRecognizer(target: self, action: "didDoubleTap:")
+        doubleTap.numberOfTapsRequired = 2
+        textResult.addGestureRecognizer(doubleTap)
+    }
+    
+    private func setupTextResult() {
+        
+        textResult.layer.borderColor = UIColor.blackColor().CGColor;
+        textResult.layer.borderWidth = 1.5
+        textResult.layer.cornerRadius = 1
     }
 
 }
