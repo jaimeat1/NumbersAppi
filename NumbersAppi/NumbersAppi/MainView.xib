@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainView" customModule="NumbersAppi" customModuleProvider="target">
+            <connections>
+                <outlet property="datePickerView" destination="LWW-Ma-7RG" id="u1j-Gp-Uyt"/>
+                <outlet property="doubleTapInfo" destination="TBP-hM-XiA" id="Tss-I4-prH"/>
+                <outlet property="numberPickerView" destination="pHb-Dn-kff" id="TdG-l6-dSP"/>
+                <outlet property="textResult" destination="rSe-7y-ZD6" id="L0J-bF-ofZ"/>
+                <outlet property="typeSelector" destination="FdR-c3-II5" id="NLv-ba-evv"/>
+                <outlet property="view" destination="iN0-l3-epB" id="KEa-nQ-Jd6"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="FdR-c3-II5" userLabel="Type selector">
+                    <rect key="frame" x="140" y="90" width="320" height="29"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="320" id="kak-bR-rlb"/>
+                    </constraints>
+                    <segments>
+                        <segment title="Trivia"/>
+                        <segment title="Math"/>
+                        <segment title="Year"/>
+                        <segment title="Date"/>
+                    </segments>
+                    <connections>
+                        <action selector="typeSelectorHasChanged" destination="-1" eventType="valueChanged" id="nqJ-tN-fNt"/>
+                    </connections>
+                </segmentedControl>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pHb-Dn-kff" userLabel="Number picker view" customClass="NumberPickerView" customModule="NumbersAppi" customModuleProvider="target">
+                    <rect key="frame" x="140" y="190" width="320" height="120"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="120" id="teu-BE-4hL"/>
+                    </constraints>
+                </view>
+                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LWW-Ma-7RG" userLabel="Date picker view" customClass="DatePickerView" customModule="NumbersAppi" customModuleProvider="target">
+                    <rect key="frame" x="140" y="190" width="320" height="120"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="120" id="7mQ-yA-Hwd"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSe-7y-ZD6" userLabel="Text result">
+                    <rect key="frame" x="140" y="359" width="320" height="120"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="120" id="E5K-ut-tBp"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TBP-hM-XiA" userLabel="Double tap info">
+                    <rect key="frame" x="140" y="487" width="320" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="Dn9-cI-hYu"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="rSe-7y-ZD6" firstAttribute="leading" secondItem="FdR-c3-II5" secondAttribute="leading" id="0v1-CM-yfX"/>
+                <constraint firstItem="TBP-hM-XiA" firstAttribute="leading" secondItem="rSe-7y-ZD6" secondAttribute="leading" id="2fi-qb-FrN"/>
+                <constraint firstItem="LWW-Ma-7RG" firstAttribute="top" secondItem="FdR-c3-II5" secondAttribute="bottom" constant="72" id="3qM-GF-aey"/>
+                <constraint firstItem="TBP-hM-XiA" firstAttribute="top" secondItem="rSe-7y-ZD6" secondAttribute="bottom" constant="8" id="5HB-aC-ssW"/>
+                <constraint firstItem="rSe-7y-ZD6" firstAttribute="trailing" secondItem="FdR-c3-II5" secondAttribute="trailing" id="7U1-dL-MyT"/>
+                <constraint firstItem="LWW-Ma-7RG" firstAttribute="centerX" secondItem="FdR-c3-II5" secondAttribute="centerX" id="G1B-Vc-4pt"/>
+                <constraint firstItem="pHb-Dn-kff" firstAttribute="centerX" secondItem="FdR-c3-II5" secondAttribute="centerX" id="HdQ-ix-5lR"/>
+                <constraint firstItem="FdR-c3-II5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="90" id="Men-8y-Eul"/>
+                <constraint firstItem="FdR-c3-II5" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="QRD-sL-x3g"/>
+                <constraint firstItem="pHb-Dn-kff" firstAttribute="top" secondItem="FdR-c3-II5" secondAttribute="bottom" constant="72" id="bd9-hJ-MHG"/>
+                <constraint firstItem="pHb-Dn-kff" firstAttribute="width" secondItem="FdR-c3-II5" secondAttribute="width" id="fkc-vB-x2d"/>
+                <constraint firstItem="TBP-hM-XiA" firstAttribute="trailing" secondItem="rSe-7y-ZD6" secondAttribute="trailing" id="sVR-J5-bhR"/>
+                <constraint firstItem="LWW-Ma-7RG" firstAttribute="width" secondItem="FdR-c3-II5" secondAttribute="width" id="tL2-mQ-DrB"/>
+                <constraint firstItem="rSe-7y-ZD6" firstAttribute="top" secondItem="pHb-Dn-kff" secondAttribute="bottom" constant="49" id="u3O-bi-3CC"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

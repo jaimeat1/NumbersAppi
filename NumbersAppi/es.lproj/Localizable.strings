@@ -1,0 +1,29 @@
+/* 
+  Localizable.strings
+  NumbersAppi
+
+  Created by Jaime Aranaz on 16/02/16.
+  Copyright © 2016 Jaime Aranaz. All rights reserved.
+*/
+
+"PULL_ABOUT" = "Suelta para ver About NumbersAppi";
+
+"TYPE_TRIVIA" = "Trivia";
+"TYPE_MATH" = "Math";
+"TYPE_YEAR" = "Year";
+"TYPE_DATE" = "Date";
+
+"JANUARY" = "Enero";
+"FEBRUARY" = "Febrero";
+"MARCH" = "Marzo";
+"APRIL" = "Abril";
+"MAY" = "Mayo";
+"JUNE" = "Junio";
+"JULY" = "Julio";
+"AUGUST" = "Agosto";
+"SEPTEMBER" = "Septiembre";
+"OCTOBER" = "Octubre";
+"NOVEMBER" = "Noviembre";
+"DECEMBER" = "Diciembre";
+
+"DOUBLE_TAP" = "Haz doble tap arriba para número aleatorio";
