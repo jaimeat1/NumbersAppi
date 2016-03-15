@@ -15,6 +15,7 @@ class MainView: UIView {
     @IBOutlet var typeSelector: UISegmentedControl!
     @IBOutlet var numberPickerView: NumberPickerView!
     @IBOutlet var datePickerView: DatePickerView!
+    @IBOutlet var textResult: UILabel!
     
     private let animationDuration = 0.5
     
@@ -30,6 +31,7 @@ class MainView: UIView {
         addSubview(view)
         
         setupTypeSelector()
+        addDoubleTapGesture()
     }
     
     // MARK: - Action methods
@@ -41,6 +43,10 @@ class MainView: UIView {
         } else {
             showNumberSelector()
         }
+    }
+    
+    func didDoubleTap(gesture: UITapGestureRecognizer) {
+        
     }
     
     // MARK: - Private methods
@@ -77,6 +83,13 @@ class MainView: UIView {
             self.numberPickerView.alpha = 0
             self.datePickerView.alpha = 1
         }
+    }
+    
+    private func addDoubleTapGesture() {
+        
+        let doubleTap = UITapGestureRecognizer(target: self, action: "didDoubleTap:")
+        doubleTap.numberOfTapsRequired = 2
+        textResult.addGestureRecognizer(doubleTap)
     }
 
 }

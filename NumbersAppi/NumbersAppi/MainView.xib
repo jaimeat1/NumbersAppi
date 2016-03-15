@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="datePickerView" destination="LWW-Ma-7RG" id="u1j-Gp-Uyt"/>
                 <outlet property="numberPickerView" destination="pHb-Dn-kff" id="TdG-l6-dSP"/>
+                <outlet property="textResult" destination="rSe-7y-ZD6" id="L0J-bF-ofZ"/>
                 <outlet property="typeSelector" destination="FdR-c3-II5" id="NLv-ba-evv"/>
                 <outlet property="view" destination="iN0-l3-epB" id="KEa-nQ-Jd6"/>
             </connections>
@@ -35,7 +36,7 @@
                 </segmentedControl>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pHb-Dn-kff" userLabel="Number picker view" customClass="NumberPickerView" customModule="NumbersAppi" customModuleProvider="target">
                     <rect key="frame" x="140" y="190" width="320" height="120"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="120" id="teu-BE-4hL"/>
                     </constraints>
@@ -47,10 +48,21 @@
                         <constraint firstAttribute="height" constant="120" id="7mQ-yA-Hwd"/>
                     </constraints>
                 </view>
+                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSe-7y-ZD6" userLabel="Text result">
+                    <rect key="frame" x="140" y="359" width="320" height="120"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="120" id="E5K-ut-tBp"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="rSe-7y-ZD6" firstAttribute="leading" secondItem="FdR-c3-II5" secondAttribute="leading" id="0v1-CM-yfX"/>
                 <constraint firstItem="LWW-Ma-7RG" firstAttribute="top" secondItem="FdR-c3-II5" secondAttribute="bottom" constant="72" id="3qM-GF-aey"/>
+                <constraint firstItem="rSe-7y-ZD6" firstAttribute="trailing" secondItem="FdR-c3-II5" secondAttribute="trailing" id="7U1-dL-MyT"/>
                 <constraint firstItem="LWW-Ma-7RG" firstAttribute="centerX" secondItem="FdR-c3-II5" secondAttribute="centerX" id="G1B-Vc-4pt"/>
                 <constraint firstItem="pHb-Dn-kff" firstAttribute="centerX" secondItem="FdR-c3-II5" secondAttribute="centerX" id="HdQ-ix-5lR"/>
                 <constraint firstItem="FdR-c3-II5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="90" id="Men-8y-Eul"/>
@@ -58,6 +70,7 @@
                 <constraint firstItem="pHb-Dn-kff" firstAttribute="top" secondItem="FdR-c3-II5" secondAttribute="bottom" constant="72" id="bd9-hJ-MHG"/>
                 <constraint firstItem="pHb-Dn-kff" firstAttribute="width" secondItem="FdR-c3-II5" secondAttribute="width" id="fkc-vB-x2d"/>
                 <constraint firstItem="LWW-Ma-7RG" firstAttribute="width" secondItem="FdR-c3-II5" secondAttribute="width" id="tL2-mQ-DrB"/>
+                <constraint firstItem="rSe-7y-ZD6" firstAttribute="top" secondItem="pHb-Dn-kff" secondAttribute="bottom" constant="49" id="u3O-bi-3CC"/>
             </constraints>
         </view>
     </objects>
