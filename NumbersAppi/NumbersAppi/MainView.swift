@@ -16,6 +16,7 @@ class MainView: UIView {
     @IBOutlet var numberPickerView: NumberPickerView!
     @IBOutlet var datePickerView: DatePickerView!
     @IBOutlet var textResult: UILabel!
+    @IBOutlet var doubleTapInfo: UILabel!
     
     private let animationDuration = 0.5
     
@@ -33,6 +34,8 @@ class MainView: UIView {
         setupTypeSelector()
         setupTextResult()
         addDoubleTapGesture()
+        
+        doubleTapInfo.text = NSLocalizedString("DOUBLE_TAP", comment: "Info message for double tap and random number")
     }
     
     // MARK: - Action methods
