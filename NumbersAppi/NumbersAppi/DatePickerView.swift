@@ -159,14 +159,14 @@ class DatePickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
         let isMonthFirst = hasRegionalDateMonthAtBeginning()
         let monthXOrigin = isMonthFirst ? 0 : dayPickerWidth + pickersHorizontalSpace
         
-        let monthFrame = CGRectMake(monthXOrigin, 0, monthPickerWidth, mainContainerHeight)
+        let monthFrame = CGRect(x: monthXOrigin, y: 0, width: monthPickerWidth, height: mainContainerHeight)
         monthPicker = UIPickerView(frame: monthFrame)
         monthPicker.dataSource = self
         monthPicker.delegate = self
         mainContainer.addSubview(monthPicker)
         
         let dayXOrigin = isMonthFirst ? monthPickerWidth + pickersHorizontalSpace : 0
-        let dayFrame = CGRectMake(dayXOrigin, 0, dayPickerWidth, mainContainerHeight)
+        let dayFrame = CGRect(x: dayXOrigin, y: 0, width: dayPickerWidth, height: mainContainerHeight)
         dayPicker = UIPickerView(frame: dayFrame)
         dayPicker.dataSource = self
         dayPicker.delegate = self
@@ -179,18 +179,26 @@ class DatePickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
         let monthXOrigin = isMonthFirst ? 0 : dayPickerWidth + pickersHorizontalSpace
         let opaqueBackgroundHeight = (mainContainerHeight - pickerRowHeight) / 2
         
-        var frame = CGRectMake(monthXOrigin, 0, monthPickerWidth, opaqueBackgroundHeight)
+        var frame = CGRect(x: monthXOrigin, y: 0, width: monthPickerWidth, height: opaqueBackgroundHeight)
         setupAndAddTypeOfButton(isUp: true, withFrame: frame, action: "didSelectMonthUp")
         
-        frame = CGRectMake(monthXOrigin, mainContainerHeight - opaqueBackgroundHeight, monthPickerWidth, opaqueBackgroundHeight)
+        frame = CGRect(
+            x: monthXOrigin,
+            y: mainContainerHeight - opaqueBackgroundHeight,
+            width: monthPickerWidth,
+            height: opaqueBackgroundHeight)
         setupAndAddTypeOfButton(isUp: false, withFrame: frame, action: "didSelectMonthDown")
         
         let dayXOrigin = isMonthFirst ? monthPickerWidth + pickersHorizontalSpace : 0
-        
-        frame = CGRectMake(dayXOrigin, 0, dayPickerWidth, opaqueBackgroundHeight)
+
+        frame = CGRect(x: dayXOrigin, y: 0, width: dayPickerWidth, height: opaqueBackgroundHeight)
         setupAndAddTypeOfButton(isUp: true, withFrame: frame, action: "didSelectDayUp")
         
-        frame = CGRectMake(dayXOrigin, mainContainerHeight - opaqueBackgroundHeight, dayPickerWidth, opaqueBackgroundHeight)
+        frame = CGRect(
+            x: dayXOrigin,
+            y: mainContainerHeight - opaqueBackgroundHeight,
+            width: dayPickerWidth,
+            height: opaqueBackgroundHeight)
         setupAndAddTypeOfButton(isUp: false, withFrame: frame, action: "didSelectDayDown")
     }
     
@@ -198,7 +206,7 @@ class DatePickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
      
         let opaqueBackground = UIView(frame: frame)
         opaqueBackground.backgroundColor = UIColor.whiteColor()
-        let buttonFrame = CGRectMake(0, 0, buttonSize, buttonSize)
+        let buttonFrame = CGRect(x: 0, y: 0, width: buttonSize, height: buttonSize)
         let button = UIButton(frame: buttonFrame)
         let image = isUp ? "arrow_up" : "arrow_down"
         button.setImage(UIImage(named: image), forState: UIControlState.Normal)

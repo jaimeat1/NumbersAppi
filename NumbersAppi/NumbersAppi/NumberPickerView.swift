@@ -182,7 +182,7 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     
     private func setupSelectorViewWithImage(imageName: String) -> UIView {
         
-        let frame = CGRectMake(0, 0, 0, 0)
+        let frame = CGRect(x: 0, y: 0, width: 0, height: 0)
         let selectorView = UIView(frame: frame)
         selectorView.backgroundColor = UIColor.whiteColor()
         selectorView.translatesAutoresizingMaskIntoConstraints = false
@@ -191,7 +191,7 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         
         for _ in 1 ... pickerNumberOfComponents {
             
-            let button = UIButton(frame: CGRectMake(0, 0, buttonSize, buttonSize))
+            let button = UIButton(frame: CGRect(x: 0, y: 0, width: buttonSize, height: buttonSize))
             button.translatesAutoresizingMaskIntoConstraints = false
             button.setImage(image, forState: UIControlState.Normal)
             selectorView.addSubview(button)
