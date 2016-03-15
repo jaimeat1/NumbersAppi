@@ -11,5 +11,13 @@ import UIKit
 
 protocol MainPresenterDelegate {
     
+    func didRequestNumber(number: Int)
+    
+    func didRequestDate(month month: Int, day: Int)
+    
+    func didRequestRandomNumber()
+    
+    func didRequestRandomDate()
+    
     func userSelectedAbout()
 }

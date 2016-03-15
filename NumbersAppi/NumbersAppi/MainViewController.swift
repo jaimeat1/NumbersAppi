@@ -49,21 +49,21 @@ class MainViewController: UIViewController, MainViewControllerDelegate, PullCont
 
     func didRequestNumber(number: Int) {
         
-        // TODO: request number
+        presenterDelegate.didRequestNumber(number)
     }
     
     func didRequestDate(month month: Int, day: Int) {
         
-        // TODO: request date
+        presenterDelegate.didRequestDate(month: month, day: day)
     }
     
     func didRequestRandomNumber() {
         
-        // TODO: request random number
+        presenterDelegate.didRequestRandomNumber()
     }
     
     func didRequestRandomDate() {
         
-        // TODO: request randome date
+        presenterDelegate.didRequestRandomDate()
     }
 }

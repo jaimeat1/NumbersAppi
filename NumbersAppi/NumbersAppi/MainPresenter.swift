@@ -25,4 +25,20 @@ class MainPresenter: MainPresenterDelegate {
         
         Coordinator.sharedInstance.presentAboutFromMain()
     }
+    
+    func didRequestNumber(number: Int) {
+        
+    }
+    
+    func didRequestDate(month month: Int, day: Int) {
+        
+    }
+    
+    func didRequestRandomNumber() {
+        
+    }
+    
+    func didRequestRandomDate() {
+        
+    }
 }
