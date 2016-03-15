@@ -31,6 +31,7 @@ class MainView: UIView {
         addSubview(view)
         
         setupTypeSelector()
+        setupTextResult()
         addDoubleTapGesture()
     }
     
@@ -47,6 +48,8 @@ class MainView: UIView {
     
     func didDoubleTap(gesture: UITapGestureRecognizer) {
         
+        // TODO: do animation
+        // TODO: launch random request
     }
     
     // MARK: - Private methods
@@ -90,6 +93,13 @@ class MainView: UIView {
         let doubleTap = UITapGestureRecognizer(target: self, action: "didDoubleTap:")
         doubleTap.numberOfTapsRequired = 2
         textResult.addGestureRecognizer(doubleTap)
+    }
+    
+    private func setupTextResult() {
+        
+        textResult.layer.borderColor = UIColor.blackColor().CGColor;
+        textResult.layer.borderWidth = 1.5
+        textResult.layer.cornerRadius = 1
     }
 
 }
