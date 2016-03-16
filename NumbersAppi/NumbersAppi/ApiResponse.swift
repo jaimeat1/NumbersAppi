@@ -10,9 +10,9 @@ import Foundation
 
 class ApiResponse {
     
-    var text: NSString = ""
+    var text: String = ""
     var found: Bool = true
-    var number: NSInteger = 0
+    var number: Int = 0
     var type: ApiRequestType = ApiRequestType.Trivia
     
     // MARK: - Public methods

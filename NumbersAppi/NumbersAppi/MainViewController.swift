@@ -9,7 +9,16 @@
 import Foundation
 import UIKit
 
-class MainViewController: UIViewController, MainViewControllerDelegate, PullControllerDelegate {
+protocol MainViewProtocol {
+    
+    func startLoading()
+    
+    func stopLoading()
+    
+    func showText(text: String)
+}
+
+class MainViewController: UIViewController, MainViewControllerDelegate, PullControllerDelegate, MainViewDelegate {
 
     @IBOutlet private var mainView: MainView!
     @IBOutlet private var aboutLabel: UILabel!
@@ -33,10 +42,31 @@ class MainViewController: UIViewController, MainViewControllerDelegate, PullCont
         
         super.viewDidLoad()
         
+        mainView.delegate = self
         pullController = PullController(pullableView: mainView, translucentView: fadingView, delegate: self)
     }
     
     // MARK: - MainViewControllerDelegate methods
+    
+    func startLoading() {
+        
+        mainView.startLoading()
+    }
+    
+    func stopLoading() {
+        
+        mainView.stopLoading()
+    }
+    
+    func showErrorMessage(message: String) {
+        
+        // TODO: show error
+    }
+    
+    func showTextResponse(text: String) {
+        
+        mainView.showText(text)
+    }
     
     // MARK: - PullControllerDelegate methods
     
@@ -47,9 +77,9 @@ class MainViewController: UIViewController, MainViewControllerDelegate, PullCont
     
     // MARK: - MainViewDelegate methods
 
-    func didRequestNumber(number: Int) {
+    func didRequestNumber(number: Int, ofType type: ApiRequestType) {
         
-        presenterDelegate.didRequestNumber(number)
+        presenterDelegate.didRequestNumber(number, ofType: type)
     }
     
     func didRequestDate(month month: Int, day: Int) {
@@ -57,9 +87,9 @@ class MainViewController: UIViewController, MainViewControllerDelegate, PullCont
         presenterDelegate.didRequestDate(month: month, day: day)
     }
     
-    func didRequestRandomNumber() {
+    func didRequestRandomNumberWithType(type: ApiRequestType) {
         
-        presenterDelegate.didRequestRandomNumber()
+        presenterDelegate.didRequestRandomNumberWithType(type)
     }
     
     func didRequestRandomDate() {

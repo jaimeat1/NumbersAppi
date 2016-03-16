@@ -8,7 +8,7 @@
 
 import Foundation
 
-private let baseUrl = "http://numbersapi.com/dfe/"
+private let baseUrl = "http://numbersapi.com/"
 private let jsonFlag = "?json"
 
 class ApiServices {

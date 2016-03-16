@@ -21,11 +21,21 @@ class ApiRequest {
     private let random = "random"
     
     var type: ApiRequestType = .Trivia
-    var number: NSInteger = 0
-    var day: NSInteger = 1
-    var month: NSInteger = 1
+    var number: Int = 0
+    var day: Int = 1
+    var month: Int = 1
     var isRandom: Bool = false
 
+    // MARK: - Lifecycle methods
+    
+    convenience init(type: ApiRequestType, number: Int) {
+        
+        self.init()
+        
+        self.type = type
+        self.number = number
+    }
+    
     // MARK: - Public methods
     
     func parametrizedRequest() -> String {

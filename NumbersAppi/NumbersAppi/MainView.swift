@@ -11,16 +11,16 @@ import UIKit
 
 protocol MainViewDelegate {
     
-    func didRequestNumber(number: Int)
+    func didRequestNumber(number: Int, ofType type: ApiRequestType)
     
     func didRequestDate(month month: Int, day: Int)
     
-    func didRequestRandomNumber()
+    func didRequestRandomNumberWithType(type: ApiRequestType)
     
     func didRequestRandomDate()
 }
 
-class MainView: UIView {
+class MainView: UIView, MainViewProtocol {
     
     @IBOutlet var view: UIView!
     @IBOutlet var typeSelector: UISegmentedControl!
@@ -28,11 +28,13 @@ class MainView: UIView {
     @IBOutlet var datePickerView: DatePickerView!
     @IBOutlet var textResult: UILabel!
     @IBOutlet var doubleTapInfo: UILabel!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    
+    var delegate: MainViewDelegate!
     
     private let animationDuration = 0.5
     
-    private var dateTypeIndex: Int!
-    private var delegate: MainViewDelegate!
+    private var selectorValues: [ApiRequestType] = []
     
     // MARK: - Lifecycle methods
 
@@ -45,7 +47,7 @@ class MainView: UIView {
         
         setupTypeSelector()
         setupTextResult()
-        addDoubleTapGesture()
+        addTapGestures()
         
         doubleTapInfo.text = NSLocalizedString("DOUBLE_TAP", comment: "Info message for double tap and random number")
     }
@@ -54,7 +56,9 @@ class MainView: UIView {
     
     @IBAction func typeSelectorHasChanged() {
 
-        if typeSelector.selectedSegmentIndex == dateTypeIndex {
+        let index = typeSelector.selectedSegmentIndex
+        
+        if selectorValues[index] == ApiRequestType.Date {
             showDateSelector()
         } else {
             showNumberSelector()
@@ -67,22 +71,59 @@ class MainView: UIView {
         // TODO: launch random request
     }
     
+    func didSingleTap(gesture: UITapGestureRecognizer) {
+        
+        let index = typeSelector.selectedSegmentIndex
+        
+        if selectorValues[index] != ApiRequestType.Date {
+            
+            let type = selectorValues[index]
+            delegate.didRequestNumber(numberPickerView.getSelectedNumber(), ofType: type)
+            
+        } else {
+
+        }
+    }
+    
+    // MARK: - MainViewProtocol methods
+    
+    func startLoading() {
+    
+        self.textResult.text = ""
+        activityIndicator.hidden = false
+        activityIndicator.startAnimating()
+    }
+    
+    func stopLoading() {
+        
+        activityIndicator.stopAnimating()
+        activityIndicator.hidden = true
+    }
+    
+    func showText(text: String) {
+        
+        self.textResult.text = text
+    }
+    
     // MARK: - Private methods
     
     private func setupTypeSelector() {
         
         let triviaTitle = NSLocalizedString("TYPE_TRIVIA", comment: "Trivia type in the selector")
         typeSelector.setTitle(triviaTitle, forSegmentAtIndex: 0)
+        selectorValues.append(ApiRequestType.Trivia)
         
         let mathTitle = NSLocalizedString("TYPE_MATH", comment: "Math type in the selector")
         typeSelector.setTitle(mathTitle, forSegmentAtIndex: 1)
+        selectorValues.append(ApiRequestType.Math)
         
         let yearTitle = NSLocalizedString("TYPE_YEAR", comment: "Year type in the selector")
         typeSelector.setTitle(yearTitle, forSegmentAtIndex: 2)
+        selectorValues.append(ApiRequestType.Year)
         
         let dateTitle = NSLocalizedString("TYPE_DATE", comment: "Date type in the selector")
         typeSelector.setTitle(dateTitle, forSegmentAtIndex: 3)
-        dateTypeIndex = 3
+        selectorValues.append(ApiRequestType.Date)
     }
     
     private func showNumberSelector() {
@@ -103,11 +144,16 @@ class MainView: UIView {
         }
     }
     
-    private func addDoubleTapGesture() {
+    private func addTapGestures() {
         
+        let singleTap = UITapGestureRecognizer(target: self, action: "didSingleTap:")
+        textResult.addGestureRecognizer(singleTap)
+
         let doubleTap = UITapGestureRecognizer(target: self, action: "didDoubleTap:")
         doubleTap.numberOfTapsRequired = 2
         textResult.addGestureRecognizer(doubleTap)
+        
+        singleTap.requireGestureRecognizerToFail(doubleTap)
     }
     
     private func setupTextResult() {
