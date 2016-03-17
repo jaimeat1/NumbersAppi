@@ -89,20 +89,20 @@ class MainView: UIView, MainViewProtocol {
     
     func startLoading() {
     
-        self.textResult.text = ""
+        textResult.text = ""
         activityIndicator.hidden = false
         activityIndicator.startAnimating()
     }
     
     func stopLoading() {
         
-        activityIndicator.stopAnimating()
         activityIndicator.hidden = true
+        activityIndicator.stopAnimating()
     }
     
     func showText(text: String) {
         
-        self.textResult.text = text
+        textResult.text = text
     }
     
     // MARK: - Private methods

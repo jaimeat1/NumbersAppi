@@ -37,7 +37,9 @@ class ApiServices {
                 error = NSError.init(domain: "", code: 0, userInfo: nil)
             }
             
-            completion(response: response, error: error)
+            dispatch_async(dispatch_get_main_queue(), {
+                completion(response: response, error: error)
+            }) 
         })
         task.resume()
     }
