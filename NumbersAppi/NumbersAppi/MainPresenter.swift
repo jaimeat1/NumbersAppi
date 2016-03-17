@@ -44,22 +44,20 @@ class MainPresenter: MainPresenterDelegate {
 
     func didRequestNumber(number: Int, ofType type: ApiRequestType) {
 
-        controllerDelegate.startLoading()
-        
         let request = ApiRequest(type: type, number: number)
         launchAndHandleApiRequest(request)
     }
 
     func didRequestDate(month month: Int, day: Int) {
-     
-        controllerDelegate.startLoading()
-        
+
         let request = ApiRequest(month: month, day: day)
         launchAndHandleApiRequest(request)
     }
 
     func didRequestRandomNumberWithType(type: ApiRequestType) {
-        
+
+        let request =  ApiRequest(type: type)
+        launchAndHandleRandomApiRequest(request)
     }
     
     func didRequestRandomDate() {
@@ -68,7 +66,42 @@ class MainPresenter: MainPresenterDelegate {
     
     // MARK: - Private methods
     
+    private func launchAndHandleRandomApiRequest(request: ApiRequest) {
+        
+        controllerDelegate.startLoading()
+        
+        ApiServices.sharedInstance.sendRequest(request) { (response, error) -> Void in
+            
+            self.controllerDelegate.stopLoading()
+            self.handleRandomApiResponse(response, error: error)
+        }
+    }
+    
+    private func handleRandomApiResponse(response: ApiResponse, error: NSError?) {
+        
+        if error != nil {
+            
+            let message = NSLocalizedString("ERROR", comment: "Error message")
+            self.controllerDelegate.showErrorMessage(message)
+            
+        } else {
+            
+            self.controllerDelegate.showTextResponse(response.text)
+            
+            if response.type == ApiRequestType.Date {
+                
+                
+                
+            } else {
+                
+                self.controllerDelegate.setNumber(response.number)
+            }
+        }
+    }
+    
     private func launchAndHandleApiRequest(request: ApiRequest) {
+        
+        controllerDelegate.startLoading()
         
         ApiServices.sharedInstance.sendRequest(request) { (response, error) -> Void in
             

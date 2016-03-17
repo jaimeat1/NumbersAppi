@@ -18,4 +18,8 @@ protocol MainViewControllerDelegate {
     func showErrorMessage(message: String)
     
     func showTextResponse(text: String)
+    
+    func setNumber(number: Int)
+    
+    func setDate(month: Int, day: Int)
 }

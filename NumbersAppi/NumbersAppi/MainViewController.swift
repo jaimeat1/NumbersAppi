@@ -16,6 +16,10 @@ protocol MainViewProtocol {
     func stopLoading()
     
     func showText(text: String)
+    
+    func setNumber(number: Int)
+    
+    func setDate(month: Int, day: Int)
 }
 
 class MainViewController: UIViewController, MainViewControllerDelegate, PullControllerDelegate, MainViewDelegate {
@@ -69,6 +73,15 @@ class MainViewController: UIViewController, MainViewControllerDelegate, PullCont
     func showTextResponse(text: String) {
         
         mainView.showText(text)
+    }
+    
+    func setNumber(number: Int) {
+
+        mainView.setNumber(number)
+    }
+    
+    func setDate(month: Int, day: Int) {
+        
     }
     
     // MARK: - PullControllerDelegate methods
