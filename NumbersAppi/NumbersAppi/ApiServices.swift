@@ -10,6 +10,8 @@ import Foundation
 
 private let baseUrl = "http://numbersapi.com/"
 private let jsonFlag = "?json"
+// TODO: configure max and min whit a init method or similiar
+private let maxMinFlag = "min=0&max=99999"
 
 class ApiServices {
     
@@ -19,7 +21,7 @@ class ApiServices {
     
     func sendRequest(request: ApiRequest, completion: (response: ApiResponse, error: NSError?) -> Void) {
         
-        let requestUrl = baseUrl + request.parametrizedRequest() + jsonFlag
+        let requestUrl = baseUrl + request.parametrizedRequest() + jsonFlag + "&" + maxMinFlag
         let restRequest = NSMutableURLRequest(URL: NSURL(string: requestUrl)!)
         
         let session = NSURLSession.sharedSession();
