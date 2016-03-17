@@ -60,7 +60,10 @@ class MainViewController: UIViewController, MainViewControllerDelegate, PullCont
     
     func showErrorMessage(message: String) {
         
-        // TODO: show error
+        let alert = UIAlertController(title: "", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        let accept = NSLocalizedString("ACCEPT", comment: "Accept button")
+        alert.addAction(UIAlertAction(title: accept, style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     func showTextResponse(text: String) {

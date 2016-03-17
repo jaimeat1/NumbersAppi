@@ -7,6 +7,7 @@
 */
 
 "PULL_ABOUT" = "Suelta para ver About NumbersAppi";
+"DOUBLE_TAP" = "Haz doble tap arriba para número aleatorio";
 
 "TYPE_TRIVIA" = "Trivia";
 "TYPE_MATH" = "Math";
@@ -26,4 +27,5 @@
 "NOVEMBER" = "Noviembre";
 "DECEMBER" = "Diciembre";
 
-"DOUBLE_TAP" = "Haz doble tap arriba para número aleatorio";
+"ERROR" = "Ha habido algún error. \nPor favor, ¡inténtalo de nuevo más tarde!";
+"ACCEPT" = "Aceptar";

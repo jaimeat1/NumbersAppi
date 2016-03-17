@@ -54,7 +54,8 @@ class MainPresenter: MainPresenterDelegate {
             
             if error != nil {
                 
-                self.controllerDelegate.showErrorMessage("")
+                let message = NSLocalizedString("ERROR", comment: "Error message")
+                self.controllerDelegate.showErrorMessage(message)
                 
             } else {
 
