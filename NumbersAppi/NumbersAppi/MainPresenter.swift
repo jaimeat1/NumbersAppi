@@ -89,8 +89,8 @@ class MainPresenter: MainPresenterDelegate {
             self.controllerDelegate.showTextResponse(response.text)
             
             if response.type == ApiRequestType.Date {
-                
-                
+
+                // TODO: transfor "response.number" in the right month and day values
                 
             } else {
                 

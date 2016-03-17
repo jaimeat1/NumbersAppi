@@ -67,6 +67,8 @@ class MainView: UIView, MainViewProtocol {
         
         if isDateSelectorActive() {
             
+            delegate.didRequestRandomDate()
+            
         } else {
             
             let index = typeSelector.selectedSegmentIndex
