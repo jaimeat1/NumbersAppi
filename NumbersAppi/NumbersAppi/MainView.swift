@@ -82,6 +82,8 @@ class MainView: UIView, MainViewProtocol {
             
         } else {
 
+            let date = datePickerView.getDate()
+            delegate.didRequestDate(month: date.month, day: date.day)
         }
     }
     

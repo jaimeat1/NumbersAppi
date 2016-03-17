@@ -36,6 +36,15 @@ class ApiRequest {
         self.number = number
     }
     
+    convenience init(month: Int, day: Int) {
+        
+        self.init()
+        
+        self.type = ApiRequestType.Date
+        self.month = month
+        self.day = day
+    }
+    
     // MARK: - Public methods
     
     func parametrizedRequest() -> String {

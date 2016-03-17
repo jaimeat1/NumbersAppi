@@ -41,38 +41,52 @@ class MainPresenter: MainPresenterDelegate {
         
         Coordinator.sharedInstance.presentAboutFromMain()
     }
-    
+
     func didRequestNumber(number: Int, ofType type: ApiRequestType) {
 
         controllerDelegate.startLoading()
         
         let request = ApiRequest(type: type, number: number)
-        
-        ApiServices.sharedInstance.sendRequest(request) { (response, error) -> Void in
-            
-            self.controllerDelegate.stopLoading()
-            
-            if error != nil {
-                
-                let message = NSLocalizedString("ERROR", comment: "Error message")
-                self.controllerDelegate.showErrorMessage(message)
-                
-            } else {
+        launchAndHandleApiRequest(request)
+    }
 
-                self.controllerDelegate.showTextResponse(response.text)
-            }
-        }
-    }
-    
     func didRequestDate(month month: Int, day: Int) {
+     
+        controllerDelegate.startLoading()
         
+        let request = ApiRequest(month: month, day: day)
+        launchAndHandleApiRequest(request)
     }
-    
+
     func didRequestRandomNumberWithType(type: ApiRequestType) {
         
     }
     
     func didRequestRandomDate() {
         
+    }
+    
+    // MARK: - Private methods
+    
+    private func launchAndHandleApiRequest(request: ApiRequest) {
+        
+        ApiServices.sharedInstance.sendRequest(request) { (response, error) -> Void in
+            
+            self.controllerDelegate.stopLoading()
+            self.handleApiResponse(response, error: error)
+        }
+    }
+    
+    private func handleApiResponse(response: ApiResponse, error: NSError?) {
+        
+        if error != nil {
+            
+            let message = NSLocalizedString("ERROR", comment: "Error message")
+            self.controllerDelegate.showErrorMessage(message)
+            
+        } else {
+            
+            self.controllerDelegate.showTextResponse(response.text)
+        }
     }
 }
