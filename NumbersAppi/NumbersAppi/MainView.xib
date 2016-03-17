@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainView" customModule="NumbersAppi" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicator" destination="1x4-IQ-Tx0" id="fdY-1j-OvX"/>
                 <outlet property="datePickerView" destination="LWW-Ma-7RG" id="u1j-Gp-Uyt"/>
                 <outlet property="doubleTapInfo" destination="TBP-hM-XiA" id="Tss-I4-prH"/>
                 <outlet property="numberPickerView" destination="pHb-Dn-kff" id="TdG-l6-dSP"/>
@@ -59,6 +60,9 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="1x4-IQ-Tx0">
+                    <rect key="frame" x="290" y="409" width="20" height="20"/>
+                </activityIndicatorView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TBP-hM-XiA" userLabel="Double tap info">
                     <rect key="frame" x="140" y="487" width="320" height="21"/>
                     <constraints>
@@ -76,12 +80,14 @@
                 <constraint firstItem="LWW-Ma-7RG" firstAttribute="top" secondItem="FdR-c3-II5" secondAttribute="bottom" constant="72" id="3qM-GF-aey"/>
                 <constraint firstItem="TBP-hM-XiA" firstAttribute="top" secondItem="rSe-7y-ZD6" secondAttribute="bottom" constant="8" id="5HB-aC-ssW"/>
                 <constraint firstItem="rSe-7y-ZD6" firstAttribute="trailing" secondItem="FdR-c3-II5" secondAttribute="trailing" id="7U1-dL-MyT"/>
+                <constraint firstItem="1x4-IQ-Tx0" firstAttribute="centerX" secondItem="rSe-7y-ZD6" secondAttribute="centerX" id="Fsu-CK-HGy"/>
                 <constraint firstItem="LWW-Ma-7RG" firstAttribute="centerX" secondItem="FdR-c3-II5" secondAttribute="centerX" id="G1B-Vc-4pt"/>
                 <constraint firstItem="pHb-Dn-kff" firstAttribute="centerX" secondItem="FdR-c3-II5" secondAttribute="centerX" id="HdQ-ix-5lR"/>
                 <constraint firstItem="FdR-c3-II5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="90" id="Men-8y-Eul"/>
                 <constraint firstItem="FdR-c3-II5" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="QRD-sL-x3g"/>
                 <constraint firstItem="pHb-Dn-kff" firstAttribute="top" secondItem="FdR-c3-II5" secondAttribute="bottom" constant="72" id="bd9-hJ-MHG"/>
                 <constraint firstItem="pHb-Dn-kff" firstAttribute="width" secondItem="FdR-c3-II5" secondAttribute="width" id="fkc-vB-x2d"/>
+                <constraint firstItem="1x4-IQ-Tx0" firstAttribute="centerY" secondItem="rSe-7y-ZD6" secondAttribute="centerY" id="orj-Ea-cHv"/>
                 <constraint firstItem="TBP-hM-XiA" firstAttribute="trailing" secondItem="rSe-7y-ZD6" secondAttribute="trailing" id="sVR-J5-bhR"/>
                 <constraint firstItem="LWW-Ma-7RG" firstAttribute="width" secondItem="FdR-c3-II5" secondAttribute="width" id="tL2-mQ-DrB"/>
                 <constraint firstItem="rSe-7y-ZD6" firstAttribute="top" secondItem="pHb-Dn-kff" secondAttribute="bottom" constant="49" id="u3O-bi-3CC"/>

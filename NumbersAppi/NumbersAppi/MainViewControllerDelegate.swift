@@ -11,4 +11,11 @@ import UIKit
 
 protocol MainViewControllerDelegate {
     
+    func startLoading()
+    
+    func stopLoading()
+    
+    func showErrorMessage(message: String)
+    
+    func showTextResponse(text: String)
 }

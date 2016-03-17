@@ -9,7 +9,16 @@
 import Foundation
 import UIKit
 
-class MainViewController: UIViewController, MainViewControllerDelegate, PullControllerDelegate {
+protocol MainViewProtocol {
+    
+    func startLoading()
+    
+    func stopLoading()
+    
+    func showText(text: String)
+}
+
+class MainViewController: UIViewController, MainViewControllerDelegate, PullControllerDelegate, MainViewDelegate {
 
     @IBOutlet private var mainView: MainView!
     @IBOutlet private var aboutLabel: UILabel!
@@ -33,15 +42,61 @@ class MainViewController: UIViewController, MainViewControllerDelegate, PullCont
         
         super.viewDidLoad()
         
+        mainView.delegate = self
         pullController = PullController(pullableView: mainView, translucentView: fadingView, delegate: self)
     }
     
     // MARK: - MainViewControllerDelegate methods
+    
+    func startLoading() {
+        
+        mainView.startLoading()
+    }
+    
+    func stopLoading() {
+        
+        mainView.stopLoading()
+    }
+    
+    func showErrorMessage(message: String) {
+        
+        let alert = UIAlertController(title: "", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        let accept = NSLocalizedString("ACCEPT", comment: "Accept button")
+        alert.addAction(UIAlertAction(title: accept, style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func showTextResponse(text: String) {
+        
+        mainView.showText(text)
+    }
     
     // MARK: - PullControllerDelegate methods
     
     func viewWasPulled() {
         
         presenterDelegate?.userSelectedAbout()
+    }
+    
+    // MARK: - MainViewDelegate methods
+
+    func didRequestNumber(number: Int, ofType type: ApiRequestType) {
+        
+        presenterDelegate.didRequestNumber(number, ofType: type)
+    }
+    
+    func didRequestDate(month month: Int, day: Int) {
+        
+        presenterDelegate.didRequestDate(month: month, day: day)
+    }
+    
+    func didRequestRandomNumberWithType(type: ApiRequestType) {
+        
+        presenterDelegate.didRequestRandomNumberWithType(type)
+    }
+    
+    func didRequestRandomDate() {
+        
+        presenterDelegate.didRequestRandomDate()
     }
 }

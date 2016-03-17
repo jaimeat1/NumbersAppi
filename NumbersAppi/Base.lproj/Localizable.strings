@@ -7,6 +7,7 @@
 */
 
 "PULL_ABOUT" = "Pull to see About NumbersAppi";
+"DOUBLE_TAP" = "Double tap above for random number";
 
 "TYPE_TRIVIA" = "Trivia";
 "TYPE_MATH" = "Math";
@@ -26,4 +27,5 @@
 "NOVEMBER" = "November";
 "DECEMBER" = "December";
 
-"DOUBLE_TAP" = "Double tap above for random number";
+"ERROR" = "An unknown error occurred. \nPlease, try again later!";
+"ACCEPT" = "Accept";
