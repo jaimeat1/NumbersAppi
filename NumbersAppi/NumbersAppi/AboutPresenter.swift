@@ -25,4 +25,10 @@ class AboutPresenter: AboutPresenterDelegate {
         
         Coordinator.sharedInstance.presentMainFromAbout()
     }
+    
+    func getVersion() -> String {
+        
+        return (NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as? String)!
+    }
+    
 }

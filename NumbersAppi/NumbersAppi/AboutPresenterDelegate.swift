@@ -12,4 +12,6 @@ import UIKit
 protocol AboutPresenterDelegate {
 
     func backButtonPressed()
+    
+    func getVersion() -> String
 }
