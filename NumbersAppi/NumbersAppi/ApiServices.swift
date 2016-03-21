@@ -24,6 +24,8 @@ class ApiServices {
         let requestUrl = baseUrl + request.parametrizedRequest() + jsonFlag + "&" + maxMinFlag
         let restRequest = NSMutableURLRequest(URL: NSURL(string: requestUrl)!)
         
+        // TODO: use NSURLSessionConfiguration to create session and set a timeout value!!
+        
         let session = NSURLSession.sharedSession();
         let task = session.dataTaskWithRequest(restRequest, completionHandler: {data, response, error -> Void in
 

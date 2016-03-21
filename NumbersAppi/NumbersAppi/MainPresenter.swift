@@ -62,6 +62,8 @@ class MainPresenter: MainPresenterDelegate {
     
     func didRequestRandomDate() {
         
+        let request =  ApiRequest(type: ApiRequestType.Date)
+        launchAndHandleRandomApiRequest(request)
     }
     
     // MARK: - Private methods
@@ -82,19 +84,20 @@ class MainPresenter: MainPresenterDelegate {
         if error != nil {
             
             let message = NSLocalizedString("ERROR", comment: "Error message")
-            self.controllerDelegate.showErrorMessage(message)
+            controllerDelegate.showErrorMessage(message)
             
         } else {
             
-            self.controllerDelegate.showTextResponse(response.text)
+            controllerDelegate.showTextResponse(response.text)
             
             if response.type == ApiRequestType.Date {
 
-                // TODO: transfor "response.number" in the right month and day values
+                let date = getMonthAndDayFromDayOfTheYear(response.number)
+                controllerDelegate.setDate(date.month, day: date.day)
                 
             } else {
                 
-                self.controllerDelegate.setNumber(response.number)
+                controllerDelegate.setNumber(response.number)
             }
         }
     }
@@ -115,11 +118,31 @@ class MainPresenter: MainPresenterDelegate {
         if error != nil {
             
             let message = NSLocalizedString("ERROR", comment: "Error message")
-            self.controllerDelegate.showErrorMessage(message)
+            controllerDelegate.showErrorMessage(message)
             
         } else {
             
-            self.controllerDelegate.showTextResponse(response.text)
+            controllerDelegate.showTextResponse(response.text)
         }
+    }
+    
+    private func getMonthAndDayFromDayOfTheYear(var dayOfYear: Int) -> (month: Int, day: Int) {
+        
+        let daysInMonths = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+        
+        var day = 1
+        var month = 1
+        for daysInCurrentMonth in daysInMonths {
+            
+            if ((dayOfYear - daysInCurrentMonth) <= 0) {
+                day = dayOfYear
+                break
+            } else {
+                dayOfYear = dayOfYear - daysInCurrentMonth
+                month++
+            }
+        }
+        
+        return (month, day)
     }
 }
