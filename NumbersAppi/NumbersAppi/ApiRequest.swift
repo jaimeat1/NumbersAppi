@@ -45,6 +45,14 @@ class ApiRequest {
         self.day = day
     }
     
+    convenience init(type: ApiRequestType) {
+        
+        self.init()
+        
+        self.type = type
+        self.isRandom = true
+    }
+    
     // MARK: - Public methods
     
     func parametrizedRequest() -> String {
