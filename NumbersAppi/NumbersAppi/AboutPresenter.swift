@@ -7,8 +7,11 @@
 //
 
 import Foundation
+import UIKit
 
 class AboutPresenter: AboutPresenterDelegate {
+    
+    private let linkAddress = "http://numbersapi.com"
     
     var controllerDelegate: AboutViewControllerDelegate
     
@@ -24,6 +27,11 @@ class AboutPresenter: AboutPresenterDelegate {
     func backButtonPressed() {
         
         Coordinator.sharedInstance.presentMainFromAbout()
+    }
+    
+    func linkButtonPressed() {
+        
+        UIApplication.sharedApplication().openURL(NSURL(string: linkAddress)!)
     }
     
     func getVersion() -> String {
