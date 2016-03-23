@@ -44,31 +44,67 @@ class MainPresenter: MainPresenterDelegate {
 
     func didRequestNumber(number: Int, ofType type: ApiRequestType) {
 
-        controllerDelegate.startLoading()
-        
         let request = ApiRequest(type: type, number: number)
         launchAndHandleApiRequest(request)
     }
 
     func didRequestDate(month month: Int, day: Int) {
-     
-        controllerDelegate.startLoading()
-        
+
         let request = ApiRequest(month: month, day: day)
         launchAndHandleApiRequest(request)
     }
 
     func didRequestRandomNumberWithType(type: ApiRequestType) {
-        
+
+        let request =  ApiRequest(type: type)
+        launchAndHandleRandomApiRequest(request)
     }
     
     func didRequestRandomDate() {
         
+        let request =  ApiRequest(type: ApiRequestType.Date)
+        launchAndHandleRandomApiRequest(request)
     }
     
     // MARK: - Private methods
     
+    private func launchAndHandleRandomApiRequest(request: ApiRequest) {
+        
+        controllerDelegate.startLoading()
+        
+        ApiServices.sharedInstance.sendRequest(request) { (response, error) -> Void in
+            
+            self.controllerDelegate.stopLoading()
+            self.handleRandomApiResponse(response, error: error)
+        }
+    }
+    
+    private func handleRandomApiResponse(response: ApiResponse, error: NSError?) {
+        
+        if error != nil {
+            
+            let message = NSLocalizedString("ERROR", comment: "Error message")
+            controllerDelegate.showErrorMessage(message)
+            
+        } else {
+            
+            controllerDelegate.showTextResponse(response.text)
+            
+            if response.type == ApiRequestType.Date {
+
+                let date = getMonthAndDayFromDayOfTheYear(response.number)
+                controllerDelegate.setDate(month: date.month, day: date.day)
+                
+            } else {
+                
+                controllerDelegate.setNumber(response.number)
+            }
+        }
+    }
+    
     private func launchAndHandleApiRequest(request: ApiRequest) {
+        
+        controllerDelegate.startLoading()
         
         ApiServices.sharedInstance.sendRequest(request) { (response, error) -> Void in
             
@@ -82,11 +118,31 @@ class MainPresenter: MainPresenterDelegate {
         if error != nil {
             
             let message = NSLocalizedString("ERROR", comment: "Error message")
-            self.controllerDelegate.showErrorMessage(message)
+            controllerDelegate.showErrorMessage(message)
             
         } else {
             
-            self.controllerDelegate.showTextResponse(response.text)
+            controllerDelegate.showTextResponse(response.text)
         }
+    }
+    
+    private func getMonthAndDayFromDayOfTheYear(var dayOfYear: Int) -> (month: Int, day: Int) {
+        
+        let daysInMonths = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+        
+        var day = 1
+        var month = 1
+        for daysInCurrentMonth in daysInMonths {
+            
+            if ((dayOfYear - daysInCurrentMonth) <= 0) {
+                day = dayOfYear
+                break
+            } else {
+                dayOfYear = dayOfYear - daysInCurrentMonth
+                month++
+            }
+        }
+        
+        return (month, day)
     }
 }

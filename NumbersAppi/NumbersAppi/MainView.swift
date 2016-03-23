@@ -56,9 +56,7 @@ class MainView: UIView, MainViewProtocol {
     
     @IBAction func typeSelectorHasChanged() {
 
-        let index = typeSelector.selectedSegmentIndex
-        
-        if selectorValues[index] == ApiRequestType.Date {
+        if isDateSelectorActive() {
             showDateSelector()
         } else {
             showNumberSelector()
@@ -67,23 +65,30 @@ class MainView: UIView, MainViewProtocol {
     
     func didDoubleTap(gesture: UITapGestureRecognizer) {
         
-        // TODO: do animation
-        // TODO: launch random request
+        if isDateSelectorActive() {
+            
+            delegate.didRequestRandomDate()
+            
+        } else {
+            
+            let index = typeSelector.selectedSegmentIndex
+            let type = selectorValues[index]
+            delegate.didRequestRandomNumberWithType(type)
+        }
     }
     
     func didSingleTap(gesture: UITapGestureRecognizer) {
-        
-        let index = typeSelector.selectedSegmentIndex
-        
-        if selectorValues[index] != ApiRequestType.Date {
-            
-            let type = selectorValues[index]
-            delegate.didRequestNumber(numberPickerView.getSelectedNumber(), ofType: type)
-            
-        } else {
 
+        if isDateSelectorActive() {
+            
             let date = datePickerView.getDate()
             delegate.didRequestDate(month: date.month, day: date.day)
+
+        } else {
+
+            let index = typeSelector.selectedSegmentIndex
+            let type = selectorValues[index]
+            delegate.didRequestNumber(numberPickerView.getSelectedNumber(), ofType: type)
         }
     }
     
@@ -105,6 +110,16 @@ class MainView: UIView, MainViewProtocol {
     func showText(text: String) {
         
         textResult.text = text
+    }
+    
+    func setNumber(number: Int) {
+        
+        numberPickerView.setSelectedNumber(number, animated: true)
+    }
+    
+    func setDate(month month: Int, day: Int) {
+        
+        datePickerView.setDate(month: month, day: day)
     }
     
     // MARK: - Private methods
@@ -163,6 +178,12 @@ class MainView: UIView, MainViewProtocol {
         textResult.layer.borderColor = UIColor.blackColor().CGColor;
         textResult.layer.borderWidth = 1.5
         textResult.layer.cornerRadius = 1
+    }
+    
+    private func isDateSelectorActive() -> Bool {
+        
+        let index = typeSelector.selectedSegmentIndex
+        return (selectorValues[index] == ApiRequestType.Date)
     }
 
 }
