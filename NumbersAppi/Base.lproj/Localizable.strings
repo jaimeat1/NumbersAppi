@@ -29,3 +29,8 @@
 
 "ERROR" = "An unknown error occurred. \nPlease, try again later!";
 "ACCEPT" = "Accept";
+
+"BASED_ON" = "Based on the web project";
+"LIKE_IT" = "Do you like it? Any comment?";
+"CONTACT" = "Contact me";
+"VERSION" = "Version";

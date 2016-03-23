@@ -7,8 +7,12 @@
 //
 
 import Foundation
+import UIKit
 
 class AboutPresenter: AboutPresenterDelegate {
+    
+    private let linkAddress = "http://numbersapi.com"
+    private let contactAddress = "jaime.aranaz@gmail.com"
     
     var controllerDelegate: AboutViewControllerDelegate
     
@@ -25,4 +29,21 @@ class AboutPresenter: AboutPresenterDelegate {
         
         Coordinator.sharedInstance.presentMainFromAbout()
     }
+    
+    func linkButtonPressed() {
+        
+        UIApplication.sharedApplication().openURL(NSURL(string: linkAddress)!)
+    }
+    
+    func contactButtonPressed() {
+        
+        let mailto = NSURL(string: "mailto:\(contactAddress)")
+        UIApplication.sharedApplication().openURL(mailto!)
+    }
+    
+    func getVersion() -> String {
+        
+        return (NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as? String)!
+    }
+    
 }

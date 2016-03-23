@@ -48,6 +48,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate, PullCont
         
         mainView.delegate = self
         pullController = PullController(pullableView: mainView, translucentView: fadingView, delegate: self)
+        aboutLabel.text = NSLocalizedString("PULL_ABOUT", comment: "Pull to see about")
     }
     
     // MARK: - MainViewControllerDelegate methods

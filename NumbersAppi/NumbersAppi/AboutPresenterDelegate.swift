@@ -12,4 +12,10 @@ import UIKit
 protocol AboutPresenterDelegate {
 
     func backButtonPressed()
+    
+    func linkButtonPressed()
+    
+    func contactButtonPressed()
+    
+    func getVersion() -> String
 }
