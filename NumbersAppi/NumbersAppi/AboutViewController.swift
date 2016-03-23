@@ -42,6 +42,11 @@ class AboutViewController: UIViewController, AboutViewControllerDelegate {
         presenterDelegate.linkButtonPressed()
     }
     
+    @IBAction func contactButtonPressed() {
+        
+        presenterDelegate.contactButtonPressed()
+    }
+    
     // MARK: Private methods
     
     private func localizeTexts() {

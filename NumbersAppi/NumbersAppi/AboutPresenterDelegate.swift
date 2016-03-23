@@ -15,5 +15,7 @@ protocol AboutPresenterDelegate {
     
     func linkButtonPressed()
     
+    func contactButtonPressed()
+    
     func getVersion() -> String
 }
