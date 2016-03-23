@@ -21,5 +21,5 @@ protocol MainViewControllerDelegate {
     
     func setNumber(number: Int)
     
-    func setDate(month: Int, day: Int)
+    func setDate(month month: Int, day: Int)
 }

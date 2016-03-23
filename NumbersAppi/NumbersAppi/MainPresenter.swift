@@ -93,7 +93,7 @@ class MainPresenter: MainPresenterDelegate {
             if response.type == ApiRequestType.Date {
 
                 let date = getMonthAndDayFromDayOfTheYear(response.number)
-                controllerDelegate.setDate(date.month, day: date.day)
+                controllerDelegate.setDate(month: date.month, day: date.day)
                 
             } else {
                 

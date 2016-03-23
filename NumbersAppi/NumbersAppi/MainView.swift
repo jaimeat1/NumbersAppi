@@ -117,8 +117,9 @@ class MainView: UIView, MainViewProtocol {
         numberPickerView.setSelectedNumber(number, animated: true)
     }
     
-    func setDate(month: Int, day: Int) {
+    func setDate(month month: Int, day: Int) {
         
+        datePickerView.setDate(month: month, day: day)
     }
     
     // MARK: - Private methods
