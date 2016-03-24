@@ -11,7 +11,7 @@ import UIKit
 
 protocol AboutPresenterDelegate {
 
-    func backButtonPressed()
+    func doneButtonPressed()
     
     func linkButtonPressed()
     

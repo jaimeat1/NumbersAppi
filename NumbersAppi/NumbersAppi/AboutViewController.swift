@@ -32,9 +32,9 @@ class AboutViewController: UIViewController, AboutViewControllerDelegate {
     
     // MARK: Action methods
     
-    @IBAction func backButtonPressed() {
+    @IBAction func doneButtonPressed() {
         
-        presenterDelegate.backButtonPressed()
+        presenterDelegate.doneButtonPressed()
     }
     
     @IBAction func linkButtonPressed() {
