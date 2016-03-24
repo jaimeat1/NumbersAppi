@@ -9,7 +9,14 @@
             <connections>
                 <outlet property="activityIndicator" destination="1x4-IQ-Tx0" id="fdY-1j-OvX"/>
                 <outlet property="datePickerView" destination="LWW-Ma-7RG" id="u1j-Gp-Uyt"/>
+                <outlet property="doubleTapImage" destination="Bve-iG-oNL" id="bta-mR-bnK"/>
+                <outlet property="doubleTapInfo" destination="d0x-mP-0yF" id="Z8h-er-ett"/>
+                <outlet property="doubleTapView" destination="SAD-du-cF7" id="DuJ-xq-gen"/>
                 <outlet property="numberPickerView" destination="pHb-Dn-kff" id="TdG-l6-dSP"/>
+                <outlet property="shadowView" destination="EKY-b8-NBp" id="bpZ-Cx-fqh"/>
+                <outlet property="singleTapImage" destination="rEN-Fp-XGo" id="dSe-Xs-KU5"/>
+                <outlet property="singleTapInfo" destination="vyZ-Hs-CnK" id="iKT-Sb-gjX"/>
+                <outlet property="singleTapView" destination="zFx-kI-smN" id="eRJ-rn-B4z"/>
                 <outlet property="textResult" destination="rSe-7y-ZD6" id="L0J-bF-ofZ"/>
                 <outlet property="typeSelector" destination="FdR-c3-II5" id="NLv-ba-evv"/>
                 <outlet property="view" destination="iN0-l3-epB" id="KEa-nQ-Jd6"/>
@@ -67,12 +74,13 @@
                         <constraint firstItem="LWW-Ma-7RG" firstAttribute="centerY" secondItem="goM-CJ-hYZ" secondAttribute="centerY" id="tHV-Pl-jC9"/>
                     </constraints>
                 </view>
-                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="1x4-IQ-Tx0">
-                    <rect key="frame" x="290" y="402" width="20" height="20"/>
-                </activityIndicatorView>
+                <view alpha="0.69999999999999996" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EKY-b8-NBp" userLabel="Shadow view">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
                 <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSe-7y-ZD6" userLabel="Text result" customClass="TextLabel" customModule="NumbersAppi" customModuleProvider="target">
                     <rect key="frame" x="30" y="314" width="540" height="196"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="lessThanOrEqual" priority="750" constant="230" id="aM5-7o-aN6"/>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="120" id="mzg-3x-CF5"/>
@@ -86,6 +94,47 @@
                         </mask>
                     </variation>
                 </label>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="1x4-IQ-Tx0">
+                    <rect key="frame" x="290" y="402" width="20" height="20"/>
+                </activityIndicatorView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zFx-kI-smN" userLabel="Single tap view">
+                    <rect key="frame" x="180" y="348" width="240" height="128"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vyZ-Hs-CnK" userLabel="Single tap info">
+                            <rect key="frame" x="82" y="14" width="150" height="100"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fingertap" translatesAutoresizingMaskIntoConstraints="NO" id="rEN-Fp-XGo" userLabel="Single tap image">
+                            <rect key="frame" x="8" y="39" width="50" height="50"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="128" id="rmG-nk-DIe"/>
+                        <constraint firstAttribute="width" constant="240" id="vsk-if-qjt"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SAD-du-cF7" userLabel="Double tap view">
+                    <rect key="frame" x="180" y="348" width="240" height="128"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d0x-mP-0yF" userLabel="Doubel tap info">
+                            <rect key="frame" x="82" y="14" width="150" height="100"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fingertap" translatesAutoresizingMaskIntoConstraints="NO" id="Bve-iG-oNL" userLabel="Double tap image">
+                            <rect key="frame" x="8" y="39" width="50" height="50"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="240" id="Bfy-W8-4Ff"/>
+                        <constraint firstAttribute="height" constant="128" id="fqJ-wq-9eb"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -101,10 +150,14 @@
                 <constraint firstItem="FdR-c3-II5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="VUc-da-Yff"/>
                 <constraint firstItem="goM-CJ-hYZ" firstAttribute="trailing" secondItem="FdR-c3-II5" secondAttribute="trailing" id="Z6X-W7-jZM"/>
                 <constraint firstAttribute="trailing" secondItem="FdR-c3-II5" secondAttribute="trailing" constant="30" id="h6f-nJ-yyi"/>
+                <constraint firstItem="SAD-du-cF7" firstAttribute="centerY" secondItem="rSe-7y-ZD6" secondAttribute="centerY" id="kIa-xG-ru3"/>
                 <constraint firstItem="1x4-IQ-Tx0" firstAttribute="centerY" secondItem="rSe-7y-ZD6" secondAttribute="centerY" id="orj-Ea-cHv"/>
                 <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="rSe-7y-ZD6" secondAttribute="bottom" priority="750" constant="90" id="pce-8x-f6o"/>
+                <constraint firstItem="zFx-kI-smN" firstAttribute="centerX" secondItem="rSe-7y-ZD6" secondAttribute="centerX" id="sPy-og-5SA"/>
                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="rSe-7y-ZD6" secondAttribute="bottom" constant="20" id="u3q-Sb-bho"/>
+                <constraint firstItem="zFx-kI-smN" firstAttribute="centerY" secondItem="rSe-7y-ZD6" secondAttribute="centerY" id="yVN-4e-ep2"/>
                 <constraint firstItem="rSe-7y-ZD6" firstAttribute="top" secondItem="goM-CJ-hYZ" secondAttribute="bottom" constant="8" id="ye1-Gt-vm1"/>
+                <constraint firstItem="SAD-du-cF7" firstAttribute="centerX" secondItem="rSe-7y-ZD6" secondAttribute="centerX" id="yhg-Ne-gY6"/>
             </constraints>
             <variation key="default">
                 <mask key="constraints">
@@ -113,4 +166,7 @@
             </variation>
         </view>
     </objects>
+    <resources>
+        <image name="fingertap" width="50" height="50"/>
+    </resources>
 </document>

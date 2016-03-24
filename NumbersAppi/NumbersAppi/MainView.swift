@@ -18,9 +18,11 @@ protocol MainViewDelegate {
     func didRequestRandomNumberWithType(type: ApiRequestType)
     
     func didRequestRandomDate()
+    
+    func didHideInfoView()
 }
 
-class MainView: UIView, MainViewProtocol {
+class MainView: UIView, MainViewProtocol, MainViewInfoDelegate {
     
     @IBOutlet var view: UIView!
     @IBOutlet var typeSelector: UISegmentedControl!
@@ -29,7 +31,19 @@ class MainView: UIView, MainViewProtocol {
     @IBOutlet var textResult: TextLabel!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
+    @IBOutlet var shadowView: UIView!
+    @IBOutlet var singleTapView: UIView!
+    @IBOutlet var singleTapInfo: UILabel!
+    @IBOutlet var singleTapImage: UIImageView!
+    @IBOutlet var doubleTapView: UIView!
+    @IBOutlet var doubleTapInfo: UILabel!
+    @IBOutlet var doubleTapImage: UIImageView!
+    
+    var mainViewInfo: MainViewInfo!
     var delegate: MainViewDelegate!
+    
+    private var singleTapGesture: UITapGestureRecognizer!
+    private var doubleTapGesture: UITapGestureRecognizer!
     
     private let animationDuration = 0.5
     
@@ -119,6 +133,20 @@ class MainView: UIView, MainViewProtocol {
         datePickerView.setDate(month: month, day: day)
     }
     
+    func showInfoView() {
+        
+        removeTapGestures()
+        mainViewInfo.show()
+    }
+    
+    // MARK: - MainViewInfoDelegate methods
+    
+    func didHideInfoView() {
+        
+        delegate.didHideInfoView()
+        addTapGestures()
+    }
+    
     // MARK: - Private methods
     
     private func setupTypeSelector() {
@@ -160,14 +188,20 @@ class MainView: UIView, MainViewProtocol {
     
     private func addTapGestures() {
         
-        let singleTap = UITapGestureRecognizer(target: self, action: "didSingleTap:")
-        textResult.addGestureRecognizer(singleTap)
+        singleTapGesture = UITapGestureRecognizer(target: self, action: "didSingleTap:")
+        textResult.addGestureRecognizer(singleTapGesture)
 
-        let doubleTap = UITapGestureRecognizer(target: self, action: "didDoubleTap:")
-        doubleTap.numberOfTapsRequired = 2
-        textResult.addGestureRecognizer(doubleTap)
+        doubleTapGesture = UITapGestureRecognizer(target: self, action: "didDoubleTap:")
+        doubleTapGesture.numberOfTapsRequired = 2
+        textResult.addGestureRecognizer(doubleTapGesture)
         
-        singleTap.requireGestureRecognizerToFail(doubleTap)
+        singleTapGesture.requireGestureRecognizerToFail(doubleTapGesture)
+    }
+    
+    private func removeTapGestures() {
+     
+        textResult.removeGestureRecognizer(singleTapGesture)
+        textResult.removeGestureRecognizer(doubleTapGesture)
     }
     
     private func setupTextResult() {

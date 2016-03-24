@@ -20,6 +20,8 @@ protocol MainViewProtocol {
     func setNumber(number: Int)
     
     func setDate(month month: Int, day: Int)
+    
+    func showInfoView()
 }
 
 class MainViewController: UIViewController, MainViewControllerDelegate, PullControllerDelegate, MainViewDelegate {
@@ -54,10 +56,13 @@ class MainViewController: UIViewController, MainViewControllerDelegate, PullCont
     override func viewDidAppear(animated: Bool) {
         
         super.viewDidAppear(animated)
+
+        pullController?.disablePullable()
+        mainView.showInfoView()
         
-        if presenterDelegate.shouldShowPullableInformation() {
-            pullController?.showPullable()
-        }
+//        if presenterDelegate.shouldShowPullableInformation() {
+//            pullController?.showPullable()
+//        }
     }
     
     // MARK: - MainViewControllerDelegate methods
@@ -123,5 +128,10 @@ class MainViewController: UIViewController, MainViewControllerDelegate, PullCont
     func didRequestRandomDate() {
         
         presenterDelegate.didRequestRandomDate()
+    }
+    
+    func didHideInfoView() {
+        
+        pullController?.enablePullable()
     }
 }

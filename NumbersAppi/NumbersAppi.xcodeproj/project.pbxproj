@@ -34,6 +34,9 @@
 		6F7554821CA44B9D00FC21C8 /* TextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7554811CA44B9C00FC21C8 /* TextLabel.swift */; };
 		6F7554831CA44B9D00FC21C8 /* TextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7554811CA44B9C00FC21C8 /* TextLabel.swift */; };
 		6F7554841CA44B9D00FC21C8 /* TextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7554811CA44B9C00FC21C8 /* TextLabel.swift */; };
+		6F7554861CA468BE00FC21C8 /* MainViewInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7554851CA468BE00FC21C8 /* MainViewInfo.swift */; };
+		6F7554871CA468BE00FC21C8 /* MainViewInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7554851CA468BE00FC21C8 /* MainViewInfo.swift */; };
+		6F7554881CA468BE00FC21C8 /* MainViewInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7554851CA468BE00FC21C8 /* MainViewInfo.swift */; };
 		6F76D0CB1C7C3BD8001EE8FE /* NumberPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F76D0CA1C7C3BD8001EE8FE /* NumberPickerView.swift */; };
 		6F76D0CC1C7C3BD8001EE8FE /* NumberPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F76D0CA1C7C3BD8001EE8FE /* NumberPickerView.swift */; };
 		6F76D0CD1C7C3BD8001EE8FE /* NumberPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F76D0CA1C7C3BD8001EE8FE /* NumberPickerView.swift */; };
@@ -110,6 +113,7 @@
 		6F67D00D1C744B6000DB7327 /* PullController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullController.swift; sourceTree = "<group>"; };
 		6F67D0111C744CB300DB7327 /* PullControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullControllerDelegate.swift; sourceTree = "<group>"; };
 		6F7554811CA44B9C00FC21C8 /* TextLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextLabel.swift; sourceTree = "<group>"; };
+		6F7554851CA468BE00FC21C8 /* MainViewInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewInfo.swift; sourceTree = "<group>"; };
 		6F76D0CA1C7C3BD8001EE8FE /* NumberPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberPickerView.swift; sourceTree = "<group>"; };
 		6F77D47E1C79049B00D755BF /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		6F77D4821C79082800D755BF /* AboutPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutPresenter.swift; sourceTree = "<group>"; };
@@ -226,6 +230,7 @@
 				6F76D0CA1C7C3BD8001EE8FE /* NumberPickerView.swift */,
 				6F5618771C8EB2EB00099DF5 /* DatePickerView.swift */,
 				6F7554811CA44B9C00FC21C8 /* TextLabel.swift */,
+				6F7554851CA468BE00FC21C8 /* MainViewInfo.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -538,6 +543,7 @@
 				6FF2893B1C70E8A50075F269 /* MainViewControllerDelegate.swift in Sources */,
 				6F5BD55C1C67A34600775424 /* ApiRequest.swift in Sources */,
 				6F5BD5641C67A89D00775424 /* ApiServices.swift in Sources */,
+				6F7554861CA468BE00FC21C8 /* MainViewInfo.swift in Sources */,
 				6F77D4871C79085F00D755BF /* AboutPresenterDelegate.swift in Sources */,
 				6F67D0121C744CB300DB7327 /* PullControllerDelegate.swift in Sources */,
 			);
@@ -564,6 +570,7 @@
 				6FF2893C1C70E8A50075F269 /* MainViewControllerDelegate.swift in Sources */,
 				6FFBD1DC1C61DD25008CCE7A /* NumbersAppiTests.swift in Sources */,
 				6FF2892A1C70E0F40075F269 /* MainViewController.swift in Sources */,
+				6F7554871CA468BE00FC21C8 /* MainViewInfo.swift in Sources */,
 				6F77D4881C79085F00D755BF /* AboutPresenterDelegate.swift in Sources */,
 				6F67D0131C744CB300DB7327 /* PullControllerDelegate.swift in Sources */,
 			);
@@ -590,6 +597,7 @@
 				6FF2893D1C70E8A50075F269 /* MainViewControllerDelegate.swift in Sources */,
 				6FFBD1E71C61DD25008CCE7A /* NumbersAppiUITests.swift in Sources */,
 				6FF2892B1C70E0F40075F269 /* MainViewController.swift in Sources */,
+				6F7554881CA468BE00FC21C8 /* MainViewInfo.swift in Sources */,
 				6F77D4891C79085F00D755BF /* AboutPresenterDelegate.swift in Sources */,
 				6F67D0141C744CB300DB7327 /* PullControllerDelegate.swift in Sources */,
 			);

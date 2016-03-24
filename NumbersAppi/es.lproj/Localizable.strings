@@ -7,6 +7,8 @@
 */
 
 "PULL_ABOUT" = "Tira para ver About";
+"SINGLE_TAP" = "Un toque para preguntar por un número";
+"DOUBLE_TAP" = "Doble toque para un número al azar";
 
 "TYPE_TRIVIA" = "Trivia";
 "TYPE_MATH" = "Math";
