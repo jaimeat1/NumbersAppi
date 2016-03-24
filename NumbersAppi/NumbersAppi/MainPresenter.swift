@@ -22,9 +22,13 @@ protocol MainPresenterDelegate {
     func didRequestRandomDate()
     
     func userSelectedAbout()
+    
+    func shouldShowPullableInformation() -> Bool
 }
 
 class MainPresenter: MainPresenterDelegate {
+    
+    let pullableWasShown = "pullableWasShown"
 
     var controllerDelegate: MainViewControllerDelegate
     
@@ -58,6 +62,22 @@ class MainPresenter: MainPresenterDelegate {
 
         let request =  ApiRequest(type: type)
         launchAndHandleRandomApiRequest(request)
+    }
+    
+    func shouldShowPullableInformation() -> Bool {
+        
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        let pullableAlreadyShown = userDefaults.boolForKey(pullableWasShown)
+        
+        if pullableAlreadyShown {
+            
+            return false
+            
+        } else {
+            
+            userDefaults.setBool(true, forKey: pullableWasShown)
+            return true
+        }
     }
     
     func didRequestRandomDate() {

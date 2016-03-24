@@ -6,7 +6,7 @@
   Copyright © 2016 Jaime Aranaz. All rights reserved.
 */
 
-"PULL_ABOUT" = "Suelta para ver About NumbersAppi";
+"PULL_ABOUT" = "Tira para ver About";
 
 "TYPE_TRIVIA" = "Trivia";
 "TYPE_MATH" = "Math";

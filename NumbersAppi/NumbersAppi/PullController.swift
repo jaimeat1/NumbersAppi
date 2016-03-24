@@ -13,6 +13,7 @@ class PullController {
 
     private let maxPullableDistance: CGFloat = 80.0
     private let animationDuration: NSTimeInterval = 0.3
+    private let showPullableDuration: NSTimeInterval = 2.0
     private let minimunAlpha: CGFloat = 0.8
     private let factorToShowTranslucentView: CGFloat = 0.90
     
@@ -48,13 +49,22 @@ class PullController {
         animatePullableViewToOrigin()
     }
     
-    // MARK: - Action methods
-    
-    @IBAction func didTap() {
+    func showPullable() {
         
-        delegate?.viewWasPulled()
+        pointOfOrigin = CGPoint(x: 0, y: 0)
+        pullableView.frame.origin.y = maxPullableDistance
+        translucentView.alpha = 0
+
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(showPullableDuration * Double(NSEC_PER_SEC)))
+        dispatch_after(dispatch_time_t(delayTime), dispatch_get_main_queue()) { () -> Void in
+            
+            self.animatePullableViewToOrigin()
+            self.animateTranslucentViewHiding()
+        }
     }
     
+    // MARK: - Action methods
+
     @IBAction func didDraggView(gestureRecognizer: UIPanGestureRecognizer) {
         
         if (!pullGestureEnabled) {
