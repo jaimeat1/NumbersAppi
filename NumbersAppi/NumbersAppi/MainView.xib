@@ -22,10 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="FdR-c3-II5" userLabel="Type selector">
-                    <rect key="frame" x="140" y="90" width="320" height="29"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="320" id="kak-bR-rlb"/>
-                    </constraints>
+                    <rect key="frame" x="30" y="90" width="540" height="29"/>
                     <segments>
                         <segment title="Trivia"/>
                         <segment title="Math"/>
@@ -37,21 +34,21 @@
                     </connections>
                 </segmentedControl>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pHb-Dn-kff" userLabel="Number picker view" customClass="NumberPickerView" customModule="NumbersAppi" customModuleProvider="target">
-                    <rect key="frame" x="140" y="190" width="320" height="120"/>
+                    <rect key="frame" x="30" y="190" width="540" height="120"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="120" id="teu-BE-4hL"/>
                     </constraints>
                 </view>
                 <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LWW-Ma-7RG" userLabel="Date picker view" customClass="DatePickerView" customModule="NumbersAppi" customModuleProvider="target">
-                    <rect key="frame" x="140" y="190" width="320" height="120"/>
+                    <rect key="frame" x="30" y="190" width="540" height="120"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="120" id="7mQ-yA-Hwd"/>
                     </constraints>
                 </view>
                 <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSe-7y-ZD6" userLabel="Text result">
-                    <rect key="frame" x="140" y="359" width="320" height="120"/>
+                    <rect key="frame" x="30" y="359" width="540" height="120"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="120" id="E5K-ut-tBp"/>
@@ -64,7 +61,7 @@
                     <rect key="frame" x="290" y="409" width="20" height="20"/>
                 </activityIndicatorView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TBP-hM-XiA" userLabel="Double tap info">
-                    <rect key="frame" x="140" y="487" width="320" height="21"/>
+                    <rect key="frame" x="30" y="487" width="540" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="Dn9-cI-hYu"/>
                     </constraints>
@@ -85,8 +82,10 @@
                 <constraint firstItem="pHb-Dn-kff" firstAttribute="centerX" secondItem="FdR-c3-II5" secondAttribute="centerX" id="HdQ-ix-5lR"/>
                 <constraint firstItem="FdR-c3-II5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="90" id="Men-8y-Eul"/>
                 <constraint firstItem="FdR-c3-II5" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="QRD-sL-x3g"/>
+                <constraint firstItem="FdR-c3-II5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="VUc-da-Yff"/>
                 <constraint firstItem="pHb-Dn-kff" firstAttribute="top" secondItem="FdR-c3-II5" secondAttribute="bottom" constant="72" id="bd9-hJ-MHG"/>
                 <constraint firstItem="pHb-Dn-kff" firstAttribute="width" secondItem="FdR-c3-II5" secondAttribute="width" id="fkc-vB-x2d"/>
+                <constraint firstAttribute="trailing" secondItem="FdR-c3-II5" secondAttribute="trailing" constant="30" id="h6f-nJ-yyi"/>
                 <constraint firstItem="1x4-IQ-Tx0" firstAttribute="centerY" secondItem="rSe-7y-ZD6" secondAttribute="centerY" id="orj-Ea-cHv"/>
                 <constraint firstItem="TBP-hM-XiA" firstAttribute="trailing" secondItem="rSe-7y-ZD6" secondAttribute="trailing" id="sVR-J5-bhR"/>
                 <constraint firstItem="LWW-Ma-7RG" firstAttribute="width" secondItem="FdR-c3-II5" secondAttribute="width" id="tL2-mQ-DrB"/>
