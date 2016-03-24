@@ -16,13 +16,7 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     private let pickerNumberOfComponents: Int = 5
     private let pickerNumberOfOriginalValues: Int = 10
     private let pickerTimesToRepeatValues: Int = 3
-    
-    // TODO: how declare a let value depending on other let values? (readonly, defined through a function and not here)
-    private var pickerNumberOfRows: Int {
-        get{
-            return pickerNumberOfOriginalValues * pickerTimesToRepeatValues
-        }
-    }
+    private let pickerNumberOfRows: Int
     
     private let pickerComponentWidth: CGFloat = 40.0
     private let pickerComponentExtraWidth: CGFloat = 5.0
@@ -44,6 +38,8 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     // MARK: Lifecycle objets
 
     required init?(coder aDecoder: NSCoder) {
+        
+        pickerNumberOfRows = pickerNumberOfOriginalValues * pickerTimesToRepeatValues
         
         super.init(coder: aDecoder)
         
