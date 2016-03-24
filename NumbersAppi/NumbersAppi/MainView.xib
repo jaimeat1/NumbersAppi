@@ -9,7 +9,6 @@
             <connections>
                 <outlet property="activityIndicator" destination="1x4-IQ-Tx0" id="fdY-1j-OvX"/>
                 <outlet property="datePickerView" destination="LWW-Ma-7RG" id="u1j-Gp-Uyt"/>
-                <outlet property="doubleTapInfo" destination="TBP-hM-XiA" id="Tss-I4-prH"/>
                 <outlet property="numberPickerView" destination="pHb-Dn-kff" id="TdG-l6-dSP"/>
                 <outlet property="textResult" destination="rSe-7y-ZD6" id="L0J-bF-ofZ"/>
                 <outlet property="typeSelector" destination="FdR-c3-II5" id="NLv-ba-evv"/>
@@ -23,6 +22,9 @@
             <subviews>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="FdR-c3-II5" userLabel="Type selector">
                     <rect key="frame" x="30" y="90" width="540" height="29"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="9gl-u1-H14"/>
+                    </constraints>
                     <segments>
                         <segment title="Trivia"/>
                         <segment title="Math"/>
@@ -47,23 +49,14 @@
                         <constraint firstAttribute="height" constant="120" id="7mQ-yA-Hwd"/>
                     </constraints>
                 </view>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="1x4-IQ-Tx0">
+                    <rect key="frame" x="290" y="425" width="20" height="20"/>
+                </activityIndicatorView>
                 <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSe-7y-ZD6" userLabel="Text result">
-                    <rect key="frame" x="30" y="359" width="540" height="120"/>
+                    <rect key="frame" x="30" y="359" width="540" height="151"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="120" id="E5K-ut-tBp"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="1x4-IQ-Tx0">
-                    <rect key="frame" x="290" y="409" width="20" height="20"/>
-                </activityIndicatorView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TBP-hM-XiA" userLabel="Double tap info">
-                    <rect key="frame" x="30" y="487" width="540" height="21"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="21" id="Dn9-cI-hYu"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="120" id="mzg-3x-CF5"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -73,10 +66,9 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="rSe-7y-ZD6" firstAttribute="leading" secondItem="FdR-c3-II5" secondAttribute="leading" id="0v1-CM-yfX"/>
-                <constraint firstItem="TBP-hM-XiA" firstAttribute="leading" secondItem="rSe-7y-ZD6" secondAttribute="leading" id="2fi-qb-FrN"/>
                 <constraint firstItem="LWW-Ma-7RG" firstAttribute="top" secondItem="FdR-c3-II5" secondAttribute="bottom" constant="72" id="3qM-GF-aey"/>
-                <constraint firstItem="TBP-hM-XiA" firstAttribute="top" secondItem="rSe-7y-ZD6" secondAttribute="bottom" constant="8" id="5HB-aC-ssW"/>
                 <constraint firstItem="rSe-7y-ZD6" firstAttribute="trailing" secondItem="FdR-c3-II5" secondAttribute="trailing" id="7U1-dL-MyT"/>
+                <constraint firstAttribute="bottom" secondItem="rSe-7y-ZD6" secondAttribute="bottom" priority="750" constant="90" id="Be3-N7-ae7"/>
                 <constraint firstItem="1x4-IQ-Tx0" firstAttribute="centerX" secondItem="rSe-7y-ZD6" secondAttribute="centerX" id="Fsu-CK-HGy"/>
                 <constraint firstItem="LWW-Ma-7RG" firstAttribute="centerX" secondItem="FdR-c3-II5" secondAttribute="centerX" id="G1B-Vc-4pt"/>
                 <constraint firstItem="pHb-Dn-kff" firstAttribute="centerX" secondItem="FdR-c3-II5" secondAttribute="centerX" id="HdQ-ix-5lR"/>
@@ -87,7 +79,6 @@
                 <constraint firstItem="pHb-Dn-kff" firstAttribute="width" secondItem="FdR-c3-II5" secondAttribute="width" id="fkc-vB-x2d"/>
                 <constraint firstAttribute="trailing" secondItem="FdR-c3-II5" secondAttribute="trailing" constant="30" id="h6f-nJ-yyi"/>
                 <constraint firstItem="1x4-IQ-Tx0" firstAttribute="centerY" secondItem="rSe-7y-ZD6" secondAttribute="centerY" id="orj-Ea-cHv"/>
-                <constraint firstItem="TBP-hM-XiA" firstAttribute="trailing" secondItem="rSe-7y-ZD6" secondAttribute="trailing" id="sVR-J5-bhR"/>
                 <constraint firstItem="LWW-Ma-7RG" firstAttribute="width" secondItem="FdR-c3-II5" secondAttribute="width" id="tL2-mQ-DrB"/>
                 <constraint firstItem="rSe-7y-ZD6" firstAttribute="top" secondItem="pHb-Dn-kff" secondAttribute="bottom" constant="49" id="u3O-bi-3CC"/>
             </constraints>

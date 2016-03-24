@@ -27,7 +27,6 @@ class MainView: UIView, MainViewProtocol {
     @IBOutlet var numberPickerView: NumberPickerView!
     @IBOutlet var datePickerView: DatePickerView!
     @IBOutlet var textResult: UILabel!
-    @IBOutlet var doubleTapInfo: UILabel!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
     var delegate: MainViewDelegate!
@@ -48,8 +47,6 @@ class MainView: UIView, MainViewProtocol {
         setupTypeSelector()
         setupTextResult()
         addTapGestures()
-        
-        doubleTapInfo.text = NSLocalizedString("DOUBLE_TAP", comment: "Info message for double tap and random number")
     }
     
     // MARK: - Action methods
