@@ -59,6 +59,14 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         updateUpperContainerConstraints()
         updateBottomContainerConstraints()
     }
+    
+    override func layoutSubviews() {
+        
+        super.layoutSubviews()
+        
+        updateButtonsConstraints(upperButtons)
+        updateButtonsConstraints(bottomButtons)
+    }
 
     // MARK: public methods
     
@@ -228,8 +236,6 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         ConstraintHelper.equalWidthInView(upperContainer, thanInView: pickerView)
         ConstraintHelper.equalLeadingForViews(upperContainer, view2: pickerView)
         ConstraintHelper.topSpaceToContainer(upperContainer, equalTo: 0)
-        
-        updateButtonsConstraints(upperButtons)
     }
     
     private func updateBottomContainerConstraints() {
@@ -238,31 +244,26 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         ConstraintHelper.equalWidthInView(bottomContainer, thanInView: pickerView)
         ConstraintHelper.equalLeadingForViews(bottomContainer, view2: pickerView)
         ConstraintHelper.bottomSpaceToContainer(bottomContainer, equalTo: 0.0)
-        
-        updateButtonsConstraints(bottomButtons)
     }
     
     private func updateButtonsConstraints(buttons: NSArray) {
         
-        var index = 1
+        var index = 0
 
         for oneButton in buttons as! [UIButton] {
             
             ConstraintHelper.centerVerticalyInSuperview(oneButton)
+
+            let componentWidth = pickerComponentWidth + pickerComponentExtraWidth
+            let buttonOffset = (componentWidth - buttonSize) / 2
+            let superviewWidth: CGFloat = (oneButton.superview?.frame.size.width)!
+            let startOffset = (superviewWidth - (componentWidth * CGFloat(pickerNumberOfComponents))) / 2
             
-            let realPickerWidth = pickerComponentWidth + pickerComponentExtraWidth
-            let availableSpace = pickerComponentWidth - buttonSize
+            let firstButtonHorizontalSpace = startOffset + buttonOffset
+            let otherButtonHorizontalSpace = startOffset + (componentWidth * CGFloat(index)) + buttonOffset
             
-            if index == 1 {
-                
-                let horizontalSpace = realPickerWidth + availableSpace
-                ConstraintHelper.horizontalSpaceToParent(oneButton, equalTo: horizontalSpace)
-                
-            } else {
-                
-                let horizontalSpace = (realPickerWidth * CGFloat(index)) + availableSpace
-                ConstraintHelper.horizontalSpaceToParent(oneButton, equalTo: horizontalSpace)
-            }
+            let horizontalSpace = (index == 0) ? firstButtonHorizontalSpace : otherButtonHorizontalSpace
+            ConstraintHelper.horizontalSpaceToParent(oneButton, equalTo: horizontalSpace)
             
             index++
         }
