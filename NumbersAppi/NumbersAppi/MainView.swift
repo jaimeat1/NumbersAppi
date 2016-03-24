@@ -53,7 +53,7 @@ class MainView: UIView, MainViewProtocol, MainViewInfoDelegate {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-
+        
         NSBundle.mainBundle().loadNibNamed("MainView", owner: self, options: nil)
         view.frame = self.bounds
         addSubview(view)

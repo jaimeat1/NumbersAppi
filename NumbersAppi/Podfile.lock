@@ -1,10 +1,13 @@
 PODS:
   - JSONModel (1.2.0)
+  - NSTimer-Blocks (0.0.1)
 
 DEPENDENCIES:
   - JSONModel
+  - NSTimer-Blocks
 
 SPEC CHECKSUMS:
   JSONModel: 12523685c4b623553ccf844bbbf7007624317b2c
+  NSTimer-Blocks: 88faf9aef5f250ead087f3f67ae642517083bf36
 
 COCOAPODS: 0.39.0

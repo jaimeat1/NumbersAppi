@@ -114,6 +114,9 @@
 		6F67D0111C744CB300DB7327 /* PullControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullControllerDelegate.swift; sourceTree = "<group>"; };
 		6F7554811CA44B9C00FC21C8 /* TextLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextLabel.swift; sourceTree = "<group>"; };
 		6F7554851CA468BE00FC21C8 /* MainViewInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewInfo.swift; sourceTree = "<group>"; };
+		6F7554891CA48B8F00FC21C8 /* NumbersAppi-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NumbersAppi-Bridging-Header.h"; sourceTree = "<group>"; };
+		6F75548A1CA48B8F00FC21C8 /* NumbersAppiTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NumbersAppiTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		6F75548B1CA48B9000FC21C8 /* NumbersAppiUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NumbersAppiUITests-Bridging-Header.h"; sourceTree = "<group>"; };
 		6F76D0CA1C7C3BD8001EE8FE /* NumberPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberPickerView.swift; sourceTree = "<group>"; };
 		6F77D47E1C79049B00D755BF /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		6F77D4821C79082800D755BF /* AboutPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutPresenter.swift; sourceTree = "<group>"; };
@@ -262,6 +265,9 @@
 				6FFBD1C41C61DD25008CCE7A /* Products */,
 				CB5A3AB946B07469ACD5EFE5 /* Pods */,
 				B405CAE2EC00C8D1546B306B /* Frameworks */,
+				6F7554891CA48B8F00FC21C8 /* NumbersAppi-Bridging-Header.h */,
+				6F75548A1CA48B8F00FC21C8 /* NumbersAppiTests-Bridging-Header.h */,
+				6F75548B1CA48B9000FC21C8 /* NumbersAppiUITests-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -729,11 +735,14 @@
 			baseConfigurationReference = 983ACE85567C58F710C2892E /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = NumbersAppi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jaimearanaz.NumbersAppi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "NumbersAppi-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -742,11 +751,13 @@
 			baseConfigurationReference = F289FF80505EBDACA6087A26 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = NumbersAppi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jaimearanaz.NumbersAppi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "NumbersAppi-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -754,10 +765,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = NumbersAppiTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jaimearanaz.NumbersAppiTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "NumbersAppiTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NumbersAppi.app/NumbersAppi";
 			};
 			name = Debug;
@@ -766,10 +780,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = NumbersAppiTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jaimearanaz.NumbersAppiTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "NumbersAppiTests-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NumbersAppi.app/NumbersAppi";
 			};
 			name = Release;
@@ -777,10 +793,13 @@
 		6FFBD1F21C61DD25008CCE7A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = NumbersAppiUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jaimearanaz.NumbersAppiUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "NumbersAppiUITests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_TARGET_NAME = NumbersAppi;
 				USES_XCTRUNNER = YES;
 			};
@@ -789,10 +808,12 @@
 		6FFBD1F31C61DD25008CCE7A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = NumbersAppiUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jaimearanaz.NumbersAppiUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "NumbersAppiUITests-Bridging-Header.h";
 				TEST_TARGET_NAME = NumbersAppi;
 				USES_XCTRUNNER = YES;
 			};

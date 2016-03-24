@@ -16,6 +16,10 @@ protocol MainViewInfoDelegate {
 
 struct MainViewInfoViews {
     
+    let animationDuration = 0.3
+    let maximumSize: CGFloat = 150
+    let minimumAlpha: CGFloat = 0.5
+    
     var textResult: UILabel
     
     var shadowView: UIView
@@ -56,6 +60,42 @@ struct MainViewInfoViews {
         self.doubleTapView.hidden = false
         self.doubleTapInfo.hidden = false
         self.doubleTapView.hidden = false
+    }
+    
+    func animateSingle() {
+        
+        let imageToAnimate = UIImageView(frame: singleTapImage.frame)
+        imageToAnimate.image = singleTapImage.image
+        singleTapView.addSubview(imageToAnimate)
+        
+        UIView.animateWithDuration(animationDuration,
+    
+            animations: {
+                
+                var frame = imageToAnimate.frame
+                frame.size.width = self.maximumSize
+                frame.size.height = self.maximumSize
+                imageToAnimate.center = self.singleTapImage.center
+                imageToAnimate.alpha = self.minimumAlpha
+                
+            },
+            
+            completion: { finished in
+                
+//                UIView.animateWithDuration(self.animationDuration,
+//                    animations: { () -> Void in
+//                        imageToAnimate.alpha = 0
+//                    },
+//                    completion: { (<#Bool#>) -> Void in
+//                        imageToAnimate.removeFromSuperview()
+//                })
+            }
+        )
+        
+    }
+    
+    func animateDouble() {
+
     }
 }
 
