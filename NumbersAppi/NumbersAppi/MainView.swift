@@ -26,7 +26,7 @@ class MainView: UIView, MainViewProtocol {
     @IBOutlet var typeSelector: UISegmentedControl!
     @IBOutlet var numberPickerView: NumberPickerView!
     @IBOutlet var datePickerView: DatePickerView!
-    @IBOutlet var textResult: UILabel!
+    @IBOutlet var textResult: TextLabel!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
     var delegate: MainViewDelegate!
