@@ -56,13 +56,15 @@ class MainViewController: UIViewController, MainViewControllerDelegate, PullCont
     override func viewDidAppear(animated: Bool) {
         
         super.viewDidAppear(animated)
-
-        pullController?.disablePullable()
-        mainView.showInfoView()
         
-//        if presenterDelegate.shouldShowPullableInformation() {
-//            pullController?.showPullable()
-//        }
+        if presenterDelegate.shouldShowViewInformation() {
+            
+            mainView.showInfoView()
+            
+        } else if presenterDelegate.shouldShowPullableInformation() {
+            
+            pullController?.showPullable()
+        }
     }
     
     // MARK: - MainViewControllerDelegate methods
@@ -111,8 +113,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate, PullCont
 
     func didRequestNumber(number: Int, ofType type: ApiRequestType) {
         
-        pullController?.showPullable()
-        //presenterDelegate.didRequestNumber(number, ofType: type)
+        presenterDelegate.didRequestNumber(number, ofType: type)
     }
     
     func didRequestDate(month month: Int, day: Int) {

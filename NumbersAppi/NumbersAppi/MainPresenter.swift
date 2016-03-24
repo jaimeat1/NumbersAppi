@@ -24,11 +24,14 @@ protocol MainPresenterDelegate {
     func userSelectedAbout()
     
     func shouldShowPullableInformation() -> Bool
+    
+    func shouldShowViewInformation() -> Bool
 }
 
 class MainPresenter: MainPresenterDelegate {
     
-    let pullableWasShown = "pullableWasShown"
+    let showPullable = "showPullable"
+    let viewInfoWasShown = "viewInfoWasShown"
 
     var controllerDelegate: MainViewControllerDelegate
     
@@ -67,15 +70,24 @@ class MainPresenter: MainPresenterDelegate {
     func shouldShowPullableInformation() -> Bool {
         
         let userDefaults = NSUserDefaults.standardUserDefaults()
-        let pullableAlreadyShown = userDefaults.boolForKey(pullableWasShown)
+        let shouldShowPullable = userDefaults.boolForKey(showPullable)
         
-        if pullableAlreadyShown {
+        return shouldShowPullable
+    }
+    
+    func shouldShowViewInformation() -> Bool {
+        
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        let viewInfoAlreadyShown = userDefaults.boolForKey(viewInfoWasShown)
+        
+        if viewInfoAlreadyShown {
             
             return false
             
         } else {
             
-            userDefaults.setBool(true, forKey: pullableWasShown)
+            userDefaults.setBool(true, forKey: viewInfoWasShown)
+            userDefaults.setBool(true, forKey: showPullable)
             return true
         }
     }
