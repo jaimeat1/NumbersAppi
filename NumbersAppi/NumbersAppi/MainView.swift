@@ -61,6 +61,18 @@ class MainView: UIView, MainViewProtocol, MainViewInfoDelegate {
         setupTypeSelector()
         setupTextResult()
         addTapGestures()
+        
+        let infoViews = MainViewInfoViews(
+            textResult: textResult,
+            shadowView: shadowView,
+            singleTapView: singleTapView,
+            singleTapInfo: singleTapInfo,
+            singleTapImage: singleTapImage,
+            doubleTapView:  doubleTapView,
+            doubleTapInfo:  doubleTapInfo,
+            doubleTapImage: doubleTapImage)
+        
+        mainViewInfo = MainViewInfo(infoViews: infoViews, delegate: self)
     }
     
     // MARK: - Action methods

@@ -16,16 +16,16 @@ protocol MainViewInfoDelegate {
 
 struct MainViewInfoViews {
     
-    var textResult: UILabel!
+    var textResult: UILabel
     
-    var shadowView: UIView!
-    
-    var singleTapView: UIView!
-    var singleTapInfo: UILabel!
-    var singleTapImage: UIImageView!
-    var doubleTapView: UIView!
-    var doubleTapInfo: UILabel!
-    var doubleTapImage: UIImageView!
+    var shadowView: UIView
+
+    var singleTapView: UIView
+    var singleTapInfo: UILabel
+    var singleTapImage: UIImageView
+    var doubleTapView: UIView
+    var doubleTapInfo: UILabel
+    var doubleTapImage: UIImageView
     
     func hide() {
         
@@ -41,12 +41,17 @@ struct MainViewInfoViews {
     func showSingle() {
         
         self.shadowView.hidden = false
+        
         self.singleTapView.hidden = false
         self.singleTapInfo.hidden = false
         self.singleTapImage.hidden = false
     }
     
     func showDouble() {
+        
+        self.singleTapView.hidden = true
+        self.singleTapInfo.hidden = true
+        self.singleTapImage.hidden = true
         
         self.doubleTapView.hidden = false
         self.doubleTapInfo.hidden = false
@@ -59,8 +64,6 @@ class MainViewInfo {
     var delegate: MainViewInfoDelegate!
     
     private var infoViews: MainViewInfoViews
-    private var singleTapGesture: UITapGestureRecognizer!
-    private var doubleTapGesture: UITapGestureRecognizer!
  
     // MARK: Lifecycle methods
     
@@ -76,23 +79,24 @@ class MainViewInfo {
     
     func show() {
         
+        infoViews.hide()
         infoViews.showSingle()
         addTapGestureForSingleView()
     }
     
     // MARK: Action methods
     
-    @IBAction func didTapWithSingleViewShowing() {
+    @IBAction func didTapWithSingleViewShowing(gesture: UITapGestureRecognizer) {
         
         infoViews.showDouble()
-        removeGestureToAllViews(singleTapGesture)
+        removeTapGestureForSingleView()
         addTapGestureForDoubleView()
     }
     
-    @IBAction func didTapWithDoubleViewShowing() {
+    @IBAction func didTapWithDoubleViewShowing(gesture: UITapGestureRecognizer) {
         
         infoViews.hide()
-        removeGestureToAllViews(doubleTapGesture)
+        removeTapGestureForDoubleView()
         delegate.didHideInfoView()
     }
     
@@ -106,32 +110,66 @@ class MainViewInfo {
     
     private func addTapGestureForSingleView() {
         
-        singleTapGesture = UITapGestureRecognizer.init(target: self, action: "didTapWithSingleViewShowing")
-        addGestureToAllViews(singleTapGesture)
+        let views = [
+            infoViews.textResult,
+            infoViews.shadowView,
+            infoViews.singleTapView,
+            infoViews.singleTapInfo,
+            infoViews.singleTapImage]
+        
+        for oneView in views {
+            
+            let tapGesture = UITapGestureRecognizer.init(target: self, action: "didTapWithSingleViewShowing:")
+            oneView.addGestureRecognizer(tapGesture)
+        }
     }
     
     private func addTapGestureForDoubleView() {
+
+        let views = [
+            infoViews.textResult,
+            infoViews.shadowView,
+            infoViews.doubleTapView,
+            infoViews.doubleTapInfo,
+            infoViews.doubleTapImage]
         
-        doubleTapGesture = UITapGestureRecognizer.init(target: self, action: "didTapWithDoubleViewShowing")
-        addGestureToAllViews(doubleTapGesture)
+        for oneView in views {
+            
+            let tapGesture = UITapGestureRecognizer.init(target: self, action: "didTapWithDoubleViewShowing:")
+            oneView.addGestureRecognizer(tapGesture)
+        }
     }
     
-    private func addGestureToAllViews(tapGesture: UITapGestureRecognizer) {
+    private func removeTapGestureForSingleView() {
         
-        infoViews.textResult.addGestureRecognizer(tapGesture)
-        infoViews.shadowView.addGestureRecognizer(tapGesture)
-        infoViews.singleTapView.addGestureRecognizer(tapGesture)
-        infoViews.singleTapInfo.addGestureRecognizer(tapGesture)
-        infoViews.singleTapImage.addGestureRecognizer(tapGesture)
+        let views = [
+            infoViews.textResult,
+            infoViews.shadowView,
+            infoViews.singleTapView,
+            infoViews.singleTapInfo,
+            infoViews.singleTapImage]
+        
+        for oneView in views {
+            
+            let tapGestures = oneView.gestureRecognizers
+            oneView.removeGestureRecognizer(tapGestures![0])
+        }
     }
     
-    private func removeGestureToAllViews(tapGesture: UITapGestureRecognizer) {
+    private func removeTapGestureForDoubleView() {
         
-        infoViews.textResult.removeGestureRecognizer(tapGesture)
-        infoViews.shadowView.removeGestureRecognizer(tapGesture)
-        infoViews.singleTapView.removeGestureRecognizer(tapGesture)
-        infoViews.singleTapInfo.removeGestureRecognizer(tapGesture)
-        infoViews.singleTapImage.removeGestureRecognizer(tapGesture)
+        let views = [
+            infoViews.textResult,
+            infoViews.shadowView,
+            infoViews.doubleTapView,
+            infoViews.doubleTapInfo,
+            infoViews.doubleTapImage]
+        
+        for oneView in views {
+            
+            let tapGestures = oneView.gestureRecognizers
+            oneView.removeGestureRecognizer(tapGestures![0])
+        }
     }
     
 }
