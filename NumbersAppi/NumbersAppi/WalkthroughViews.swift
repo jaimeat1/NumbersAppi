@@ -11,8 +11,6 @@ import UIKit
 
 struct WalkthroughViews {
     
-    let animationDuration = 0.3
-    let repeatAnimationDuration = 1.0
     let maximumSize: CGFloat = 150
     let minimumAlpha: CGFloat = 0.5
     
@@ -109,52 +107,106 @@ struct WalkthroughViews {
     // MARK: Private methods
     
     mutating private func startSingleTapAnimation() {
-        
-        let imageToAnimate = UIImageView(frame: singleTapImage.frame)
-        imageToAnimate.image = singleTapImage.image
-        singleTapView.addSubview(imageToAnimate)
-        
-        let increaseSizeAnimation: () -> Void = {
-            
-            imageToAnimate.alpha = 1
-            imageToAnimate.frame.size.width = self.maximumSize
-            imageToAnimate.frame.size.height = self.maximumSize
-            imageToAnimate.center = self.singleTapImage.center
-            imageToAnimate.alpha = self.minimumAlpha
-        }
-        
-        let standForAWhileAnimation: () -> Void = {
-            
-            UIView.animateWithDuration(self.animationDuration,
-                animations: { () -> Void in
-                    imageToAnimate.alpha = 0
-                },
-                completion: { (Bool) -> Void in
-                    imageToAnimate.frame.size.width = self.singleTapImage.frame.size.width
-                    imageToAnimate.frame.size.height = self.singleTapImage.frame.size.height
-                    imageToAnimate.center = self.singleTapImage.center
-            })
-        }
-    
-        let beatAnimation: () -> Void = {
-            
-            UIView.animateWithDuration(self.animationDuration,
-                animations: {
-                    increaseSizeAnimation()
-                },
-                completion: { finished in
-                    standForAWhileAnimation()
-                }
-            )
-        }
+
+        let singleBeatAnimation = beatAnimation(
+            originalImage: singleTapImage,
+            changeDuration: 0.3,
+            standDuration: 0.3)
  
-        timer = NSTimer.scheduledTimerWithTimeInterval(repeatAnimationDuration,
+        timer = NSTimer.scheduledTimerWithTimeInterval(1.0,
             block: { () -> Void in
-                beatAnimation()
+                singleBeatAnimation()
             }, repeats: true) as? NSTimer
     }
     
-    private func startDoubleTapAnimation() {
+    mutating private func startDoubleTapAnimation() {
+
+        let firstBeatAnimation = beatAnimation(
+            originalImage: doubleTapImage,
+            changeDuration: 0.2,
+            standDuration: 0.2)
         
+        let secondBeatAnimation = beatAnimation(
+            originalImage: doubleTapImage,
+            changeDuration: 0.2,
+            standDuration: 0.2)
+        
+        timer = NSTimer.scheduledTimerWithTimeInterval(1.0,
+            block: { () -> Void in
+                
+                NSTimer.scheduledTimerWithTimeInterval(0,
+                    block: { () -> Void in
+                        firstBeatAnimation()
+                    }, repeats: false) as? NSTimer
+                
+                NSTimer.scheduledTimerWithTimeInterval(0.3,
+                    block: { () -> Void in
+                        secondBeatAnimation()
+                    }, repeats: false) as? NSTimer
+                
+            }, repeats: true) as? NSTimer
+    }
+    
+    private func increaseSizeAnimation(animatedView animatedView: UIView, originalCenter: CGPoint) -> () -> Void {
+        
+        let increaseSizeAnimation: () -> Void = {
+            
+            animatedView.alpha = 1
+            animatedView.frame.size.width = self.maximumSize
+            animatedView.frame.size.height = self.maximumSize
+            animatedView.center = originalCenter
+            animatedView.alpha = self.minimumAlpha
+        }
+        
+        return increaseSizeAnimation
+    }
+    
+    private func standForAWhileAnimation(
+        animatedView animatedView: UIView,
+        duration: NSTimeInterval,
+        originalView: UIView) -> () -> Void {
+            
+            let standForAWhileAnimation: () -> Void = {
+                
+                UIView.animateWithDuration(duration,
+                    animations: { () -> Void in
+                        animatedView.alpha = 0
+                    },
+                    completion: { (Bool) -> Void in
+                        animatedView.frame.size.width = originalView.frame.size.width
+                        animatedView.frame.size.height = originalView.frame.size.height
+                        animatedView.center = originalView.center
+                })
+            }
+            
+            return standForAWhileAnimation
+    }
+    
+    private func beatAnimation(originalImage originalImage: UIImageView, changeDuration: NSTimeInterval, standDuration: NSTimeInterval) -> () -> Void  {
+        
+        let imageToAnimate = UIImageView(frame: originalImage.frame)
+        imageToAnimate.image = originalImage.image
+        originalImage.superview?.addSubview(imageToAnimate)
+        
+        let singleIncreaseAnimation = increaseSizeAnimation(animatedView: imageToAnimate, originalCenter: originalImage.center)
+        
+        let singleStandAnimation = standForAWhileAnimation(
+            animatedView: imageToAnimate,
+            duration: standDuration,
+            originalView: originalImage)
+        
+        let myBeatAnimation: () -> Void = {
+            
+            UIView.animateWithDuration(changeDuration,
+                animations: {
+                    singleIncreaseAnimation()
+                },
+                completion: { finished in
+                    singleStandAnimation()
+                }
+            )
+        }
+        
+        return myBeatAnimation
     }
 }
