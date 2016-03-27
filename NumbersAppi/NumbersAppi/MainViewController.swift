@@ -57,14 +57,16 @@ class MainViewController: UIViewController, MainViewControllerDelegate, PullCont
         
         super.viewDidAppear(animated)
         
-        if presenterDelegate.shouldShowViewInformation() {
-            
-            mainView.showInfoView()
-            
-        } else if presenterDelegate.shouldShowPullableInformation() {
-            
-            pullController?.showPullable()
-        }
+        mainView.showInfoView()
+        
+//        if presenterDelegate.shouldShowViewInformation() {
+//            
+//            mainView.showInfoView()
+//            
+//        } else if presenterDelegate.shouldShowPullableInformation() {
+//            
+//            pullController?.showPullable()
+//        }
     }
     
     // MARK: - MainViewControllerDelegate methods

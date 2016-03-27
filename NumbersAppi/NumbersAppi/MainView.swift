@@ -22,7 +22,7 @@ protocol MainViewDelegate {
     func didHideInfoView()
 }
 
-class MainView: UIView, MainViewProtocol, MainViewInfoDelegate {
+class MainView: UIView, MainViewProtocol, WalkthroughControllerDelegate {
     
     @IBOutlet var view: UIView!
     @IBOutlet var typeSelector: UISegmentedControl!
@@ -39,7 +39,7 @@ class MainView: UIView, MainViewProtocol, MainViewInfoDelegate {
     @IBOutlet var doubleTapInfo: UILabel!
     @IBOutlet var doubleTapImage: UIImageView!
     
-    var mainViewInfo: MainViewInfo!
+    var walkthroughController: WalkthroughController!
     var delegate: MainViewDelegate!
     
     private var singleTapGesture: UITapGestureRecognizer!
@@ -62,7 +62,7 @@ class MainView: UIView, MainViewProtocol, MainViewInfoDelegate {
         setupTextResult()
         addTapGestures()
         
-        let infoViews = MainViewInfoViews(
+        let walkthroughViews = WalkthroughViews(
             textResult: textResult,
             shadowView: shadowView,
             singleTapView: singleTapView,
@@ -72,7 +72,7 @@ class MainView: UIView, MainViewProtocol, MainViewInfoDelegate {
             doubleTapInfo:  doubleTapInfo,
             doubleTapImage: doubleTapImage)
         
-        mainViewInfo = MainViewInfo(infoViews: infoViews, delegate: self)
+        walkthroughController = WalkthroughController(walkthroughViews: walkthroughViews, delegate: self)
     }
     
     // MARK: - Action methods
@@ -148,12 +148,12 @@ class MainView: UIView, MainViewProtocol, MainViewInfoDelegate {
     func showInfoView() {
         
         removeTapGestures()
-        mainViewInfo.show()
+        walkthroughController.show()
     }
     
-    // MARK: - MainViewInfoDelegate methods
+    // MARK: - WalkthroughControllerDelegate methods
     
-    func didHideInfoView() {
+    func didDismissWalkthrough() {
         
         delegate.didHideInfoView()
         addTapGestures()

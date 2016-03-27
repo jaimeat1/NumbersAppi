@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F4BBCFC1CA7EC1B00CD40EF /* WalkthroughViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4BBCFB1CA7EC1B00CD40EF /* WalkthroughViews.swift */; };
+		6F4BBCFD1CA7EC1B00CD40EF /* WalkthroughViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4BBCFB1CA7EC1B00CD40EF /* WalkthroughViews.swift */; };
+		6F4BBCFE1CA7EC1B00CD40EF /* WalkthroughViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4BBCFB1CA7EC1B00CD40EF /* WalkthroughViews.swift */; };
 		6F4E7E511C7EE08900C64768 /* ConstraintHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4E7E501C7EE08900C64768 /* ConstraintHelper.swift */; };
 		6F4E7E521C7EE08900C64768 /* ConstraintHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4E7E501C7EE08900C64768 /* ConstraintHelper.swift */; };
 		6F4E7E531C7EE08900C64768 /* ConstraintHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4E7E501C7EE08900C64768 /* ConstraintHelper.swift */; };
@@ -34,9 +37,9 @@
 		6F7554821CA44B9D00FC21C8 /* TextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7554811CA44B9C00FC21C8 /* TextLabel.swift */; };
 		6F7554831CA44B9D00FC21C8 /* TextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7554811CA44B9C00FC21C8 /* TextLabel.swift */; };
 		6F7554841CA44B9D00FC21C8 /* TextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7554811CA44B9C00FC21C8 /* TextLabel.swift */; };
-		6F7554861CA468BE00FC21C8 /* MainViewInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7554851CA468BE00FC21C8 /* MainViewInfo.swift */; };
-		6F7554871CA468BE00FC21C8 /* MainViewInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7554851CA468BE00FC21C8 /* MainViewInfo.swift */; };
-		6F7554881CA468BE00FC21C8 /* MainViewInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7554851CA468BE00FC21C8 /* MainViewInfo.swift */; };
+		6F7554861CA468BE00FC21C8 /* WalkthroughController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7554851CA468BE00FC21C8 /* WalkthroughController.swift */; };
+		6F7554871CA468BE00FC21C8 /* WalkthroughController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7554851CA468BE00FC21C8 /* WalkthroughController.swift */; };
+		6F7554881CA468BE00FC21C8 /* WalkthroughController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7554851CA468BE00FC21C8 /* WalkthroughController.swift */; };
 		6F76D0CB1C7C3BD8001EE8FE /* NumberPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F76D0CA1C7C3BD8001EE8FE /* NumberPickerView.swift */; };
 		6F76D0CC1C7C3BD8001EE8FE /* NumberPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F76D0CA1C7C3BD8001EE8FE /* NumberPickerView.swift */; };
 		6F76D0CD1C7C3BD8001EE8FE /* NumberPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F76D0CA1C7C3BD8001EE8FE /* NumberPickerView.swift */; };
@@ -102,6 +105,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6F4BBCFB1CA7EC1B00CD40EF /* WalkthroughViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkthroughViews.swift; sourceTree = "<group>"; };
 		6F4E7E501C7EE08900C64768 /* ConstraintHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintHelper.swift; sourceTree = "<group>"; };
 		6F4FBF731C73056A00C427FA /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		6F4FBF771C73057900C427FA /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -113,7 +117,7 @@
 		6F67D00D1C744B6000DB7327 /* PullController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullController.swift; sourceTree = "<group>"; };
 		6F67D0111C744CB300DB7327 /* PullControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullControllerDelegate.swift; sourceTree = "<group>"; };
 		6F7554811CA44B9C00FC21C8 /* TextLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextLabel.swift; sourceTree = "<group>"; };
-		6F7554851CA468BE00FC21C8 /* MainViewInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewInfo.swift; sourceTree = "<group>"; };
+		6F7554851CA468BE00FC21C8 /* WalkthroughController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkthroughController.swift; sourceTree = "<group>"; };
 		6F7554891CA48B8F00FC21C8 /* NumbersAppi-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NumbersAppi-Bridging-Header.h"; sourceTree = "<group>"; };
 		6F75548A1CA48B8F00FC21C8 /* NumbersAppiTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NumbersAppiTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		6F75548B1CA48B9000FC21C8 /* NumbersAppiUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NumbersAppiUITests-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -196,6 +200,7 @@
 				6FF289321C70E8200075F269 /* AboutViewController.swift */,
 				6F67D00D1C744B6000DB7327 /* PullController.swift */,
 				6F67D0111C744CB300DB7327 /* PullControllerDelegate.swift */,
+				6F7554851CA468BE00FC21C8 /* WalkthroughController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -229,11 +234,11 @@
 		6FF289271C70E0A70075F269 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6F4BBCFB1CA7EC1B00CD40EF /* WalkthroughViews.swift */,
 				6FF289461C70E9350075F269 /* MainView.swift */,
 				6F76D0CA1C7C3BD8001EE8FE /* NumberPickerView.swift */,
 				6F5618771C8EB2EB00099DF5 /* DatePickerView.swift */,
 				6F7554811CA44B9C00FC21C8 /* TextLabel.swift */,
-				6F7554851CA468BE00FC21C8 /* MainViewInfo.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -532,6 +537,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F4BBCFC1CA7EC1B00CD40EF /* WalkthroughViews.swift in Sources */,
 				6F7554821CA44B9D00FC21C8 /* TextLabel.swift in Sources */,
 				6FF289331C70E8200075F269 /* AboutViewController.swift in Sources */,
 				6F67D00E1C744B6000DB7327 /* PullController.swift in Sources */,
@@ -549,7 +555,7 @@
 				6FF2893B1C70E8A50075F269 /* MainViewControllerDelegate.swift in Sources */,
 				6F5BD55C1C67A34600775424 /* ApiRequest.swift in Sources */,
 				6F5BD5641C67A89D00775424 /* ApiServices.swift in Sources */,
-				6F7554861CA468BE00FC21C8 /* MainViewInfo.swift in Sources */,
+				6F7554861CA468BE00FC21C8 /* WalkthroughController.swift in Sources */,
 				6F77D4871C79085F00D755BF /* AboutPresenterDelegate.swift in Sources */,
 				6F67D0121C744CB300DB7327 /* PullControllerDelegate.swift in Sources */,
 			);
@@ -559,6 +565,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F4BBCFD1CA7EC1B00CD40EF /* WalkthroughViews.swift in Sources */,
 				6F7554831CA44B9D00FC21C8 /* TextLabel.swift in Sources */,
 				6FF289341C70E8200075F269 /* AboutViewController.swift in Sources */,
 				6F67D00F1C744B6000DB7327 /* PullController.swift in Sources */,
@@ -576,7 +583,7 @@
 				6FF2893C1C70E8A50075F269 /* MainViewControllerDelegate.swift in Sources */,
 				6FFBD1DC1C61DD25008CCE7A /* NumbersAppiTests.swift in Sources */,
 				6FF2892A1C70E0F40075F269 /* MainViewController.swift in Sources */,
-				6F7554871CA468BE00FC21C8 /* MainViewInfo.swift in Sources */,
+				6F7554871CA468BE00FC21C8 /* WalkthroughController.swift in Sources */,
 				6F77D4881C79085F00D755BF /* AboutPresenterDelegate.swift in Sources */,
 				6F67D0131C744CB300DB7327 /* PullControllerDelegate.swift in Sources */,
 			);
@@ -586,6 +593,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F4BBCFE1CA7EC1B00CD40EF /* WalkthroughViews.swift in Sources */,
 				6F7554841CA44B9D00FC21C8 /* TextLabel.swift in Sources */,
 				6FF289351C70E8200075F269 /* AboutViewController.swift in Sources */,
 				6F67D0101C744B6000DB7327 /* PullController.swift in Sources */,
@@ -603,7 +611,7 @@
 				6FF2893D1C70E8A50075F269 /* MainViewControllerDelegate.swift in Sources */,
 				6FFBD1E71C61DD25008CCE7A /* NumbersAppiUITests.swift in Sources */,
 				6FF2892B1C70E0F40075F269 /* MainViewController.swift in Sources */,
-				6F7554881CA468BE00FC21C8 /* MainViewInfo.swift in Sources */,
+				6F7554881CA468BE00FC21C8 /* WalkthroughController.swift in Sources */,
 				6F77D4891C79085F00D755BF /* AboutPresenterDelegate.swift in Sources */,
 				6F67D0141C744CB300DB7327 /* PullControllerDelegate.swift in Sources */,
 			);
