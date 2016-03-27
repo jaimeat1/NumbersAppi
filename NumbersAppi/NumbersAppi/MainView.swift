@@ -19,7 +19,7 @@ protocol MainViewDelegate {
     
     func didRequestRandomDate()
     
-    func didHideInfoView()
+    func didHideWalkthrough()
 }
 
 class MainView: UIView, MainViewProtocol, WalkthroughControllerDelegate {
@@ -145,7 +145,7 @@ class MainView: UIView, MainViewProtocol, WalkthroughControllerDelegate {
         datePickerView.setDate(month: month, day: day)
     }
     
-    func showInfoView() {
+    func showWalkthrough() {
         
         removeTapGestures()
         walkthroughController.show()
@@ -155,7 +155,7 @@ class MainView: UIView, MainViewProtocol, WalkthroughControllerDelegate {
     
     func didDismissWalkthrough() {
         
-        delegate.didHideInfoView()
+        delegate.didHideWalkthrough()
         addTapGestures()
     }
     

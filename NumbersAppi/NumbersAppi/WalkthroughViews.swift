@@ -147,6 +147,34 @@ struct WalkthroughViews {
             }, repeats: true) as? NSTimer
     }
     
+    private func beatAnimation(originalImage originalImage: UIImageView, changeDuration: NSTimeInterval, standDuration: NSTimeInterval) -> () -> Void  {
+        
+        let imageToAnimate = UIImageView(frame: originalImage.frame)
+        imageToAnimate.image = originalImage.image
+        originalImage.superview?.addSubview(imageToAnimate)
+        
+        let singleIncreaseAnimation = increaseSizeAnimation(animatedView: imageToAnimate, originalCenter: originalImage.center)
+        
+        let singleStandAnimation = standForAWhileAnimation(
+            animatedView: imageToAnimate,
+            duration: standDuration,
+            originalView: originalImage)
+        
+        let myBeatAnimation: () -> Void = {
+            
+            UIView.animateWithDuration(changeDuration,
+                animations: {
+                    singleIncreaseAnimation()
+                },
+                completion: { finished in
+                    singleStandAnimation()
+                }
+            )
+        }
+        
+        return myBeatAnimation
+    }
+    
     private func increaseSizeAnimation(animatedView animatedView: UIView, originalCenter: CGPoint) -> () -> Void {
         
         let increaseSizeAnimation: () -> Void = {
@@ -180,33 +208,5 @@ struct WalkthroughViews {
             }
             
             return standForAWhileAnimation
-    }
-    
-    private func beatAnimation(originalImage originalImage: UIImageView, changeDuration: NSTimeInterval, standDuration: NSTimeInterval) -> () -> Void  {
-        
-        let imageToAnimate = UIImageView(frame: originalImage.frame)
-        imageToAnimate.image = originalImage.image
-        originalImage.superview?.addSubview(imageToAnimate)
-        
-        let singleIncreaseAnimation = increaseSizeAnimation(animatedView: imageToAnimate, originalCenter: originalImage.center)
-        
-        let singleStandAnimation = standForAWhileAnimation(
-            animatedView: imageToAnimate,
-            duration: standDuration,
-            originalView: originalImage)
-        
-        let myBeatAnimation: () -> Void = {
-            
-            UIView.animateWithDuration(changeDuration,
-                animations: {
-                    singleIncreaseAnimation()
-                },
-                completion: { finished in
-                    singleStandAnimation()
-                }
-            )
-        }
-        
-        return myBeatAnimation
     }
 }

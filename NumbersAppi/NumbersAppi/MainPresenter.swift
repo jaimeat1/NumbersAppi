@@ -25,13 +25,13 @@ protocol MainPresenterDelegate {
     
     func shouldShowPullableInformation() -> Bool
     
-    func shouldShowViewInformation() -> Bool
+    func shouldShowWalkthrough() -> Bool
 }
 
 class MainPresenter: MainPresenterDelegate {
     
     let showPullable = "showPullable"
-    let viewInfoWasShown = "viewInfoWasShown"
+    let walkthroughWasShown = "walkthroughWasShown"
 
     var controllerDelegate: MainViewControllerDelegate
     
@@ -75,10 +75,10 @@ class MainPresenter: MainPresenterDelegate {
         return shouldShowPullable
     }
     
-    func shouldShowViewInformation() -> Bool {
+    func shouldShowWalkthrough() -> Bool {
         
         let userDefaults = NSUserDefaults.standardUserDefaults()
-        let viewInfoAlreadyShown = userDefaults.boolForKey(viewInfoWasShown)
+        let viewInfoAlreadyShown = userDefaults.boolForKey(walkthroughWasShown)
         
         if viewInfoAlreadyShown {
             
@@ -86,7 +86,7 @@ class MainPresenter: MainPresenterDelegate {
             
         } else {
             
-            userDefaults.setBool(true, forKey: viewInfoWasShown)
+            userDefaults.setBool(true, forKey: walkthroughWasShown)
             userDefaults.setBool(true, forKey: showPullable)
             return true
         }
