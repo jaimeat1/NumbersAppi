@@ -13,7 +13,7 @@ class PullController {
 
     private let maxPullableDistance: CGFloat = 80.0
     private let animationDuration: NSTimeInterval = 0.3
-    private let showPullableDuration: NSTimeInterval = 2.0
+    private let showPullableDuration: NSTimeInterval = 1.0
     private let minimunAlpha: CGFloat = 0.8
     private let factorToShowTranslucentView: CGFloat = 0.90
     

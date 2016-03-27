@@ -20,6 +20,8 @@ protocol MainViewProtocol {
     func setNumber(number: Int)
     
     func setDate(month month: Int, day: Int)
+    
+    func showWalkthrough()
 }
 
 class MainViewController: UIViewController, MainViewControllerDelegate, PullControllerDelegate, MainViewDelegate {
@@ -54,8 +56,13 @@ class MainViewController: UIViewController, MainViewControllerDelegate, PullCont
     override func viewDidAppear(animated: Bool) {
         
         super.viewDidAppear(animated)
-        
-        if presenterDelegate.shouldShowPullableInformation() {
+
+        if presenterDelegate.shouldShowWalkthrough() {
+            
+            mainView.showWalkthrough()
+            
+        } else if presenterDelegate.shouldShowPullableInformation() {
+            
             pullController?.showPullable()
         }
     }
@@ -106,8 +113,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate, PullCont
 
     func didRequestNumber(number: Int, ofType type: ApiRequestType) {
         
-        pullController?.showPullable()
-        //presenterDelegate.didRequestNumber(number, ofType: type)
+        presenterDelegate.didRequestNumber(number, ofType: type)
     }
     
     func didRequestDate(month month: Int, day: Int) {
@@ -123,5 +129,10 @@ class MainViewController: UIViewController, MainViewControllerDelegate, PullCont
     func didRequestRandomDate() {
         
         presenterDelegate.didRequestRandomDate()
+    }
+    
+    func didHideWalkthrough() {
+        
+        pullController?.enablePullable()
     }
 }
