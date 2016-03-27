@@ -11,7 +11,8 @@ import UIKit
 
 struct WalkthroughViews {
     
-    let animationDuration = 0.5
+    let animationDuration = 0.3
+    let repeatAnimationDuration = 1.0
     let maximumSize: CGFloat = 150
     let minimumAlpha: CGFloat = 0.5
     
@@ -129,9 +130,9 @@ struct WalkthroughViews {
                     imageToAnimate.alpha = 0
                 },
                 completion: { (Bool) -> Void in
-                    imageToAnimate.center = self.singleTapImage.center
                     imageToAnimate.frame.size.width = self.singleTapImage.frame.size.width
                     imageToAnimate.frame.size.height = self.singleTapImage.frame.size.height
+                    imageToAnimate.center = self.singleTapImage.center
             })
         }
     
@@ -147,7 +148,7 @@ struct WalkthroughViews {
             )
         }
  
-        timer = NSTimer.scheduledTimerWithTimeInterval(2.0,
+        timer = NSTimer.scheduledTimerWithTimeInterval(repeatAnimationDuration,
             block: { () -> Void in
                 beatAnimation()
             }, repeats: true) as? NSTimer
