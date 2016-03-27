@@ -22,16 +22,9 @@ class DatePickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
     private let dayPickerWidth: CGFloat = 60
     private let pickersHorizontalSpace: CGFloat = 20
     
-    private var monthContainer: UIView!
     private var monthPicker: UIPickerView!
-    private var monthUpButton: UIButton!
-    private var monthDownButton: UIButton!
-    
-    private var dayContainer: UIView!
     private var dayPicker: UIPickerView!
-    private var dayUpButton: UIButton!
-    private var dayDownButton: UIButton!
-    
+
     private var mainContainer: UIView!
     
     // MARK: Lifecycle objets

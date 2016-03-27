@@ -25,7 +25,7 @@ class AboutPresenter: AboutPresenterDelegate {
     
     // MARK: - AboutPresenterDelegate methods
     
-    func backButtonPressed() {
+    func doneButtonPressed() {
         
         Coordinator.sharedInstance.presentMainFromAbout()
     }

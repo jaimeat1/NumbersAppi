@@ -6,8 +6,7 @@
   Copyright © 2016 Jaime Aranaz. All rights reserved.
 */
 
-"PULL_ABOUT" = "Pull to see About NumbersAppi";
-"DOUBLE_TAP" = "Double tap above for random number";
+"PULL_ABOUT" = "Pull to see About";
 
 "TYPE_TRIVIA" = "Trivia";
 "TYPE_MATH" = "Math";

@@ -51,6 +51,15 @@ class MainViewController: UIViewController, MainViewControllerDelegate, PullCont
         aboutLabel.text = NSLocalizedString("PULL_ABOUT", comment: "Pull to see about")
     }
     
+    override func viewDidAppear(animated: Bool) {
+        
+        super.viewDidAppear(animated)
+        
+        if presenterDelegate.shouldShowPullableInformation() {
+            pullController?.showPullable()
+        }
+    }
+    
     // MARK: - MainViewControllerDelegate methods
     
     func startLoading() {
@@ -97,7 +106,8 @@ class MainViewController: UIViewController, MainViewControllerDelegate, PullCont
 
     func didRequestNumber(number: Int, ofType type: ApiRequestType) {
         
-        presenterDelegate.didRequestNumber(number, ofType: type)
+        pullController?.showPullable()
+        //presenterDelegate.didRequestNumber(number, ofType: type)
     }
     
     func didRequestDate(month month: Int, day: Int) {
