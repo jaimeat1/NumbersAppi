@@ -54,6 +54,9 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         updatePickerConstraints()
         updateUpperContainerConstraints()
         updateBottomContainerConstraints()
+        
+        updateButtonsConstraints(upperButtons)
+        updateButtonsConstraints(bottomButtons)
     }
     
     override func layoutSubviews() {
@@ -152,7 +155,7 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         pickerView.translatesAutoresizingMaskIntoConstraints = false
         pickerView.delegate = self
         pickerView.dataSource = self
-        pickerView.userInteractionEnabled = false
+        pickerView.userInteractionEnabled = true
         
         addSubview(pickerView)
         centerAllPickerComponents()
@@ -222,8 +225,13 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     
     private func updatePickerConstraints() {
         
+        let basicPickerWitdh = CGFloat(pickerComponentWidth) * CGFloat(pickerNumberOfComponents)
+        let extraPickerWidth = CGFloat(pickerNumberOfComponents - 1) * CGFloat(pickerComponentExtraWidth)
+        let pickerWidth = basicPickerWitdh + extraPickerWidth
+        
+        ConstraintHelper.viewWidth(pickerView, equalsTo: pickerWidth)
+        ConstraintHelper.sameHeightThanSuperview(pickerView)
         ConstraintHelper.centerInSuperview(pickerView)
-        ConstraintHelper.sameSizeThanSuperview(pickerView)
     }
     
     private func updateUpperContainerConstraints() {
@@ -247,19 +255,13 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         var index = 0
 
         for oneButton in buttons as! [UIButton] {
-            
-            ConstraintHelper.centerVerticalyInSuperview(oneButton)
 
-            let componentWidth = pickerComponentWidth + pickerComponentExtraWidth
-            let buttonOffset = (componentWidth - buttonSize) / 2
-            let superviewWidth: CGFloat = (oneButton.superview?.frame.size.width)!
-            let startOffset = (superviewWidth - (componentWidth * CGFloat(pickerNumberOfComponents))) / 2
+            let componentWitdh = pickerComponentWidth + pickerComponentExtraWidth
+            let offset = 3
+            let horizontalSpace = (componentWitdh * CGFloat(index)) + CGFloat(offset)
             
-            let firstButtonHorizontalSpace = startOffset + buttonOffset
-            let otherButtonHorizontalSpace = startOffset + (componentWidth * CGFloat(index)) + buttonOffset
-            
-            let horizontalSpace = (index == 0) ? firstButtonHorizontalSpace : otherButtonHorizontalSpace
             ConstraintHelper.horizontalSpaceToParent(oneButton, equalTo: horizontalSpace)
+            ConstraintHelper.centerVerticalyInSuperview(oneButton)
             
             index++
         }
