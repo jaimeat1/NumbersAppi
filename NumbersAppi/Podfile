@@ -8,3 +8,6 @@ pod 'JSONModel'
 
 # timers with blocks
 pod 'NSTimer-Blocks'
+
+# color with hex string
+pod 'UIColor_Hex_Swift'

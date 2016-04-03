@@ -86,8 +86,10 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/JSONModel.framework"
   install_framework "Pods/NSTimer_Blocks.framework"
+  install_framework "Pods/UIColor_Hex_Swift.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/JSONModel.framework"
   install_framework "Pods/NSTimer_Blocks.framework"
+  install_framework "Pods/UIColor_Hex_Swift.framework"
 fi

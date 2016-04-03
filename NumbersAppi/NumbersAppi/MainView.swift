@@ -58,6 +58,8 @@ class MainView: UIView, MainViewProtocol, WalkthroughControllerDelegate {
         view.frame = self.bounds
         addSubview(view)
         
+        textResult.backgroundColor = UIColor.numbersRed()
+        
         setupTypeSelector()
         setupTextResult()
         addTapGestures()
