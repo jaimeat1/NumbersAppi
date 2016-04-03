@@ -15,9 +15,19 @@ extension UIColor {
 
     // MARK: Public methods
     
-    static func numbersRed() -> UIColor {
+    static func numbersBlueDark() -> UIColor {
         
-        return UIColor(rgba: "#FF0000")
+        return UIColor(rgba: "#02273F")
+    }
+    
+    static func numbersBlueMedium() -> UIColor {
+        
+        return UIColor(rgba: "#10496F")
+    }
+    
+    static func numbersBlueLight() -> UIColor {
+        
+        return UIColor(rgba: "#1F6D9F")
     }
     
 }

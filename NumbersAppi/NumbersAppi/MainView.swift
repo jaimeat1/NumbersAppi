@@ -58,7 +58,10 @@ class MainView: UIView, MainViewProtocol, WalkthroughControllerDelegate {
         view.frame = self.bounds
         addSubview(view)
         
-        textResult.backgroundColor = UIColor.numbersRed()
+        view.backgroundColor = UIColor.numbersBlueLight()
+        textResult.backgroundColor = UIColor.numbersBlueMedium()
+        numberPickerView.backgroundColor = UIColor.numbersBlueMedium()
+        typeSelector.backgroundColor = UIColor.numbersBlueDark()
         
         setupTypeSelector()
         setupTextResult()
