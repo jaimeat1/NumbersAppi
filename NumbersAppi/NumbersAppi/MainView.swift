@@ -61,7 +61,7 @@ class MainView: UIView, MainViewProtocol, WalkthroughControllerDelegate {
         view.backgroundColor = UIColor.numbersBlueLight()
         textResult.backgroundColor = UIColor.numbersBlueMedium()
         numberPickerView.backgroundColor = UIColor.numbersBlueMedium()
-        typeSelector.backgroundColor = UIColor.numbersBlueDark()
+        
         
         setupTypeSelector()
         setupTextResult()
@@ -168,21 +168,30 @@ class MainView: UIView, MainViewProtocol, WalkthroughControllerDelegate {
     
     private func setupTypeSelector() {
         
-        let triviaTitle = NSLocalizedString("TYPE_TRIVIA", comment: "Trivia type in the selector")
+        let triviaTitle = NSLocalizedString("TYPE_TRIVIA", comment: "Trivia type in the selector").uppercaseString
         typeSelector.setTitle(triviaTitle, forSegmentAtIndex: 0)
         selectorValues.append(ApiRequestType.Trivia)
         
-        let mathTitle = NSLocalizedString("TYPE_MATH", comment: "Math type in the selector")
+        let mathTitle = NSLocalizedString("TYPE_MATH", comment: "Math type in the selector").uppercaseString
         typeSelector.setTitle(mathTitle, forSegmentAtIndex: 1)
         selectorValues.append(ApiRequestType.Math)
         
-        let yearTitle = NSLocalizedString("TYPE_YEAR", comment: "Year type in the selector")
+        let yearTitle = NSLocalizedString("TYPE_YEAR", comment: "Year type in the selector").uppercaseString
         typeSelector.setTitle(yearTitle, forSegmentAtIndex: 2)
         selectorValues.append(ApiRequestType.Year)
         
-        let dateTitle = NSLocalizedString("TYPE_DATE", comment: "Date type in the selector")
+        let dateTitle = NSLocalizedString("TYPE_DATE", comment: "Date type in the selector").uppercaseString
         typeSelector.setTitle(dateTitle, forSegmentAtIndex: 3)
         selectorValues.append(ApiRequestType.Date)
+        
+        typeSelector.backgroundColor = UIColor.numbersBlueDark()
+        typeSelector.tintColor = UIColor.whiteColor()
+        
+        let selectedAttributes = [NSFontAttributeName: UIFont.numbersTitleFontBoldOfSize(14)]
+        let unselectedAttributes = [NSFontAttributeName: UIFont.numbersTitleFontNormalOfSize(14)]
+        
+        typeSelector.setTitleTextAttributes(selectedAttributes, forState: UIControlState.Selected)
+        typeSelector.setTitleTextAttributes(unselectedAttributes, forState: UIControlState.Normal)
     }
     
     private func showNumberSelector() {
