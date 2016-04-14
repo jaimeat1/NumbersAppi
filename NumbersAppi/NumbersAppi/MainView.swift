@@ -235,6 +235,9 @@ class MainView: UIView, MainViewProtocol, WalkthroughControllerDelegate {
         textResult.layer.borderColor = UIColor.blackColor().CGColor;
         textResult.layer.borderWidth = 1.5
         textResult.layer.cornerRadius = 1
+        
+        textResult.font = UIFont.numbersResponseFontOfSize(20)
+        textResult.textColor = UIColor.whiteColor()
     }
     
     private func isDateSelectorActive() -> Bool {

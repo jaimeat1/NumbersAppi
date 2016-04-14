@@ -13,6 +13,7 @@ extension UIFont {
     
     private static var numbersTitleFontNormal: String { get {return "Calibri"} }
     private static var numbersTitleFontBold: String { get {return "Calibri-Bold"} }
+    private static var numbersResponseFont: String { get {return "ChaparralPro-Regular"} }
 
     // MARK: Public methods
     
@@ -26,10 +27,24 @@ extension UIFont {
         return getSystemFontOrFontWithName(numbersTitleFontBold, andSize: size)
     }
     
+    static func numbersResponseFontOfSize(size: CGFloat) -> UIFont {
+        
+        return getSystemFontOrFontWithName(numbersResponseFont, andSize: size)
+    }
+    
     // MARK: Private methods
     
     private static func getSystemFontOrFontWithName(name: String, andSize size: CGFloat) -> UIFont {
         
+        for family: String in UIFont.familyNames()
+        {
+            print("\(family)")
+            for names: String in UIFont.fontNamesForFamilyName(family)
+            {
+                print("== \(names)")
+            }
+        }
+
         if let font = UIFont.init(name: name, size: size) {
             return font
         } else {

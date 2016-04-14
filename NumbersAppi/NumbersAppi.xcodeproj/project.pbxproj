@@ -96,6 +96,9 @@
 		6FFBD1D11C61DD25008CCE7A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FFBD1CF1C61DD25008CCE7A /* LaunchScreen.storyboard */; };
 		6FFBD1DC1C61DD25008CCE7A /* NumbersAppiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFBD1DB1C61DD25008CCE7A /* NumbersAppiTests.swift */; };
 		6FFBD1E71C61DD25008CCE7A /* NumbersAppiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFBD1E61C61DD25008CCE7A /* NumbersAppiUITests.swift */; };
+		6FFEFFF71CBF6F5200F1A86F /* ChaparralPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6FFEFFF61CBF6F5200F1A86F /* ChaparralPro-Regular.otf */; };
+		6FFEFFF81CBF6F5200F1A86F /* ChaparralPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6FFEFFF61CBF6F5200F1A86F /* ChaparralPro-Regular.otf */; };
+		6FFEFFF91CBF6F5200F1A86F /* ChaparralPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6FFEFFF61CBF6F5200F1A86F /* ChaparralPro-Regular.otf */; };
 		8B3874F52B0C71A69BF5A9C5 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 794AE5B62650598A8E55F9C7 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -161,6 +164,7 @@
 		6FFBD1E21C61DD25008CCE7A /* NumbersAppiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NumbersAppiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FFBD1E61C61DD25008CCE7A /* NumbersAppiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumbersAppiUITests.swift; sourceTree = "<group>"; };
 		6FFBD1E81C61DD25008CCE7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6FFEFFF61CBF6F5200F1A86F /* ChaparralPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ChaparralPro-Regular.otf"; sourceTree = "<group>"; };
 		794AE5B62650598A8E55F9C7 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		983ACE85567C58F710C2892E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F289FF80505EBDACA6087A26 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -197,6 +201,7 @@
 			children = (
 				6F39F9381CB3924B00D3799F /* Calibri.ttf */,
 				6F39F9401CB3928400D3799F /* Calibri-Bold.ttf */,
+				6FFEFFF61CBF6F5200F1A86F /* ChaparralPro-Regular.otf */,
 			);
 			name = Fonts;
 			sourceTree = "<group>";
@@ -487,6 +492,7 @@
 				6F39F9391CB3924B00D3799F /* Calibri.ttf in Resources */,
 				6FF2892D1C70E1060075F269 /* MainViewController.xib in Resources */,
 				6FF2894B1C70E9540075F269 /* MainView.xib in Resources */,
+				6FFEFFF71CBF6F5200F1A86F /* ChaparralPro-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,6 +500,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FFEFFF81CBF6F5200F1A86F /* ChaparralPro-Regular.otf in Resources */,
 				6F39F9421CB3928400D3799F /* Calibri-Bold.ttf in Resources */,
 				6FF2894C1C70E9540075F269 /* MainView.xib in Resources */,
 				6F4FBF751C73057900C427FA /* Localizable.strings in Resources */,
@@ -507,6 +514,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FFEFFF91CBF6F5200F1A86F /* ChaparralPro-Regular.otf in Resources */,
 				6F39F9431CB3928400D3799F /* Calibri-Bold.ttf in Resources */,
 				6FF2894D1C70E9540075F269 /* MainView.xib in Resources */,
 				6F4FBF761C73057900C427FA /* Localizable.strings in Resources */,
