@@ -27,6 +27,8 @@ class DatePickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
 
     private var mainContainer: UIView!
     
+    private let rowFont = UIFont.numbersBoldFontOfSize(24)
+    
     // MARK: Lifecycle objets
     
     required init?(coder aDecoder: NSCoder) {
@@ -34,6 +36,7 @@ class DatePickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
         super.init(coder: aDecoder)
         
         months = getLocalizedMonths()
+        backgroundColor = UIColor.numbersBlueLight()
         setupView()
     }
     
@@ -104,6 +107,26 @@ class DatePickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
         }
     }
     
+    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
+        
+        var labelView = view as! UILabel!
+        
+        if labelView == nil {
+            
+            let width = (pickerView == monthPicker) ? monthPickerWidth : dayPickerWidth
+            labelView = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: pickerRowHeight))
+            labelView.backgroundColor = UIColor.numbersBlueLight()
+            
+            labelView.textColor = UIColor.whiteColor()
+            labelView.font = rowFont
+            labelView.textAlignment = NSTextAlignment.Center
+        }
+        
+        labelView.text = (pickerView == monthPicker) ? months[row] : String(row + 1)
+        
+        return labelView
+    }
+    
     // MARK: Action methods
     
     func didSelectMonthUp() {
@@ -136,13 +159,14 @@ class DatePickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
         
         setupAndAddMainView()
         setupAndAddPickers()
-        setupAndAddButtons()
+        //setupAndAddButtons()
     }
     
     private func setupAndAddMainView() {
         
         mainContainer = UIView()
         mainContainer.translatesAutoresizingMaskIntoConstraints = false
+        mainContainer.backgroundColor = UIColor.numbersBlueLight()
         
         addSubview(mainContainer)
     }
@@ -156,6 +180,7 @@ class DatePickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
         monthPicker = UIPickerView(frame: monthFrame)
         monthPicker.dataSource = self
         monthPicker.delegate = self
+        monthPicker.backgroundColor = UIColor.clearColor()
         mainContainer.addSubview(monthPicker)
         
         let dayXOrigin = isMonthFirst ? monthPickerWidth + pickersHorizontalSpace : 0
@@ -163,6 +188,7 @@ class DatePickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
         dayPicker = UIPickerView(frame: dayFrame)
         dayPicker.dataSource = self
         dayPicker.delegate = self
+        dayPicker.backgroundColor = UIColor.clearColor()
         mainContainer.addSubview(dayPicker)
     }
     
@@ -198,7 +224,7 @@ class DatePickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
     private func setupAndAddTypeOfButton(isUp isUp: Bool, withFrame frame: CGRect, action: String) {
      
         let opaqueBackground = UIView(frame: frame)
-        opaqueBackground.backgroundColor = UIColor.whiteColor()
+        opaqueBackground.backgroundColor = UIColor.clearColor()
         let buttonFrame = CGRect(x: 0, y: 0, width: buttonSize, height: buttonSize)
         let button = UIButton(frame: buttonFrame)
         let image = isUp ? "arrow_up" : "arrow_down"

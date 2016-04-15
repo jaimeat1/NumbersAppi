@@ -14,37 +14,21 @@ import UIKit
 class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     
     private let pickerNumberOfComponents: Int = 5
-    private let pickerNumberOfOriginalValues: Int = 10
-    private let pickerTimesToRepeatValues: Int = 3
-    private let pickerNumberOfRows: Int
-    
+    private let pickerNumberOfRows: Int = 10
     private let pickerComponentWidth: CGFloat = 40.0
     private let pickerComponentExtraWidth: CGFloat = 5.0
     private let pickerRowHeigth: CGFloat = 50.0
-
-    private let containerHeight: CGFloat = 40.0
-    private let buttonSize: CGFloat = 40.0
-    
-    private let timeToReset: NSTimeInterval = 1.0
-    private var resetTimer: NSTimer?
+    private let rowFont = UIFont.numbersBoldFontOfSize(26)
     
     private var pickerView: UIPickerView!
-    private var upperContainer: UIView!
-    private var bottomContainer: UIView!
-    
-    private var upperButtons = NSArray()
-    private var bottomButtons = NSArray()
     
     // MARK: Lifecycle objets
 
     required init?(coder aDecoder: NSCoder) {
         
-        pickerNumberOfRows = pickerNumberOfOriginalValues * pickerTimesToRepeatValues
-        
         super.init(coder: aDecoder)
         
         setupAndAddPickerView()
-        setupAndAddSelectorViews()
     }
     
     override func updateConstraints() {
@@ -52,16 +36,6 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         super.updateConstraints()
         
         updatePickerConstraints()
-        updateUpperContainerConstraints()
-        updateBottomContainerConstraints()
-    }
-    
-    override func layoutSubviews() {
-        
-        super.layoutSubviews()
-        
-        updateButtonsConstraints(upperButtons)
-        updateButtonsConstraints(bottomButtons)
     }
 
     // MARK: public methods
@@ -73,7 +47,7 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         
         for component in (0 ..< pickerNumberOfComponents).reverse() {
   
-            let numberInComponent = pickerView.selectedRowInComponent(component) % pickerNumberOfOriginalValues
+            let numberInComponent = pickerView.selectedRowInComponent(component)
             let decimalPow = Int((pow(Double(10), Double(maximumIndex - component))))
             selectedNumber += numberInComponent * decimalPow
         }
@@ -91,35 +65,13 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
 
             pickerView.selectRow(numberInComponent, inComponent: component, animated: animated)
         }
-        
-        setTimerToResetSelectors()
     }
-    
-    // MARK: Action methods
-    
-    @IBAction func selectorButtonPressed(sender: UIButton) {
-        
-        if (isUpperButton(sender)) {
-            
-            let component = upperButtons.indexOfObject(sender)
-            incrementComponent(component)
-            
-        } else {
-            
-            let component = bottomButtons.indexOfObject(sender)
-            decrementComponent(component)
-        }
-        
-        setTimerToResetSelectors()
-    }
-    
+
     // MARK: UIPickerViewDelegate methods
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
-        let number = row % pickerNumberOfOriginalValues
-        
-        return String(number)
+        return String(row)
     }
     
     func pickerView(pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
@@ -132,6 +84,26 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         return pickerComponentWidth
     }
     
+    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
+        
+        var labelView = view as! UILabel!
+        
+        if labelView == nil {
+            
+            let width = pickerComponentWidth + pickerComponentExtraWidth
+            labelView = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: pickerRowHeigth))
+            labelView.backgroundColor = UIColor.numbersBlueLight()
+            
+            labelView.textColor = UIColor.whiteColor()
+            labelView.font = rowFont
+            labelView.textAlignment = NSTextAlignment.Center
+        }
+        
+        labelView.text = String(row)
+        
+        return labelView
+    }
+    
     // MARK: UIPickerViewDataSource methods
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
@@ -141,7 +113,7 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
-        return pickerNumberOfOriginalValues * pickerTimesToRepeatValues;
+        return pickerNumberOfRows;
     }
     
     // MARK: Private methods
@@ -152,72 +124,10 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         pickerView.translatesAutoresizingMaskIntoConstraints = false
         pickerView.delegate = self
         pickerView.dataSource = self
-        pickerView.userInteractionEnabled = false
+        pickerView.userInteractionEnabled = true
+        pickerView.backgroundColor = UIColor.numbersBlueLight()
         
         addSubview(pickerView)
-        centerAllPickerComponents()
-    }
-    
-    @objc private func centerAllPickerComponents() {
-        
-        for component in 0 ..< pickerNumberOfComponents {
-            
-            let selectedRow = pickerView.selectedRowInComponent(component)
-            let number = selectedRow % pickerNumberOfOriginalValues
-            let centerComponent = (pickerNumberOfComponents / 2)
-            let centeredSelectedRow = (centerComponent * pickerNumberOfOriginalValues) + number
-            
-            dispatch_async(dispatch_get_main_queue()) {
-                self.pickerView.selectRow(centeredSelectedRow, inComponent: component, animated: false)
-            }
-        }
-    }
-    
-    private func setupAndAddSelectorViews() {
-
-        upperContainer = setupSelectorViewWithImage("arrow_up")
-        upperButtons = buttonsInView(upperContainer)
-        addSubview(upperContainer)
-
-        bottomContainer = setupSelectorViewWithImage("arrow_down")
-        bottomButtons = buttonsInView(bottomContainer)
-        addSubview(bottomContainer)
-    }
-    
-    private func setupSelectorViewWithImage(imageName: String) -> UIView {
-        
-        let frame = CGRect(x: 0, y: 0, width: 0, height: 0)
-        let selectorView = UIView(frame: frame)
-        selectorView.backgroundColor = UIColor.whiteColor()
-        selectorView.translatesAutoresizingMaskIntoConstraints = false
-        
-        let image: UIImage = UIImage(imageLiteral: imageName)
-        
-        for _ in 1 ... pickerNumberOfComponents {
-            
-            let button = UIButton(frame: CGRect(x: 0, y: 0, width: buttonSize, height: buttonSize))
-            button.translatesAutoresizingMaskIntoConstraints = false
-            button.setImage(image, forState: UIControlState.Normal)
-            selectorView.addSubview(button)
-            
-            button.addTarget(self, action: "selectorButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
-        }
-        
-        return selectorView
-    }
-    
-    private func buttonsInView(view: UIView) -> NSArray {
-    
-        var buttons: [UIButton] = Array()
-        
-        for subview in view.subviews {
-            
-            if subview.isKindOfClass(UIButton) {
-                buttons.append(subview as! UIButton)
-            }
-        }
-        
-        return buttons
     }
     
     private func updatePickerConstraints() {
@@ -226,74 +136,4 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         ConstraintHelper.sameSizeThanSuperview(pickerView)
     }
     
-    private func updateUpperContainerConstraints() {
-        
-        ConstraintHelper.viewHeight(upperContainer, equalsTo: containerHeight)
-        ConstraintHelper.equalWidthInView(upperContainer, thanInView: pickerView)
-        ConstraintHelper.equalLeadingForViews(upperContainer, view2: pickerView)
-        ConstraintHelper.topSpaceToContainer(upperContainer, equalTo: 0)
-    }
-    
-    private func updateBottomContainerConstraints() {
-        
-        ConstraintHelper.viewHeight(bottomContainer, equalsTo: containerHeight)
-        ConstraintHelper.equalWidthInView(bottomContainer, thanInView: pickerView)
-        ConstraintHelper.equalLeadingForViews(bottomContainer, view2: pickerView)
-        ConstraintHelper.bottomSpaceToContainer(bottomContainer, equalTo: 0.0)
-    }
-    
-    private func updateButtonsConstraints(buttons: NSArray) {
-        
-        var index = 0
-
-        for oneButton in buttons as! [UIButton] {
-            
-            ConstraintHelper.centerVerticalyInSuperview(oneButton)
-
-            let componentWidth = pickerComponentWidth + pickerComponentExtraWidth
-            let buttonOffset = (componentWidth - buttonSize) / 2
-            let superviewWidth: CGFloat = (oneButton.superview?.frame.size.width)!
-            let startOffset = (superviewWidth - (componentWidth * CGFloat(pickerNumberOfComponents))) / 2
-            
-            let firstButtonHorizontalSpace = startOffset + buttonOffset
-            let otherButtonHorizontalSpace = startOffset + (componentWidth * CGFloat(index)) + buttonOffset
-            
-            let horizontalSpace = (index == 0) ? firstButtonHorizontalSpace : otherButtonHorizontalSpace
-            ConstraintHelper.horizontalSpaceToParent(oneButton, equalTo: horizontalSpace)
-            ConstraintHelper.viewHeight(oneButton, equalsTo: buttonSize)
-            ConstraintHelper.viewWidth(oneButton, equalsTo: buttonSize)
-            
-            index++
-        }
-    }
-    
-    private func isUpperButton(button: UIButton) -> Bool {
-        
-        return (upperButtons.indexOfObject(button) != NSNotFound)
-    }
-    
-    private func incrementComponent(component: Int) {
-        
-        let newSelectedRow = pickerView.selectedRowInComponent(component) + 1
-        pickerView.selectRow(newSelectedRow, inComponent: component, animated: true)
-    }
-    
-    private func decrementComponent(component: Int) {
-        
-        
-        let newSelectedRow = pickerView.selectedRowInComponent(component) - 1
-        pickerView.selectRow(newSelectedRow, inComponent: component, animated: true)
-    }
-    
-    private func setTimerToResetSelectors() {
-        
-        resetTimer?.invalidate()
-        
-        resetTimer = NSTimer.scheduledTimerWithTimeInterval(
-            timeToReset,
-            target: self,
-            selector: "centerAllPickerComponents",
-            userInfo: nil,
-            repeats: false);
-    }
 }
