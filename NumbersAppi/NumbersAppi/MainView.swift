@@ -63,7 +63,6 @@ class MainView: UIView, MainViewProtocol, WalkthroughControllerDelegate {
         textResult.backgroundColor = UIColor.numbersBlueMedium()
         numberPickerView.backgroundColor = UIColor.numbersBlueMedium()
         
-        
         setupTypeSelector()
         setupTextResult()
         addTapGestures()
@@ -187,6 +186,7 @@ class MainView: UIView, MainViewProtocol, WalkthroughControllerDelegate {
         
         typeSelector.backgroundColor = UIColor.numbersBlueDark()
         typeSelector.tintColor = UIColor.whiteColor()
+        typeSelector.clipsToBounds = true
         
         let selectedAttributes = [NSFontAttributeName: UIFont.numbersBoldFontOfSize(selectorFontSize)]
         let unselectedAttributes = [NSFontAttributeName: UIFont.numbersNormalFontOfSize(selectorFontSize)]
@@ -235,7 +235,8 @@ class MainView: UIView, MainViewProtocol, WalkthroughControllerDelegate {
         
         textResult.layer.borderColor = UIColor.blackColor().CGColor;
         textResult.layer.borderWidth = 1.5
-        textResult.layer.cornerRadius = 1
+        textResult.layer.cornerRadius = 5
+        textResult.clipsToBounds = true
         
         textResult.font = UIFont.numbersResponseFontOfSize(20)
     }
