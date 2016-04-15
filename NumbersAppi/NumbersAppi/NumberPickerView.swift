@@ -23,7 +23,7 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     private let pickerRowHeigth: CGFloat = 50.0
 
     private let containerHeight: CGFloat = 40.0
-    private let buttonSize: CGFloat = 30.0
+    private let buttonSize: CGFloat = 40.0
     
     private let timeToReset: NSTimeInterval = 1.0
     private var resetTimer: NSTimer?
@@ -260,6 +260,8 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
             
             let horizontalSpace = (index == 0) ? firstButtonHorizontalSpace : otherButtonHorizontalSpace
             ConstraintHelper.horizontalSpaceToParent(oneButton, equalTo: horizontalSpace)
+            ConstraintHelper.viewHeight(oneButton, equalsTo: buttonSize)
+            ConstraintHelper.viewWidth(oneButton, equalsTo: buttonSize)
             
             index++
         }

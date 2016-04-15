@@ -12,7 +12,7 @@ import UIKit
 class DatePickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
     
     private var months: [String]!
-    private let buttonSize: CGFloat = 30
+    private let buttonSize: CGFloat = 40
     private let mainContainerHeight: CGFloat = 130
     
     private let monthPickerNumberOfRows: Int = 12
