@@ -17,12 +17,12 @@ extension UIFont {
 
     // MARK: Public methods
     
-    static func numbersTitleFontNormalOfSize(size: CGFloat) -> UIFont {
+    static func numbersNormalFontOfSize(size: CGFloat) -> UIFont {
         
         return getSystemFontOrFontWithName(numbersTitleFontNormal, andSize: size)
     }
     
-    static func numbersTitleFontBoldOfSize(size: CGFloat) -> UIFont {
+    static func numbersBoldFontOfSize(size: CGFloat) -> UIFont {
         
         return getSystemFontOrFontWithName(numbersTitleFontBold, andSize: size)
     }

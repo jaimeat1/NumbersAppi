@@ -42,11 +42,12 @@ class MainView: UIView, MainViewProtocol, WalkthroughControllerDelegate {
     var walkthroughController: WalkthroughController!
     var delegate: MainViewDelegate!
     
+    private let animationDuration = 0.5
+    private let selectorFontSize: CGFloat = 14
+    private let resultFontSize: CGFloat = 20
+    
     private var singleTapGesture: UITapGestureRecognizer!
     private var doubleTapGesture: UITapGestureRecognizer!
-    
-    private let animationDuration = 0.5
-    
     private var selectorValues: [ApiRequestType] = []
     
     // MARK: - Lifecycle methods
@@ -187,8 +188,8 @@ class MainView: UIView, MainViewProtocol, WalkthroughControllerDelegate {
         typeSelector.backgroundColor = UIColor.numbersBlueDark()
         typeSelector.tintColor = UIColor.whiteColor()
         
-        let selectedAttributes = [NSFontAttributeName: UIFont.numbersTitleFontBoldOfSize(14)]
-        let unselectedAttributes = [NSFontAttributeName: UIFont.numbersTitleFontNormalOfSize(14)]
+        let selectedAttributes = [NSFontAttributeName: UIFont.numbersBoldFontOfSize(selectorFontSize)]
+        let unselectedAttributes = [NSFontAttributeName: UIFont.numbersNormalFontOfSize(selectorFontSize)]
         
         typeSelector.setTitleTextAttributes(selectedAttributes, forState: UIControlState.Selected)
         typeSelector.setTitleTextAttributes(unselectedAttributes, forState: UIControlState.Normal)
@@ -237,7 +238,6 @@ class MainView: UIView, MainViewProtocol, WalkthroughControllerDelegate {
         textResult.layer.cornerRadius = 1
         
         textResult.font = UIFont.numbersResponseFontOfSize(20)
-        textResult.textColor = UIColor.whiteColor()
     }
     
     private func isDateSelectorActive() -> Bool {
