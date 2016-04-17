@@ -11,11 +11,10 @@ import UIKit
 
 class AboutViewController: UIViewController, AboutViewControllerDelegate {
     
+    @IBOutlet private var contact: UIButton!
     @IBOutlet private var basedOn: UILabel!
     @IBOutlet private var numbersApiLink: UIButton!
     @IBOutlet private var version: UILabel!
-    @IBOutlet private var likeIt: UILabel!
-    @IBOutlet private var contact: UIButton!
     
     let numbersApiAddress = "numbersapi.com"
     
@@ -27,6 +26,7 @@ class AboutViewController: UIViewController, AboutViewControllerDelegate {
     
         super.viewDidLoad()
         
+        setupView()
         localizeTexts()
     }
     
@@ -49,15 +49,39 @@ class AboutViewController: UIViewController, AboutViewControllerDelegate {
     
     // MARK: Private methods
     
+    private func setupView() {
+        
+        view.backgroundColor = UIColor.numbersBlueLight()
+        view.tintColor = UIColor.whiteColor()
+
+        basedOn.font = UIFont.numbersNormalFontOfSize(18)
+        basedOn.textColor = UIColor.whiteColor()
+        
+        let attributesNormal = [NSFontAttributeName: UIFont.numbersResponseFontOfSize(22),
+                          NSForegroundColorAttributeName: UIColor.whiteColor(),
+                          NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue]
+        let attributedNormal = NSAttributedString(string: numbersApiAddress, attributes: attributesNormal);
+        
+        let attributesPressed = [NSFontAttributeName: UIFont.numbersResponseFontOfSize(22),
+                          NSForegroundColorAttributeName: UIColor.numbersBlueDark(),
+                          NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue]
+        let attributedPressed = NSAttributedString(string: numbersApiAddress, attributes: attributesPressed);
+        
+        numbersApiLink.setAttributedTitle(attributedNormal, forState: UIControlState.Normal)
+        numbersApiLink.setAttributedTitle(attributedPressed, forState: UIControlState.Highlighted)
+        numbersApiLink.setAttributedTitle(attributedPressed, forState: UIControlState.Focused)
+        
+        version.font = UIFont.numbersNormalFontOfSize(14)
+        version.textColor = UIColor.whiteColor()
+    }
+    
     private func localizeTexts() {
         
+        let contactMe = NSLocalizedString("CONTACT", comment: "Contact button")
+        contact.setTitle(contactMe, forState: UIControlState.Normal)
         basedOn.text = NSLocalizedString("BASED_ON", comment: "Based on description")
-        numbersApiLink.setTitle(numbersApiAddress, forState: UIControlState.Normal)
-        likeIt.text = NSLocalizedString("LIKE_IT", comment: "Like or comments description")
         let versionNumber = presenterDelegate.getVersion()
         let versionDesc = NSLocalizedString("VERSION", comment: "Version title")
         version.text = versionDesc + " " + versionNumber
-        let contactMe = NSLocalizedString("CONTACT", comment: "Contact button")
-        contact.setTitle(contactMe, forState: UIControlState.Normal)
     }
 }

@@ -35,15 +35,6 @@ extension UIFont {
     // MARK: Private methods
     
     private static func getSystemFontOrFontWithName(name: String, andSize size: CGFloat) -> UIFont {
-        
-        for family: String in UIFont.familyNames()
-        {
-            print("\(family)")
-            for names: String in UIFont.fontNamesForFamilyName(family)
-            {
-                print("== \(names)")
-            }
-        }
 
         if let font = UIFont.init(name: name, size: size) {
             return font
