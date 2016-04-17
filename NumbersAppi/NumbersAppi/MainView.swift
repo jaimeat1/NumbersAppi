@@ -156,6 +156,11 @@ class MainView: UIView, MainViewProtocol, WalkthroughControllerDelegate {
         walkthroughController.show()
     }
     
+    func didViewLayout() {
+        
+        addShadowToTextResult()
+    }
+    
     // MARK: - WalkthroughControllerDelegate methods
     
     func didDismissWalkthrough() {
@@ -234,11 +239,20 @@ class MainView: UIView, MainViewProtocol, WalkthroughControllerDelegate {
     private func setupTextResult() {
         
         textResult.layer.borderColor = UIColor.blackColor().CGColor;
-        textResult.layer.borderWidth = 1.5
-        textResult.layer.cornerRadius = 5
-        textResult.clipsToBounds = true
-        
+        textResult.layer.borderWidth = 0.5
+
         textResult.font = UIFont.numbersResponseFontOfSize(20)
+    }
+    
+    private func addShadowToTextResult() {
+        
+        textResult.layer.shadowColor = UIColor.blackColor().CGColor
+        textResult.layer.shadowOffset = CGSize(width: 0, height: 1)
+        textResult.layer.shadowOpacity = 0.5
+        let shadowPath = UIBezierPath(rect: textResult.bounds)
+        textResult.layer.shadowPath = shadowPath.CGPath
+        textResult.layer.masksToBounds = false
+        textResult.layer.shouldRasterize = true
     }
     
     private func isDateSelectorActive() -> Bool {

@@ -22,6 +22,8 @@ protocol MainViewProtocol {
     func setDate(month month: Int, day: Int)
     
     func showWalkthrough()
+    
+    func didViewLayout()
 }
 
 class MainViewController: UIViewController, MainViewControllerDelegate, PullControllerDelegate, MainViewDelegate {
@@ -64,6 +66,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate, PullCont
         } else if presenterDelegate.shouldShowPullableInformation() {
             
             pullController?.showPullable()
+            mainView.didViewLayout()
         }
     }
     
