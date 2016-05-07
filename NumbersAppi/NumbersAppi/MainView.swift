@@ -189,6 +189,8 @@ class MainView: UIView, MainViewProtocol, WalkthroughControllerDelegate {
         
         typeSelector.backgroundColor = UIColor.numbersBlueDark()
         typeSelector.tintColor = UIColor.whiteColor()
+        typeSelector.layer.cornerRadius = 5
+        typeSelector.layer.masksToBounds = true
         typeSelector.clipsToBounds = true
         
         let selectedAttributes = [NSFontAttributeName: UIFont.numbersBoldFontOfSize(selectorFontSize)]
