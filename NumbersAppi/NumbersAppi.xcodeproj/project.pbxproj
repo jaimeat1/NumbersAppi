@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F36224B1CDDF97E00A43EDA /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F36224A1CDDF97E00A43EDA /* background.png */; };
+		6F36224C1CDDF97E00A43EDA /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F36224A1CDDF97E00A43EDA /* background.png */; };
+		6F36224D1CDDF97E00A43EDA /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F36224A1CDDF97E00A43EDA /* background.png */; };
 		6F39F9341CB38C5600D3799F /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F39F9331CB38C5600D3799F /* Font.swift */; };
 		6F39F9351CB38C5600D3799F /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F39F9331CB38C5600D3799F /* Font.swift */; };
 		6F39F9361CB38C5600D3799F /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F39F9331CB38C5600D3799F /* Font.swift */; };
@@ -120,6 +123,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6F36224A1CDDF97E00A43EDA /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		6F39F9331CB38C5600D3799F /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		6F39F9381CB3924B00D3799F /* Calibri.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Calibri.ttf; sourceTree = "<group>"; };
 		6F39F9401CB3928400D3799F /* Calibri-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Calibri-Bold.ttf"; sourceTree = "<group>"; };
@@ -196,6 +200,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6F3622491CDDF96800A43EDA /* Images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		6F39F9371CB3923600D3799F /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,6 +332,9 @@
 		6FFBD1C51C61DD25008CCE7A /* NumbersAppi */ = {
 			isa = PBXGroup;
 			children = (
+				6F3622491CDDF96800A43EDA /* Images */,
+				6FFBD1CD1C61DD25008CCE7A /* Assets.xcassets */,
+				6F36224A1CDDF97E00A43EDA /* background.png */,
 				6F39F9371CB3923600D3799F /* Fonts */,
 				6F4E7E4F1C7EE02C00C64768 /* Utils */,
 				6FF289311C70E3680075F269 /* Data source */,
@@ -334,7 +348,6 @@
 				6FFBD1C61C61DD25008CCE7A /* AppDelegate.swift */,
 				6F77D47E1C79049B00D755BF /* Coordinator.swift */,
 				6F4FBF781C73057900C427FA /* Localizable.strings */,
-				6FFBD1CD1C61DD25008CCE7A /* Assets.xcassets */,
 				6FFBD1CF1C61DD25008CCE7A /* LaunchScreen.storyboard */,
 				6FFBD1D21C61DD25008CCE7A /* Info.plist */,
 			);
@@ -485,6 +498,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F39F9411CB3928400D3799F /* Calibri-Bold.ttf in Resources */,
+				6F36224B1CDDF97E00A43EDA /* background.png in Resources */,
 				6FFBD1D11C61DD25008CCE7A /* LaunchScreen.storyboard in Resources */,
 				6F4FBF741C73057900C427FA /* Localizable.strings in Resources */,
 				6FFBD1CE1C61DD25008CCE7A /* Assets.xcassets in Resources */,
@@ -501,6 +515,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6FFEFFF81CBF6F5200F1A86F /* ChaparralPro-Regular.otf in Resources */,
+				6F36224C1CDDF97E00A43EDA /* background.png in Resources */,
 				6F39F9421CB3928400D3799F /* Calibri-Bold.ttf in Resources */,
 				6FF2894C1C70E9540075F269 /* MainView.xib in Resources */,
 				6F4FBF751C73057900C427FA /* Localizable.strings in Resources */,
@@ -515,6 +530,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6FFEFFF91CBF6F5200F1A86F /* ChaparralPro-Regular.otf in Resources */,
+				6F36224D1CDDF97E00A43EDA /* background.png in Resources */,
 				6F39F9431CB3928400D3799F /* Calibri-Bold.ttf in Resources */,
 				6FF2894D1C70E9540075F269 /* MainView.xib in Resources */,
 				6F4FBF761C73057900C427FA /* Localizable.strings in Resources */,

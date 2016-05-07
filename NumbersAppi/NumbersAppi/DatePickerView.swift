@@ -36,7 +36,7 @@ class DatePickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
         super.init(coder: aDecoder)
         
         months = getLocalizedMonths()
-        backgroundColor = UIColor.numbersBlueLight()
+        backgroundColor = UIColor.clearColor()
         setupView()
     }
     
@@ -115,7 +115,7 @@ class DatePickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
             
             let width = (pickerView == monthPicker) ? monthPickerWidth : dayPickerWidth
             labelView = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: pickerRowHeight))
-            labelView.backgroundColor = UIColor.numbersBlueLight()
+            labelView.backgroundColor = UIColor.clearColor()
             
             labelView.textColor = UIColor.whiteColor()
             labelView.font = rowFont
@@ -166,7 +166,7 @@ class DatePickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
         
         mainContainer = UIView()
         mainContainer.translatesAutoresizingMaskIntoConstraints = false
-        mainContainer.backgroundColor = UIColor.numbersBlueLight()
+        mainContainer.backgroundColor = UIColor.clearColor()
         
         addSubview(mainContainer)
     }

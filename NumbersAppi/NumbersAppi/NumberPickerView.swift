@@ -92,7 +92,7 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
             
             let width = pickerComponentWidth + pickerComponentExtraWidth
             labelView = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: pickerRowHeigth))
-            labelView.backgroundColor = UIColor.numbersBlueLight()
+            labelView.backgroundColor = UIColor.clearColor()
             
             labelView.textColor = UIColor.whiteColor()
             labelView.font = rowFont
@@ -125,7 +125,7 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         pickerView.delegate = self
         pickerView.dataSource = self
         pickerView.userInteractionEnabled = true
-        pickerView.backgroundColor = UIColor.numbersBlueLight()
+        pickerView.backgroundColor = UIColor.clearColor()
         
         addSubview(pickerView)
     }
