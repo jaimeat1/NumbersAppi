@@ -30,7 +30,6 @@ class MainViewController: UIViewController, MainViewControllerDelegate, PullCont
 
     @IBOutlet private var mainView: MainView!
     @IBOutlet private var aboutLabel: UILabel!
-    @IBOutlet private var fadingView: UIView!
     
     var presenterDelegate: MainPresenterDelegate!
     
@@ -51,7 +50,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate, PullCont
         super.viewDidLoad()
         
         mainView.delegate = self
-        pullController = PullController(pullableView: mainView, translucentView: fadingView, delegate: self)
+        pullController = PullController(pullableView: mainView, translucentView: aboutLabel, delegate: self)
         aboutLabel.text = NSLocalizedString("PULL_ABOUT", comment: "Pull to see about")
     }
     
@@ -68,11 +67,6 @@ class MainViewController: UIViewController, MainViewControllerDelegate, PullCont
             pullController?.showPullable()
             mainView.didViewLayout()
         }
-    }
-    
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        
-        return UIStatusBarStyle.LightContent
     }
     
     // MARK: - MainViewControllerDelegate methods
