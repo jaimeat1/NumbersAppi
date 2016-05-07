@@ -30,6 +30,11 @@ class AboutViewController: UIViewController, AboutViewControllerDelegate {
         localizeTexts()
     }
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        
+        return UIStatusBarStyle.Default
+    }
+    
     // MARK: Action methods
     
     @IBAction func doneButtonPressed() {

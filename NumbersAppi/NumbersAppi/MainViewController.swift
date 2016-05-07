@@ -70,6 +70,11 @@ class MainViewController: UIViewController, MainViewControllerDelegate, PullCont
         }
     }
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        
+        return UIStatusBarStyle.LightContent
+    }
+    
     // MARK: - MainViewControllerDelegate methods
     
     func startLoading() {
