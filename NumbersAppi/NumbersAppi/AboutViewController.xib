@@ -25,6 +25,9 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background_about.png" translatesAutoresizingMaskIntoConstraints="NO" id="WZW-wv-CuP" userLabel="Background">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SNJ-oY-GG8">
                     <rect key="frame" x="8" y="25" width="71" height="33"/>
                     <constraints>
@@ -121,5 +124,6 @@
     </objects>
     <resources>
         <image name="about" width="60" height="60"/>
+        <image name="background_about.png" width="800" height="800"/>
     </resources>
 </document>
