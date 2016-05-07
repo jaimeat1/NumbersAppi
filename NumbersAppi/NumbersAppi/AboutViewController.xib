@@ -66,10 +66,9 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uoq-9y-qMZ" userLabel="Link">
-                            <rect key="frame" x="192" y="37" width="200" height="30"/>
+                            <rect key="frame" x="8" y="37" width="568" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="XXZ-Vj-Mhd"/>
-                                <constraint firstAttribute="width" constant="200" id="pzi-uu-5yP"/>
                             </constraints>
                             <state key="normal" title="numbersapi.com"/>
                             <connections>
@@ -83,6 +82,12 @@
                                 <constraint firstAttribute="width" constant="80" id="Wuc-VX-D2m"/>
                                 <constraint firstAttribute="height" constant="80" id="pGH-ik-Ufg"/>
                             </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            </userDefinedRuntimeAttributes>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="version" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8mq-Zs-Sfu" userLabel="Version">
                             <rect key="frame" x="242" y="178" width="100" height="21"/>
@@ -98,11 +103,13 @@
                     <constraints>
                         <constraint firstItem="Uoq-9y-qMZ" firstAttribute="top" secondItem="oQi-GE-yWz" secondAttribute="bottom" constant="8" id="AoF-vv-ia5"/>
                         <constraint firstItem="oQi-GE-yWz" firstAttribute="top" secondItem="nCf-kA-SaN" secondAttribute="top" constant="8" id="E6o-Yn-Fy6"/>
+                        <constraint firstAttribute="trailing" secondItem="Uoq-9y-qMZ" secondAttribute="trailing" constant="8" id="SPe-Ni-H3a"/>
                         <constraint firstAttribute="trailing" secondItem="oQi-GE-yWz" secondAttribute="trailing" constant="8" id="TMQ-uZ-kcP"/>
                         <constraint firstItem="y9e-08-4eS" firstAttribute="centerX" secondItem="nCf-kA-SaN" secondAttribute="centerX" id="W0W-lu-zZP"/>
                         <constraint firstItem="Uoq-9y-qMZ" firstAttribute="centerX" secondItem="nCf-kA-SaN" secondAttribute="centerX" id="gCz-dZ-Pbc"/>
                         <constraint firstItem="8mq-Zs-Sfu" firstAttribute="top" secondItem="y9e-08-4eS" secondAttribute="bottom" constant="8" id="jlV-Ly-gPO"/>
                         <constraint firstItem="8mq-Zs-Sfu" firstAttribute="centerX" secondItem="nCf-kA-SaN" secondAttribute="centerX" id="oRI-hE-Oyf"/>
+                        <constraint firstItem="Uoq-9y-qMZ" firstAttribute="leading" secondItem="nCf-kA-SaN" secondAttribute="leading" constant="8" id="q2Q-wW-QmE"/>
                         <constraint firstItem="oQi-GE-yWz" firstAttribute="leading" secondItem="nCf-kA-SaN" secondAttribute="leading" constant="8" id="wEt-Cf-HHa"/>
                         <constraint firstAttribute="height" constant="212" id="whz-Kd-Ya5"/>
                         <constraint firstItem="y9e-08-4eS" firstAttribute="top" secondItem="Uoq-9y-qMZ" secondAttribute="bottom" constant="23" id="zA0-ff-niA"/>

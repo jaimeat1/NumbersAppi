@@ -16,7 +16,7 @@ class AboutViewController: UIViewController, AboutViewControllerDelegate {
     @IBOutlet private var numbersApiLink: UIButton!
     @IBOutlet private var version: UILabel!
     
-    let numbersApiAddress = "numbersapi.com"
+    let numbersApiAddress = "http://numbersapi.com"
     
     var presenterDelegate: AboutPresenterDelegate!
     
@@ -51,19 +51,19 @@ class AboutViewController: UIViewController, AboutViewControllerDelegate {
     
     private func setupView() {
         
-        view.backgroundColor = UIColor.numbersBlueLight()
-        view.tintColor = UIColor.whiteColor()
+        view.backgroundColor = UIColor.clearColor()
+        view.tintColor = UIColor.blackColor()
 
         basedOn.font = UIFont.numbersNormalFontOfSize(18)
-        basedOn.textColor = UIColor.whiteColor()
+        basedOn.textColor = UIColor.darkGrayColor()
         
         let attributesNormal = [NSFontAttributeName: UIFont.numbersResponseFontOfSize(22),
-                          NSForegroundColorAttributeName: UIColor.whiteColor(),
+                          NSForegroundColorAttributeName: UIColor.darkGrayColor(),
                           NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue]
         let attributedNormal = NSAttributedString(string: numbersApiAddress, attributes: attributesNormal);
         
         let attributesPressed = [NSFontAttributeName: UIFont.numbersResponseFontOfSize(22),
-                          NSForegroundColorAttributeName: UIColor.numbersBlueDark(),
+                          NSForegroundColorAttributeName: UIColor.whiteColor(),
                           NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue]
         let attributedPressed = NSAttributedString(string: numbersApiAddress, attributes: attributesPressed);
         
@@ -72,7 +72,7 @@ class AboutViewController: UIViewController, AboutViewControllerDelegate {
         numbersApiLink.setAttributedTitle(attributedPressed, forState: UIControlState.Focused)
         
         version.font = UIFont.numbersNormalFontOfSize(14)
-        version.textColor = UIColor.whiteColor()
+        version.textColor = UIColor.grayColor()
     }
     
     private func localizeTexts() {
