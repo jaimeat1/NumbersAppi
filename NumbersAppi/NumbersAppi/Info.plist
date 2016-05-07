@@ -8,8 +8,6 @@
 		<string>Calibri-Bold.ttf</string>
 		<string>ChaparralPro-Regular.otf</string>
 	</array>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
