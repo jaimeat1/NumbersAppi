@@ -133,8 +133,6 @@
 		6F39F9401CB3928400D3799F /* Calibri-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Calibri-Bold.ttf"; sourceTree = "<group>"; };
 		6F4BBCFB1CA7EC1B00CD40EF /* WalkthroughViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkthroughViews.swift; sourceTree = "<group>"; };
 		6F4E7E501C7EE08900C64768 /* ConstraintHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintHelper.swift; sourceTree = "<group>"; };
-		6F4FBF731C73056A00C427FA /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		6F4FBF771C73057900C427FA /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6F4FBF791C73058000C427FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6F5618771C8EB2EB00099DF5 /* DatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		6F5BD55B1C67A34600775424 /* ApiRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiRequest.swift; sourceTree = "<group>"; };
@@ -708,7 +706,6 @@
 		6F4FBF781C73057900C427FA /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				6F4FBF771C73057900C427FA /* es */,
 				6F4FBF791C73058000C427FA /* Base */,
 			);
 			name = Localizable.strings;
@@ -719,7 +716,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				6FFBD1D01C61DD25008CCE7A /* Base */,
-				6F4FBF731C73056A00C427FA /* es */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
