@@ -65,7 +65,7 @@ class PullController {
     
     // MARK: - Action methods
 
-    @IBAction func didDraggView(gestureRecognizer: UIPanGestureRecognizer) {
+    @objc func didDraggView(gestureRecognizer: UIPanGestureRecognizer) {
         
         if (!pullGestureEnabled) {
             return
@@ -123,7 +123,7 @@ class PullController {
         if !isAlreadySetup {
         
             isAlreadySetup = true
-            let panGesture = UIPanGestureRecognizer.init(target: self, action: "didDraggView:")
+            let panGesture = UIPanGestureRecognizer.init(target: self, action: #selector(PullController.didDraggView(_:)))
             pullableView.addGestureRecognizer(panGesture)
         }
     }
