@@ -62,10 +62,13 @@ class MainViewController: UIViewController, MainViewControllerDelegate, PullCont
             
             mainView.showWalkthrough()
             
-        } else if presenterDelegate.shouldShowPullableInformation() {
+        } else {
             
-            pullController?.showPullable()
             mainView.didViewLayout()
+            
+            if presenterDelegate.shouldShowPullableInformation() {
+                pullController?.showPullable()
+            }
         }
     }
     
