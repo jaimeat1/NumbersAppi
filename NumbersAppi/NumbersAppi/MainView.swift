@@ -220,10 +220,10 @@ class MainView: UIView, MainViewProtocol, WalkthroughControllerDelegate {
     
     private func addTapGestures() {
         
-        singleTapGesture = UITapGestureRecognizer(target: self, action: "didSingleTap:")
+        singleTapGesture = UITapGestureRecognizer(target: self, action: #selector(MainView.didSingleTap(_:)))
         textResult.addGestureRecognizer(singleTapGesture)
 
-        doubleTapGesture = UITapGestureRecognizer(target: self, action: "didDoubleTap:")
+        doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(MainView.didDoubleTap(_:)))
         doubleTapGesture.numberOfTapsRequired = 2
         textResult.addGestureRecognizer(doubleTapGesture)
         

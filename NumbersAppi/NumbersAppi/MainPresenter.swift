@@ -159,20 +159,21 @@ class MainPresenter: MainPresenterDelegate {
         }
     }
     
-    private func getMonthAndDayFromDayOfTheYear(var dayOfYear: Int) -> (month: Int, day: Int) {
+    private func getMonthAndDayFromDayOfTheYear(dayOfYear: Int) -> (month: Int, day: Int) {
         
         let daysInMonths = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
         
         var day = 1
         var month = 1
+        var newDayOfYear = dayOfYear
         for daysInCurrentMonth in daysInMonths {
             
-            if ((dayOfYear - daysInCurrentMonth) <= 0) {
-                day = dayOfYear
+            if ((newDayOfYear - daysInCurrentMonth) <= 0) {
+                day = newDayOfYear
                 break
             } else {
-                dayOfYear = dayOfYear - daysInCurrentMonth
-                month++
+                newDayOfYear = newDayOfYear - daysInCurrentMonth
+                month += 1
             }
         }
         

@@ -55,13 +55,14 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         return selectedNumber
     }
     
-    func setSelectedNumber(var number: Int, animated: Bool) {
+    func setSelectedNumber(number: Int, animated: Bool) {
 
+        var newNumber = number
         for component in 0 ..< pickerNumberOfComponents {
 
             let decimalPow = Int((pow(Double(10), Double((pickerNumberOfComponents - 1) - component))))
-            let numberInComponent = number / decimalPow
-            number -= numberInComponent * decimalPow
+            let numberInComponent = newNumber / decimalPow
+            newNumber = newNumber - (numberInComponent * decimalPow)
 
             pickerView.selectRow(numberInComponent, inComponent: component, animated: animated)
         }

@@ -46,14 +46,14 @@ class WalkthroughController {
     
     // MARK: Action methods
     
-    @IBAction func didTapWithSingleViewShowing() {
+    @objc func didTapWithSingleViewShowing() {
         
         walkthroughViews.showDoubleTapWalkthrough()
         removeTapGestureForSingleView()
         addTapGestureForDoubleView()
     }
     
-    @IBAction func didTapWithDoubleViewShowing() {
+    @objc func didTapWithDoubleViewShowing() {
         
         walkthroughViews.hide()
         removeTapGestureForDoubleView()
@@ -72,7 +72,7 @@ class WalkthroughController {
 
         for oneView in singleViews {
             
-            let tapGesture = UITapGestureRecognizer.init(target: self, action: "didTapWithSingleViewShowing")
+            let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(WalkthroughController.didTapWithSingleViewShowing))
             oneView.addGestureRecognizer(tapGesture)
         }
     }
@@ -81,7 +81,7 @@ class WalkthroughController {
 
         for oneView in doubleViews {
             
-            let tapGesture = UITapGestureRecognizer.init(target: self, action: "didTapWithDoubleViewShowing")
+            let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(WalkthroughController.didTapWithDoubleViewShowing))
             oneView.addGestureRecognizer(tapGesture)
         }
     }
