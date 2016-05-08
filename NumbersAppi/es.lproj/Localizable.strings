@@ -10,10 +10,10 @@
 "SINGLE_TAP" = "Un toque para preguntar por un número";
 "DOUBLE_TAP" = "Doble toque para un número al azar";
 
-"TYPE_TRIVIA" = "Trivia";
-"TYPE_MATH" = "Math";
-"TYPE_YEAR" = "Year";
-"TYPE_DATE" = "Date";
+"TYPE_TRIVIA" = "Trivial";
+"TYPE_MATH" = "Mates";
+"TYPE_YEAR" = "Año";
+"TYPE_DATE" = "Fecha";
 
 "JANUARY" = "Enero";
 "FEBRUARY" = "Febrero";
@@ -32,6 +32,5 @@
 "ACCEPT" = "Aceptar";
 
 "BASED_ON" = "Basado en el proyecto web";
-"LIKE_IT" = "¿Te ha gustado? ¿Algún comentario?";
 "CONTACT" = "Contáctame";
 "VERSION" = "Versión";

@@ -14,6 +14,8 @@ struct WalkthroughViews {
     let maximumSize: CGFloat = 150
     let minimumAlpha: CGFloat = 0.5
     
+    private let fontSize: CGFloat = 20
+    
     private var textResult: UILabel
     private var shadowView: UIView
     private var singleTapView: UIView
@@ -39,10 +41,16 @@ struct WalkthroughViews {
             self.textResult = textResult
             self.shadowView = shadowView
             self.singleTapView = singleTapView
+            
             self.singleTapInfo = singleTapInfo
+            self.singleTapInfo.font = UIFont.numbersNormalFontOfSize(fontSize)
+            
             self.singleTapImage = singleTapImage
             self.doubleTapView = doubleTapView
+            
             self.doubleTapInfo = doubleTapInfo
+            self.doubleTapInfo.font = UIFont.numbersNormalFontOfSize(fontSize)
+            
             self.doubleTapImage = doubleTapImage
     }
     
