@@ -22,13 +22,14 @@ protocol MainViewProtocol {
     func setDate(month month: Int, day: Int)
     
     func showWalkthrough()
+    
+    func didViewLayout()
 }
 
 class MainViewController: UIViewController, MainViewControllerDelegate, PullControllerDelegate, MainViewDelegate {
 
     @IBOutlet private var mainView: MainView!
     @IBOutlet private var aboutLabel: UILabel!
-    @IBOutlet private var fadingView: UIView!
     
     var presenterDelegate: MainPresenterDelegate!
     
@@ -49,7 +50,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate, PullCont
         super.viewDidLoad()
         
         mainView.delegate = self
-        pullController = PullController(pullableView: mainView, translucentView: fadingView, delegate: self)
+        pullController = PullController(pullableView: mainView, translucentView: aboutLabel, delegate: self)
         aboutLabel.text = NSLocalizedString("PULL_ABOUT", comment: "Pull to see about")
     }
     
@@ -64,6 +65,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate, PullCont
         } else if presenterDelegate.shouldShowPullableInformation() {
             
             pullController?.showPullable()
+            mainView.didViewLayout()
         }
     }
     

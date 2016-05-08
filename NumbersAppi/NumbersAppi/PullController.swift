@@ -14,7 +14,7 @@ class PullController {
     private let maxPullableDistance: CGFloat = 80.0
     private let animationDuration: NSTimeInterval = 0.3
     private let showPullableDuration: NSTimeInterval = 1.0
-    private let minimunAlpha: CGFloat = 0.8
+    private let minimunAlpha: CGFloat = 0.3
     private let factorToShowTranslucentView: CGFloat = 0.90
     
     private var pullableView: UIView
@@ -53,7 +53,7 @@ class PullController {
         
         pointOfOrigin = CGPoint(x: 0, y: 0)
         pullableView.frame.origin.y = maxPullableDistance
-        translucentView.alpha = 0
+        translucentView.alpha = 1
 
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(showPullableDuration * Double(NSEC_PER_SEC)))
         dispatch_after(dispatch_time_t(delayTime), dispatch_get_main_queue()) { () -> Void in
@@ -148,7 +148,7 @@ class PullController {
     private func animateTranslucentViewShowing() {
         
         UIView.animateWithDuration(animationDuration, animations: { () -> Void in
-            self.translucentView.alpha = 0;
+            self.translucentView.alpha = 1;
         })
     }
     

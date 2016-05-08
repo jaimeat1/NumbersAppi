@@ -71,6 +71,7 @@ class MainPresenter: MainPresenterDelegate {
         
         let userDefaults = NSUserDefaults.standardUserDefaults()
         let shouldShowPullable = userDefaults.boolForKey(showPullable)
+        userDefaults.setBool(false, forKey: showPullable)
         
         return shouldShowPullable
     }
