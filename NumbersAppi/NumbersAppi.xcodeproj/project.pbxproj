@@ -159,7 +159,7 @@
 		6FF2893E1C70E8EA0075F269 /* MainPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		6FF289461C70E9350075F269 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		6FF2894A1C70E9540075F269 /* MainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainView.xib; sourceTree = "<group>"; };
-		6FFBD1C31C61DD25008CCE7A /* NumbersAppi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NumbersAppi.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FFBD1C31C61DD25008CCE7A /* Numberpedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Numberpedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FFBD1C61C61DD25008CCE7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6FFBD1CD1C61DD25008CCE7A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6FFBD1D01C61DD25008CCE7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -324,7 +324,7 @@
 		6FFBD1C41C61DD25008CCE7A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6FFBD1C31C61DD25008CCE7A /* NumbersAppi.app */,
+				6FFBD1C31C61DD25008CCE7A /* Numberpedia.app */,
 				6FFBD1D71C61DD25008CCE7A /* NumbersAppiTests.xctest */,
 				6FFBD1E21C61DD25008CCE7A /* NumbersAppiUITests.xctest */,
 			);
@@ -395,9 +395,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6FFBD1C21C61DD25008CCE7A /* NumbersAppi */ = {
+		6FFBD1C21C61DD25008CCE7A /* Numberpedia */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6FFBD1EB1C61DD25008CCE7A /* Build configuration list for PBXNativeTarget "NumbersAppi" */;
+			buildConfigurationList = 6FFBD1EB1C61DD25008CCE7A /* Build configuration list for PBXNativeTarget "Numberpedia" */;
 			buildPhases = (
 				4462497D79D14EAF94B8CD5D /* Check Pods Manifest.lock */,
 				6FFBD1BF1C61DD25008CCE7A /* Sources */,
@@ -410,9 +410,9 @@
 			);
 			dependencies = (
 			);
-			name = NumbersAppi;
+			name = Numberpedia;
 			productName = NumbersAppi;
-			productReference = 6FFBD1C31C61DD25008CCE7A /* NumbersAppi.app */;
+			productReference = 6FFBD1C31C61DD25008CCE7A /* Numberpedia.app */;
 			productType = "com.apple.product-type.application";
 		};
 		6FFBD1D61C61DD25008CCE7A /* NumbersAppiTests */ = {
@@ -488,7 +488,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6FFBD1C21C61DD25008CCE7A /* NumbersAppi */,
+				6FFBD1C21C61DD25008CCE7A /* Numberpedia */,
 				6FFBD1D61C61DD25008CCE7A /* NumbersAppiTests */,
 				6FFBD1E11C61DD25008CCE7A /* NumbersAppiUITests */,
 			);
@@ -692,12 +692,12 @@
 /* Begin PBXTargetDependency section */
 		6FFBD1D91C61DD25008CCE7A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6FFBD1C21C61DD25008CCE7A /* NumbersAppi */;
+			target = 6FFBD1C21C61DD25008CCE7A /* Numberpedia */;
 			targetProxy = 6FFBD1D81C61DD25008CCE7A /* PBXContainerItemProxy */;
 		};
 		6FFBD1E41C61DD25008CCE7A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6FFBD1C21C61DD25008CCE7A /* NumbersAppi */;
+			target = 6FFBD1C21C61DD25008CCE7A /* Numberpedia */;
 			targetProxy = 6FFBD1E31C61DD25008CCE7A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -815,7 +815,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = NumbersAppi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jaimearanaz.NumbersAppi;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jaimearanaz.numberpedia;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "NumbersAppi-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -832,7 +832,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = NumbersAppi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jaimearanaz.NumbersAppi;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jaimearanaz.numberpedia;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "NumbersAppi-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -909,7 +909,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6FFBD1EB1C61DD25008CCE7A /* Build configuration list for PBXNativeTarget "NumbersAppi" */ = {
+		6FFBD1EB1C61DD25008CCE7A /* Build configuration list for PBXNativeTarget "Numberpedia" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6FFBD1EC1C61DD25008CCE7A /* Debug */,
