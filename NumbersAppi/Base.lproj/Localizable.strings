@@ -1,0 +1,36 @@
+/* 
+  Localizable.strings
+  NumbersAppi
+
+  Created by Jaime Aranaz on 16/02/16.
+  Copyright © 2016 Jaime Aranaz. All rights reserved.
+*/
+
+"PULL_ABOUT" = "Pull to see About";
+"SINGLE_TAP" = "Single tap to ask for a number";
+"DOUBLE_TAP" = "Double tap for a random number";
+
+"TYPE_TRIVIA" = "Trivia";
+"TYPE_MATH" = "Math";
+"TYPE_YEAR" = "Year";
+"TYPE_DATE" = "Date";
+
+"JANUARY" = "January";
+"FEBRUARY" = "February";
+"MARCH" = "March";
+"APRIL" = "April";
+"MAY" = "May";
+"JUNE" = "June";
+"JULY" = "July";
+"AUGUST" = "August";
+"SEPTEMBER" = "September";
+"OCTOBER" = "October";
+"NOVEMBER" = "November";
+"DECEMBER" = "December";
+
+"ERROR" = "An unknown error occurred. \nPlease, try again later!";
+"ACCEPT" = "Accept";
+
+"BASED_ON" = "Based on the web project";
+"CONTACT" = "Contact me";
+"VERSION" = "Version";
