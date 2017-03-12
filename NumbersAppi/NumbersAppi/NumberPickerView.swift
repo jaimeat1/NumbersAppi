@@ -13,14 +13,14 @@ import UIKit
 // TODO: publish it as library: as circular picker view? as picker view with selectors?
 class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    private let pickerNumberOfComponents: Int = 5
-    private let pickerNumberOfRows: Int = 10
-    private let pickerComponentWidth: CGFloat = 40.0
-    private let pickerComponentExtraWidth: CGFloat = 5.0
-    private let pickerRowHeigth: CGFloat = 50.0
-    private let rowFont = UIFont.numbersBoldFontOfSize(26)
+    fileprivate let pickerNumberOfComponents: Int = 5
+    fileprivate let pickerNumberOfRows: Int = 10
+    fileprivate let pickerComponentWidth: CGFloat = 40.0
+    fileprivate let pickerComponentExtraWidth: CGFloat = 5.0
+    fileprivate let pickerRowHeigth: CGFloat = 50.0
+    fileprivate let rowFont = UIFont.numbersBoldFontOfSize(26)
     
-    private var pickerView: UIPickerView!
+    fileprivate var pickerView: UIPickerView!
     
     // MARK: Lifecycle objets
 
@@ -45,9 +45,9 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         var selectedNumber: Int = 0
         let maximumIndex = pickerNumberOfComponents - 1
         
-        for component in (0 ..< pickerNumberOfComponents).reverse() {
+        for component in (0 ..< pickerNumberOfComponents).reversed() {
   
-            let numberInComponent = pickerView.selectedRowInComponent(component)
+            let numberInComponent = pickerView.selectedRow(inComponent: component)
             let decimalPow = Int((pow(Double(10), Double(maximumIndex - component))))
             selectedNumber += numberInComponent * decimalPow
         }
@@ -55,7 +55,7 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         return selectedNumber
     }
     
-    func setSelectedNumber(number: Int, animated: Bool) {
+    func setSelectedNumber(_ number: Int, animated: Bool) {
 
         var newNumber = number
         for component in 0 ..< pickerNumberOfComponents {
@@ -70,22 +70,22 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
 
     // MARK: UIPickerViewDelegate methods
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
         return String(row)
     }
     
-    func pickerView(pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         
         return pickerRowHeigth
     }
     
-    func pickerView(pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
+    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
         
         return pickerComponentWidth
     }
     
-    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         
         var labelView = view as! UILabel!
         
@@ -93,45 +93,45 @@ class NumberPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
             
             let width = pickerComponentWidth + pickerComponentExtraWidth
             labelView = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: pickerRowHeigth))
-            labelView.backgroundColor = UIColor.clearColor()
+            labelView?.backgroundColor = UIColor.clear
             
-            labelView.textColor = UIColor.whiteColor()
-            labelView.font = rowFont
-            labelView.textAlignment = NSTextAlignment.Center
+            labelView?.textColor = UIColor.white
+            labelView?.font = rowFont
+            labelView?.textAlignment = NSTextAlignment.center
         }
         
-        labelView.text = String(row)
+        labelView?.text = String(row)
         
-        return labelView
+        return labelView!
     }
     
     // MARK: UIPickerViewDataSource methods
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         
         return pickerNumberOfComponents;
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
         return pickerNumberOfRows;
     }
     
     // MARK: Private methods
     
-    private func setupAndAddPickerView() {
+    fileprivate func setupAndAddPickerView() {
         
         pickerView = UIPickerView()
         pickerView.translatesAutoresizingMaskIntoConstraints = false
         pickerView.delegate = self
         pickerView.dataSource = self
-        pickerView.userInteractionEnabled = true
-        pickerView.backgroundColor = UIColor.clearColor()
+        pickerView.isUserInteractionEnabled = true
+        pickerView.backgroundColor = UIColor.clear
         
         addSubview(pickerView)
     }
     
-    private func updatePickerConstraints() {
+    fileprivate func updatePickerConstraints() {
         
         ConstraintHelper.centerInSuperview(pickerView)
         ConstraintHelper.sameSizeThanSuperview(pickerView)

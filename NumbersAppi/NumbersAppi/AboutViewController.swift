@@ -11,10 +11,10 @@ import UIKit
 
 class AboutViewController: UIViewController, AboutViewControllerDelegate {
     
-    @IBOutlet private var contact: UIButton!
-    @IBOutlet private var basedOn: UILabel!
-    @IBOutlet private var numbersApiLink: UIButton!
-    @IBOutlet private var version: UILabel!
+    @IBOutlet fileprivate var contact: UIButton!
+    @IBOutlet fileprivate var basedOn: UILabel!
+    @IBOutlet fileprivate var numbersApiLink: UIButton!
+    @IBOutlet fileprivate var version: UILabel!
     
     let numbersApiAddress = "http://numbersapi.com"
     
@@ -49,36 +49,36 @@ class AboutViewController: UIViewController, AboutViewControllerDelegate {
     
     // MARK: Private methods
     
-    private func setupView() {
+    fileprivate func setupView() {
         
-        view.backgroundColor = UIColor.clearColor()
-        view.tintColor = UIColor.blackColor()
+        view.backgroundColor = UIColor.clear
+        view.tintColor = UIColor.black
 
         basedOn.font = UIFont.numbersNormalFontOfSize(18)
-        basedOn.textColor = UIColor.darkGrayColor()
+        basedOn.textColor = UIColor.darkGray
         
         let attributesNormal = [NSFontAttributeName: UIFont.numbersResponseFontOfSize(22),
-                          NSForegroundColorAttributeName: UIColor.darkGrayColor(),
-                          NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue]
+                          NSForegroundColorAttributeName: UIColor.darkGray,
+                          NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue] as [String : Any]
         let attributedNormal = NSAttributedString(string: numbersApiAddress, attributes: attributesNormal);
         
         let attributesPressed = [NSFontAttributeName: UIFont.numbersResponseFontOfSize(22),
-                          NSForegroundColorAttributeName: UIColor.whiteColor(),
-                          NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue]
+                          NSForegroundColorAttributeName: UIColor.white,
+                          NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue] as [String : Any]
         let attributedPressed = NSAttributedString(string: numbersApiAddress, attributes: attributesPressed);
         
-        numbersApiLink.setAttributedTitle(attributedNormal, forState: UIControlState.Normal)
-        numbersApiLink.setAttributedTitle(attributedPressed, forState: UIControlState.Highlighted)
-        numbersApiLink.setAttributedTitle(attributedPressed, forState: UIControlState.Focused)
+        numbersApiLink.setAttributedTitle(attributedNormal, for: UIControlState())
+        numbersApiLink.setAttributedTitle(attributedPressed, for: UIControlState.highlighted)
+        numbersApiLink.setAttributedTitle(attributedPressed, for: UIControlState.focused)
         
         version.font = UIFont.numbersNormalFontOfSize(14)
-        version.textColor = UIColor.grayColor()
+        version.textColor = UIColor.gray
     }
     
-    private func localizeTexts() {
+    fileprivate func localizeTexts() {
         
         let contactMe = NSLocalizedString("CONTACT", comment: "Contact button")
-        contact.setTitle(contactMe, forState: UIControlState.Normal)
+        contact.setTitle(contactMe, for: UIControlState())
         basedOn.text = NSLocalizedString("BASED_ON", comment: "Based on description")
         let versionNumber = presenterDelegate.getVersion()
         let versionDesc = NSLocalizedString("VERSION", comment: "Version title")

@@ -13,11 +13,11 @@ import Foundation
 
 protocol MainPresenterDelegate {
     
-    func didRequestNumber(number: Int, ofType type: ApiRequestType)
+    func didRequestNumber(_ number: Int, ofType type: ApiRequestType)
 
-    func didRequestDate(month month: Int, day: Int)
+    func didRequestDate(month: Int, day: Int)
     
-    func didRequestRandomNumberWithType(type: ApiRequestType)
+    func didRequestRandomNumberWithType(_ type: ApiRequestType)
     
     func didRequestRandomDate()
     
@@ -49,19 +49,19 @@ class MainPresenter: MainPresenterDelegate {
         Coordinator.sharedInstance.presentAboutFromMain()
     }
 
-    func didRequestNumber(number: Int, ofType type: ApiRequestType) {
+    func didRequestNumber(_ number: Int, ofType type: ApiRequestType) {
 
         let request = ApiRequest(type: type, number: number)
         launchAndHandleApiRequest(request)
     }
 
-    func didRequestDate(month month: Int, day: Int) {
+    func didRequestDate(month: Int, day: Int) {
 
         let request = ApiRequest(month: month, day: day)
         launchAndHandleApiRequest(request)
     }
 
-    func didRequestRandomNumberWithType(type: ApiRequestType) {
+    func didRequestRandomNumberWithType(_ type: ApiRequestType) {
 
         let request =  ApiRequest(type: type)
         launchAndHandleRandomApiRequest(request)
@@ -69,17 +69,17 @@ class MainPresenter: MainPresenterDelegate {
     
     func shouldShowPullableInformation() -> Bool {
         
-        let userDefaults = NSUserDefaults.standardUserDefaults()
-        let shouldShowPullable = userDefaults.boolForKey(showPullable)
-        userDefaults.setBool(false, forKey: showPullable)
+        let userDefaults = UserDefaults.standard
+        let shouldShowPullable = userDefaults.bool(forKey: showPullable)
+        userDefaults.set(false, forKey: showPullable)
         
         return shouldShowPullable
     }
     
     func shouldShowWalkthrough() -> Bool {
         
-        let userDefaults = NSUserDefaults.standardUserDefaults()
-        let viewInfoAlreadyShown = userDefaults.boolForKey(walkthroughWasShown)
+        let userDefaults = UserDefaults.standard
+        let viewInfoAlreadyShown = userDefaults.bool(forKey: walkthroughWasShown)
         
         if viewInfoAlreadyShown {
             
@@ -87,21 +87,21 @@ class MainPresenter: MainPresenterDelegate {
             
         } else {
             
-            userDefaults.setBool(true, forKey: walkthroughWasShown)
-            userDefaults.setBool(true, forKey: showPullable)
+            userDefaults.set(true, forKey: walkthroughWasShown)
+            userDefaults.set(true, forKey: showPullable)
             return true
         }
     }
     
     func didRequestRandomDate() {
         
-        let request =  ApiRequest(type: ApiRequestType.Date)
+        let request =  ApiRequest(type: ApiRequestType.date)
         launchAndHandleRandomApiRequest(request)
     }
     
     // MARK: - Private methods
     
-    private func launchAndHandleRandomApiRequest(request: ApiRequest) {
+    fileprivate func launchAndHandleRandomApiRequest(_ request: ApiRequest) {
         
         controllerDelegate.startLoading()
         
@@ -112,7 +112,7 @@ class MainPresenter: MainPresenterDelegate {
         }
     }
     
-    private func handleRandomApiResponse(response: ApiResponse, error: NSError?) {
+    fileprivate func handleRandomApiResponse(_ response: ApiResponse, error: NSError?) {
         
         if error != nil {
             
@@ -123,7 +123,7 @@ class MainPresenter: MainPresenterDelegate {
             
             controllerDelegate.showTextResponse(response.text)
             
-            if response.type == ApiRequestType.Date {
+            if response.type == ApiRequestType.date {
 
                 let date = getMonthAndDayFromDayOfTheYear(response.number)
                 controllerDelegate.setDate(month: date.month, day: date.day)
@@ -135,7 +135,7 @@ class MainPresenter: MainPresenterDelegate {
         }
     }
     
-    private func launchAndHandleApiRequest(request: ApiRequest) {
+    fileprivate func launchAndHandleApiRequest(_ request: ApiRequest) {
         
         controllerDelegate.startLoading()
         
@@ -146,7 +146,7 @@ class MainPresenter: MainPresenterDelegate {
         }
     }
     
-    private func handleApiResponse(response: ApiResponse, error: NSError?) {
+    fileprivate func handleApiResponse(_ response: ApiResponse, error: NSError?) {
         
         if error != nil {
             
@@ -159,7 +159,7 @@ class MainPresenter: MainPresenterDelegate {
         }
     }
     
-    private func getMonthAndDayFromDayOfTheYear(dayOfYear: Int) -> (month: Int, day: Int) {
+    fileprivate func getMonthAndDayFromDayOfTheYear(_ dayOfYear: Int) -> (month: Int, day: Int) {
         
         let daysInMonths = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
         

@@ -17,10 +17,10 @@ protocol WalkthroughControllerDelegate {
 
 class WalkthroughController {
     
-    private var delegate: WalkthroughControllerDelegate!
-    private var walkthroughViews: WalkthroughViews
-    private var singleViews: [UIView]!
-    private var doubleViews: [UIView]!
+    fileprivate var delegate: WalkthroughControllerDelegate!
+    fileprivate var walkthroughViews: WalkthroughViews
+    fileprivate var singleViews: [UIView]!
+    fileprivate var doubleViews: [UIView]!
  
     // MARK: Lifecycle methods
     
@@ -62,13 +62,13 @@ class WalkthroughController {
     
     // MARK: Private methods
     
-    private func localizeTexts() {
+    fileprivate func localizeTexts() {
         
         walkthroughViews.setSingleInfoText(NSLocalizedString("SINGLE_TAP", comment: "Description for single tap"))
         walkthroughViews.setDoubleInfoText(NSLocalizedString("DOUBLE_TAP", comment: "Description for double tap"))
     }
     
-    private func addTapGestureForSingleView() {
+    fileprivate func addTapGestureForSingleView() {
 
         for oneView in singleViews {
             
@@ -77,7 +77,7 @@ class WalkthroughController {
         }
     }
     
-    private func addTapGestureForDoubleView() {
+    fileprivate func addTapGestureForDoubleView() {
 
         for oneView in doubleViews {
             
@@ -86,7 +86,7 @@ class WalkthroughController {
         }
     }
     
-    private func removeTapGestureForSingleView() {
+    fileprivate func removeTapGestureForSingleView() {
         
         for oneView in singleViews {
             
@@ -95,7 +95,7 @@ class WalkthroughController {
         }
     }
     
-    private func removeTapGestureForDoubleView() {
+    fileprivate func removeTapGestureForDoubleView() {
         
         for oneView in doubleViews {
             

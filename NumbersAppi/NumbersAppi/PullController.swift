@@ -11,18 +11,18 @@ import UIKit
 
 class PullController {
 
-    private let maxPullableDistance: CGFloat = 80.0
-    private let animationDuration: NSTimeInterval = 0.3
-    private let showPullableDuration: NSTimeInterval = 1.0
-    private let minimunAlpha: CGFloat = 0.3
-    private let factorToShowTranslucentView: CGFloat = 0.90
+    fileprivate let maxPullableDistance: CGFloat = 80.0
+    fileprivate let animationDuration: TimeInterval = 0.3
+    fileprivate let showPullableDuration: TimeInterval = 1.0
+    fileprivate let minimunAlpha: CGFloat = 0.3
+    fileprivate let factorToShowTranslucentView: CGFloat = 0.90
     
-    private var pullableView: UIView
-    private var translucentView: UIView
-    private var delegate: PullControllerDelegate?
-    private var isAlreadySetup = false
-    private var pointOfOrigin: CGPoint?
-    private var pullGestureEnabled = true
+    fileprivate var pullableView: UIView
+    fileprivate var translucentView: UIView
+    fileprivate var delegate: PullControllerDelegate?
+    fileprivate var isAlreadySetup = false
+    fileprivate var pointOfOrigin: CGPoint?
+    fileprivate var pullGestureEnabled = true
     
     // MARK: - Lifecycle methods
     
@@ -55,8 +55,8 @@ class PullController {
         pullableView.frame.origin.y = maxPullableDistance
         translucentView.alpha = 1
 
-        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(showPullableDuration * Double(NSEC_PER_SEC)))
-        dispatch_after(dispatch_time_t(delayTime), dispatch_get_main_queue()) { () -> Void in
+        let delayTime = DispatchTime.now() + Double((showPullableDuration * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        DispatchQueue.main.asyncAfter(deadline: delayTime) { () -> Void in
             
             self.animatePullableViewToOrigin()
             self.animateTranslucentViewHiding()
@@ -65,21 +65,21 @@ class PullController {
     
     // MARK: - Action methods
 
-    @objc func didDraggView(gestureRecognizer: UIPanGestureRecognizer) {
+    @objc func didDraggView(_ gestureRecognizer: UIPanGestureRecognizer) {
         
         if (!pullGestureEnabled) {
             return
         }
         
-        let yDistance = gestureRecognizer.translationInView(pullableView).y
+        let yDistance = gestureRecognizer.translation(in: pullableView).y
 
         switch(gestureRecognizer.state) {
             
-            case UIGestureRecognizerState.Began:
+            case UIGestureRecognizerState.began:
             
                 pointOfOrigin = pullableView.frame.origin
             
-            case UIGestureRecognizerState.Changed:
+            case UIGestureRecognizerState.changed:
             
                 if (yDistance > 0) && (!hasReachedMaximumDistance()) {
                     
@@ -90,7 +90,7 @@ class PullController {
                     }
                 }
             
-            case UIGestureRecognizerState.Ended:
+            case UIGestureRecognizerState.ended:
             
                 if hasReachedMaximumDistance() {
                     delegate?.viewWasPulled()
@@ -118,7 +118,7 @@ class PullController {
     
     // MARK: - Private methods
     
-    private func setupDragGesture() {
+    fileprivate func setupDragGesture() {
 
         if !isAlreadySetup {
         
@@ -128,9 +128,9 @@ class PullController {
         }
     }
     
-    private func animatePullableViewToOrigin() {
+    fileprivate func animatePullableViewToOrigin() {
         
-        UIView.animateWithDuration(animationDuration, animations: { () -> Void in
+        UIView.animate(withDuration: animationDuration, animations: { () -> Void in
             
             if let yOrigin = self.pointOfOrigin?.y {
                 self.pullableView.frame.origin.y = yOrigin
@@ -138,21 +138,21 @@ class PullController {
         })
     }
     
-    private func animateTranslucentViewHiding() {
+    fileprivate func animateTranslucentViewHiding() {
         
-        UIView.animateWithDuration(animationDuration, animations: { () -> Void in
+        UIView.animate(withDuration: animationDuration, animations: { () -> Void in
             self.translucentView.alpha = self.minimunAlpha;
         })
     }
     
-    private func animateTranslucentViewShowing() {
+    fileprivate func animateTranslucentViewShowing() {
         
-        UIView.animateWithDuration(animationDuration, animations: { () -> Void in
+        UIView.animate(withDuration: animationDuration, animations: { () -> Void in
             self.translucentView.alpha = 1;
         })
     }
     
-    private func translucentViewShouldBeVisible() -> Bool {
+    fileprivate func translucentViewShouldBeVisible() -> Bool {
         
         let distance = (pullableView.frame.origin.y - pointOfOrigin!.y)
         return (distance >= (maxPullableDistance * factorToShowTranslucentView))

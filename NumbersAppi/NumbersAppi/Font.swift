@@ -11,36 +11,36 @@ import UIKit
 
 extension UIFont {
     
-    private static var numbersTitleFontNormal: String { get {return "Calibri"} }
-    private static var numbersTitleFontBold: String { get {return "Calibri-Bold"} }
-    private static var numbersResponseFont: String { get {return "ChaparralPro-Regular"} }
+    fileprivate static var numbersTitleFontNormal: String { get {return "Calibri"} }
+    fileprivate static var numbersTitleFontBold: String { get {return "Calibri-Bold"} }
+    fileprivate static var numbersResponseFont: String { get {return "ChaparralPro-Regular"} }
 
     // MARK: Public methods
     
-    static func numbersNormalFontOfSize(size: CGFloat) -> UIFont {
+    static func numbersNormalFontOfSize(_ size: CGFloat) -> UIFont {
         
         return getSystemFontOrFontWithName(numbersTitleFontNormal, andSize: size)
     }
     
-    static func numbersBoldFontOfSize(size: CGFloat) -> UIFont {
+    static func numbersBoldFontOfSize(_ size: CGFloat) -> UIFont {
         
         return getSystemFontOrFontWithName(numbersTitleFontBold, andSize: size)
     }
     
-    static func numbersResponseFontOfSize(size: CGFloat) -> UIFont {
+    static func numbersResponseFontOfSize(_ size: CGFloat) -> UIFont {
         
         return getSystemFontOrFontWithName(numbersResponseFont, andSize: size)
     }
     
     // MARK: Private methods
     
-    private static func getSystemFontOrFontWithName(name: String, andSize size: CGFloat) -> UIFont {
+    fileprivate static func getSystemFontOrFontWithName(_ name: String, andSize size: CGFloat) -> UIFont {
 
         if let font = UIFont.init(name: name, size: size) {
             return font
         } else {
             NSLog("didn't find font named \(name)")
-            return UIFont.systemFontOfSize(size)
+            return UIFont.systemFont(ofSize: size)
         }
     }
     

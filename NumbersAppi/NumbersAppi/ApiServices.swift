@@ -19,33 +19,38 @@ class ApiServices {
     
     // MARK: - Public methods
     
-    func sendRequest(request: ApiRequest, completion: (response: ApiResponse, error: NSError?) -> Void) {
+    func sendRequest(_ request: ApiRequest, completion: @escaping (_ response: ApiResponse, _ error: NSError?) -> Void) {
         
         let requestUrl = baseUrl + request.parametrizedRequest() + jsonFlag + "&" + maxMinFlag
-        let restRequest = NSMutableURLRequest(URL: NSURL(string: requestUrl)!)
+        let restRequest = NSMutableURLRequest(url: URL(string: requestUrl)!)
         
         // TODO: use NSURLSessionConfiguration to create session and set a timeout value!!
-        
-        let session = NSURLSession.sharedSession();
-        let task = session.dataTaskWithRequest(restRequest, completionHandler: {data, response, error -> Void in
 
-            let responseDictionary = try? NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments)
-            
-            let response = ApiResponse()
-            var error: NSError?
-            
-            if (responseDictionary != nil) {
-                response.setFromJSON(responseDictionary as! NSDictionary)
-            } else {
-                response.found = false
-                error = NSError.init(domain: "", code: 0, userInfo: nil)
-            }
-            
-            dispatch_async(dispatch_get_main_queue(), {
-                completion(response: response, error: error)
-            }) 
-        })
-        task.resume()
+//        let task = URLSession.shared().dataTask(with: request as URLRequest) {
+//            
+//        }
+//        
+//        let session = URLSession.shared.d;
+//
+//        let task = session.dataTask(with, url: restRequest, completionHandler: {data, response, error -> Void in
+//
+//            let responseDictionary = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments)
+//            
+//            let response = ApiResponse()
+//            var error: NSError?
+//            
+//            if (responseDictionary != nil) {
+//                response.setFromJSON(responseDictionary as! NSDictionary)
+//            } else {
+//                response.found = false
+//                error = NSError.init(domain: "", code: 0, userInfo: nil)
+//            }
+//            
+//            DispatchQueue.main.async(execute: {
+//                completion(response: response, error: error)
+//            }) 
+//        })
+//        task.resume()
     }
 
 }

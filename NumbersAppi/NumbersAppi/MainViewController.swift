@@ -15,11 +15,11 @@ protocol MainViewProtocol {
     
     func stopLoading()
     
-    func showText(text: String)
+    func showText(_ text: String)
     
-    func setNumber(number: Int)
+    func setNumber(_ number: Int)
     
-    func setDate(month month: Int, day: Int)
+    func setDate(month: Int, day: Int)
     
     func showWalkthrough()
     
@@ -28,12 +28,12 @@ protocol MainViewProtocol {
 
 class MainViewController: UIViewController, MainViewControllerDelegate, PullControllerDelegate, MainViewDelegate {
 
-    @IBOutlet private var mainView: MainView!
-    @IBOutlet private var aboutLabel: UILabel!
+    @IBOutlet fileprivate var mainView: MainView!
+    @IBOutlet fileprivate var aboutLabel: UILabel!
     
     var presenterDelegate: MainPresenterDelegate!
     
-    private var pullController: PullController?
+    fileprivate var pullController: PullController?
     
     // MARK: - Lifecycle methods
     
@@ -54,7 +54,7 @@ class MainViewController: UIViewController, MainViewControllerDelegate, PullCont
         aboutLabel.text = NSLocalizedString("PULL_ABOUT", comment: "Pull to see about")
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         
         super.viewDidAppear(animated)
 
@@ -79,25 +79,25 @@ class MainViewController: UIViewController, MainViewControllerDelegate, PullCont
         mainView.stopLoading()
     }
     
-    func showErrorMessage(message: String) {
+    func showErrorMessage(_ message: String) {
         
-        let alert = UIAlertController(title: "", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title: "", message: message, preferredStyle: UIAlertControllerStyle.alert)
         let accept = NSLocalizedString("ACCEPT", comment: "Accept button")
-        alert.addAction(UIAlertAction(title: accept, style: UIAlertActionStyle.Default, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
+        alert.addAction(UIAlertAction(title: accept, style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
-    func showTextResponse(text: String) {
+    func showTextResponse(_ text: String) {
         
         mainView.showText(text)
     }
     
-    func setNumber(number: Int) {
+    func setNumber(_ number: Int) {
 
         mainView.setNumber(number)
     }
     
-    func setDate(month month: Int, day: Int) {
+    func setDate(month: Int, day: Int) {
         
         mainView.setDate(month: month, day: day)
     }
@@ -111,17 +111,17 @@ class MainViewController: UIViewController, MainViewControllerDelegate, PullCont
     
     // MARK: - MainViewDelegate methods
 
-    func didRequestNumber(number: Int, ofType type: ApiRequestType) {
+    func didRequestNumber(_ number: Int, ofType type: ApiRequestType) {
         
         presenterDelegate.didRequestNumber(number, ofType: type)
     }
     
-    func didRequestDate(month month: Int, day: Int) {
+    func didRequestDate(month: Int, day: Int) {
         
         presenterDelegate.didRequestDate(month: month, day: day)
     }
     
-    func didRequestRandomNumberWithType(type: ApiRequestType) {
+    func didRequestRandomNumberWithType(_ type: ApiRequestType) {
         
         presenterDelegate.didRequestRandomNumberWithType(type)
     }

@@ -13,10 +13,10 @@ class Coordinator {
     
     static let sharedInstance = Coordinator()
     
-    private var mainPresenter: MainPresenter
-    private var mainViewController: MainViewController
-    private var aboutPresenter: AboutPresenter
-    private var aboutViewController: AboutViewController
+    fileprivate var mainPresenter: MainPresenter
+    fileprivate var mainViewController: MainViewController
+    fileprivate var aboutPresenter: AboutPresenter
+    fileprivate var aboutViewController: AboutViewController
    
     // MARK: Lifecyle methods
     
@@ -40,11 +40,11 @@ class Coordinator {
     
     func presentAboutFromMain() {
         
-        mainViewController.presentViewController(aboutViewController, animated: true, completion: nil)
+        mainViewController.present(aboutViewController, animated: true, completion: nil)
     }
     
     func presentMainFromAbout() {
         
-        mainViewController.dismissViewControllerAnimated(true, completion: nil)
+        mainViewController.dismiss(animated: true, completion: nil)
     }
 }

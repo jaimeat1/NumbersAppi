@@ -13,11 +13,11 @@ class ApiResponse {
     var text: String = ""
     var found: Bool = true
     var number: Int = 0
-    var type: ApiRequestType = ApiRequestType.Trivia
+    var type: ApiRequestType = ApiRequestType.trivia
     
     // MARK: - Public methods
     
-    func setFromJSON(json: NSDictionary) {
+    func setFromJSON(_ json: NSDictionary) {
         
         text = json["text"] as! String
         found = json["found"] as! Bool
@@ -25,16 +25,16 @@ class ApiResponse {
  
         switch json["type"] as! String {
             
-        case ApiRequestType.Trivia.rawValue:
-            type = ApiRequestType.Trivia
-        case ApiRequestType.Math.rawValue:
-            type = ApiRequestType.Math
-        case ApiRequestType.Date.rawValue:
-            type = ApiRequestType.Date
-        case ApiRequestType.Year.rawValue:
-            type = ApiRequestType.Year
+        case ApiRequestType.trivia.rawValue as String:
+            type = ApiRequestType.trivia
+        case ApiRequestType.math.rawValue as String:
+            type = ApiRequestType.math
+        case ApiRequestType.date.rawValue as String:
+            type = ApiRequestType.date
+        case ApiRequestType.year.rawValue as String:
+            type = ApiRequestType.year
         default:
-            type = ApiRequestType.Unknown
+            type = ApiRequestType.unknown
         }
     }
 

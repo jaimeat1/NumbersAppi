@@ -11,8 +11,8 @@ import UIKit
 
 class AboutPresenter: AboutPresenterDelegate {
     
-    private let linkAddress = "http://numbersapi.com"
-    private let contactAddress = "jaime.aranaz@gmail.com"
+    fileprivate let linkAddress = "http://numbersapi.com"
+    fileprivate let contactAddress = "jaime.aranaz@gmail.com"
     
     var controllerDelegate: AboutViewControllerDelegate
     
@@ -32,18 +32,18 @@ class AboutPresenter: AboutPresenterDelegate {
     
     func linkButtonPressed() {
         
-        UIApplication.sharedApplication().openURL(NSURL(string: linkAddress)!)
+        UIApplication.shared.openURL(URL(string: linkAddress)!)
     }
     
     func contactButtonPressed() {
         
-        let mailto = NSURL(string: "mailto:\(contactAddress)")
-        UIApplication.sharedApplication().openURL(mailto!)
+        let mailto = URL(string: "mailto:\(contactAddress)")
+        UIApplication.shared.openURL(mailto!)
     }
     
     func getVersion() -> String {
         
-        return (NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as? String)!
+        return (Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String)!
     }
     
 }

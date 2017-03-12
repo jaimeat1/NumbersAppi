@@ -11,11 +11,11 @@ import UIKit
 
 protocol MainViewDelegate {
     
-    func didRequestNumber(number: Int, ofType type: ApiRequestType)
+    func didRequestNumber(_ number: Int, ofType type: ApiRequestType)
     
-    func didRequestDate(month month: Int, day: Int)
+    func didRequestDate(month: Int, day: Int)
     
-    func didRequestRandomNumberWithType(type: ApiRequestType)
+    func didRequestRandomNumberWithType(_ type: ApiRequestType)
     
     func didRequestRandomDate()
     
@@ -42,20 +42,20 @@ class MainView: UIView, MainViewProtocol, WalkthroughControllerDelegate {
     var walkthroughController: WalkthroughController!
     var delegate: MainViewDelegate!
     
-    private let animationDuration = 0.5
-    private let selectorFontSize: CGFloat = 14
-    private let resultFontSize: CGFloat = 20
+    fileprivate let animationDuration = 0.5
+    fileprivate let selectorFontSize: CGFloat = 14
+    fileprivate let resultFontSize: CGFloat = 20
     
-    private var singleTapGesture: UITapGestureRecognizer!
-    private var doubleTapGesture: UITapGestureRecognizer!
-    private var selectorValues: [ApiRequestType] = []
+    fileprivate var singleTapGesture: UITapGestureRecognizer!
+    fileprivate var doubleTapGesture: UITapGestureRecognizer!
+    fileprivate var selectorValues: [ApiRequestType] = []
     
     // MARK: - Lifecycle methods
 
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        NSBundle.mainBundle().loadNibNamed("MainView", owner: self, options: nil)
+        Bundle.main.loadNibNamed("MainView", owner: self, options: nil)
         view.frame = self.bounds
         addSubview(view)
         
@@ -89,7 +89,7 @@ class MainView: UIView, MainViewProtocol, WalkthroughControllerDelegate {
         }
     }
     
-    func didDoubleTap(gesture: UITapGestureRecognizer) {
+    func didDoubleTap(_ gesture: UITapGestureRecognizer) {
         
         if isDateSelectorActive() {
             
@@ -103,7 +103,7 @@ class MainView: UIView, MainViewProtocol, WalkthroughControllerDelegate {
         }
     }
     
-    func didSingleTap(gesture: UITapGestureRecognizer) {
+    func didSingleTap(_ gesture: UITapGestureRecognizer) {
 
         if isDateSelectorActive() {
             
@@ -123,27 +123,27 @@ class MainView: UIView, MainViewProtocol, WalkthroughControllerDelegate {
     func startLoading() {
     
         textResult.text = ""
-        activityIndicator.hidden = false
+        activityIndicator.isHidden = false
         activityIndicator.startAnimating()
     }
     
     func stopLoading() {
         
-        activityIndicator.hidden = true
+        activityIndicator.isHidden = true
         activityIndicator.stopAnimating()
     }
     
-    func showText(text: String) {
+    func showText(_ text: String) {
         
         textResult.text = text
     }
     
-    func setNumber(number: Int) {
+    func setNumber(_ number: Int) {
         
         numberPickerView.setSelectedNumber(number, animated: true)
     }
     
-    func setDate(month month: Int, day: Int) {
+    func setDate(month: Int, day: Int) {
         
         datePickerView.setDate(month: month, day: day)
     }
@@ -169,26 +169,26 @@ class MainView: UIView, MainViewProtocol, WalkthroughControllerDelegate {
     
     // MARK: - Private methods
     
-    private func setupTypeSelector() {
+    fileprivate func setupTypeSelector() {
         
-        let triviaTitle = NSLocalizedString("TYPE_TRIVIA", comment: "Trivia type in the selector").uppercaseString
-        typeSelector.setTitle(triviaTitle, forSegmentAtIndex: 0)
-        selectorValues.append(ApiRequestType.Trivia)
+        let triviaTitle = NSLocalizedString("TYPE_TRIVIA", comment: "Trivia type in the selector").uppercased()
+        typeSelector.setTitle(triviaTitle, forSegmentAt: 0)
+        selectorValues.append(ApiRequestType.trivia)
         
-        let mathTitle = NSLocalizedString("TYPE_MATH", comment: "Math type in the selector").uppercaseString
-        typeSelector.setTitle(mathTitle, forSegmentAtIndex: 1)
-        selectorValues.append(ApiRequestType.Math)
+        let mathTitle = NSLocalizedString("TYPE_MATH", comment: "Math type in the selector").uppercased()
+        typeSelector.setTitle(mathTitle, forSegmentAt: 1)
+        selectorValues.append(ApiRequestType.math)
         
-        let yearTitle = NSLocalizedString("TYPE_YEAR", comment: "Year type in the selector").uppercaseString
-        typeSelector.setTitle(yearTitle, forSegmentAtIndex: 2)
-        selectorValues.append(ApiRequestType.Year)
+        let yearTitle = NSLocalizedString("TYPE_YEAR", comment: "Year type in the selector").uppercased()
+        typeSelector.setTitle(yearTitle, forSegmentAt: 2)
+        selectorValues.append(ApiRequestType.year)
         
-        let dateTitle = NSLocalizedString("TYPE_DATE", comment: "Date type in the selector").uppercaseString
-        typeSelector.setTitle(dateTitle, forSegmentAtIndex: 3)
-        selectorValues.append(ApiRequestType.Date)
+        let dateTitle = NSLocalizedString("TYPE_DATE", comment: "Date type in the selector").uppercased()
+        typeSelector.setTitle(dateTitle, forSegmentAt: 3)
+        selectorValues.append(ApiRequestType.date)
         
         typeSelector.backgroundColor = UIColor.numbersBlueDark()
-        typeSelector.tintColor = UIColor.whiteColor()
+        typeSelector.tintColor = UIColor.white
         typeSelector.layer.cornerRadius = 5
         typeSelector.layer.masksToBounds = true
         typeSelector.clipsToBounds = true
@@ -196,29 +196,29 @@ class MainView: UIView, MainViewProtocol, WalkthroughControllerDelegate {
         let selectedAttributes = [NSFontAttributeName: UIFont.numbersBoldFontOfSize(selectorFontSize)]
         let unselectedAttributes = [NSFontAttributeName: UIFont.numbersNormalFontOfSize(selectorFontSize)]
         
-        typeSelector.setTitleTextAttributes(selectedAttributes, forState: UIControlState.Selected)
-        typeSelector.setTitleTextAttributes(unselectedAttributes, forState: UIControlState.Normal)
+        typeSelector.setTitleTextAttributes(selectedAttributes, for: UIControlState.selected)
+        typeSelector.setTitleTextAttributes(unselectedAttributes, for: UIControlState())
     }
     
-    private func showNumberSelector() {
+    fileprivate func showNumberSelector() {
         
-        UIView.animateWithDuration(animationDuration) { () -> Void in
+        UIView.animate(withDuration: animationDuration, animations: { () -> Void in
             
             self.numberPickerView.alpha = 1
             self.datePickerView.alpha = 0
-        }
+        }) 
     }
     
-    private func showDateSelector() {
+    fileprivate func showDateSelector() {
         
-        UIView.animateWithDuration(animationDuration) { () -> Void in
+        UIView.animate(withDuration: animationDuration, animations: { () -> Void in
             
             self.numberPickerView.alpha = 0
             self.datePickerView.alpha = 1
-        }
+        }) 
     }
     
-    private func addTapGestures() {
+    fileprivate func addTapGestures() {
         
         singleTapGesture = UITapGestureRecognizer(target: self, action: #selector(MainView.didSingleTap(_:)))
         textResult.addGestureRecognizer(singleTapGesture)
@@ -227,38 +227,38 @@ class MainView: UIView, MainViewProtocol, WalkthroughControllerDelegate {
         doubleTapGesture.numberOfTapsRequired = 2
         textResult.addGestureRecognizer(doubleTapGesture)
         
-        singleTapGesture.requireGestureRecognizerToFail(doubleTapGesture)
+        singleTapGesture.require(toFail: doubleTapGesture)
     }
     
-    private func removeTapGestures() {
+    fileprivate func removeTapGestures() {
      
         textResult.removeGestureRecognizer(singleTapGesture)
         textResult.removeGestureRecognizer(doubleTapGesture)
     }
     
-    private func setupTextResult() {
+    fileprivate func setupTextResult() {
         
-        textResult.layer.borderColor = UIColor.blackColor().CGColor;
+        textResult.layer.borderColor = UIColor.black.cgColor;
         textResult.layer.borderWidth = 0.5
 
         textResult.font = UIFont.numbersResponseFontOfSize(20)
     }
     
-    private func addShadowToTextResult() {
+    fileprivate func addShadowToTextResult() {
         
-        textResult.layer.shadowColor = UIColor.blackColor().CGColor
+        textResult.layer.shadowColor = UIColor.black.cgColor
         textResult.layer.shadowOffset = CGSize(width: 0, height: 1)
         textResult.layer.shadowOpacity = 0.5
         let shadowPath = UIBezierPath(rect: textResult.bounds)
-        textResult.layer.shadowPath = shadowPath.CGPath
+        textResult.layer.shadowPath = shadowPath.cgPath
         textResult.layer.masksToBounds = false
         textResult.layer.shouldRasterize = true
     }
     
-    private func isDateSelectorActive() -> Bool {
+    fileprivate func isDateSelectorActive() -> Bool {
         
         let index = typeSelector.selectedSegmentIndex
-        return (selectorValues[index] == ApiRequestType.Date)
+        return (selectorValues[index] == ApiRequestType.date)
     }
 
 }

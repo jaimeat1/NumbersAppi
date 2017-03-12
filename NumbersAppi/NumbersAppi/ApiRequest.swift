@@ -8,19 +8,19 @@
 
 import Foundation
 
-enum ApiRequestType: NSString {
-    case Trivia = "trivia"
-    case Math = "math"
-    case Date = "date"
-    case Year = "year"
-    case Unknown = "unknown"
+enum ApiRequestType: String {
+    case trivia = "trivia"
+    case math = "math"
+    case date = "date"
+    case year = "year"
+    case unknown = "unknown"
 }
 
 class ApiRequest {
     
-    private let random = "random"
+    fileprivate let random = "random"
     
-    var type: ApiRequestType = .Trivia
+    var type: ApiRequestType = .trivia
     var number: Int = 0
     var day: Int = 1
     var month: Int = 1
@@ -40,7 +40,7 @@ class ApiRequest {
         
         self.init()
         
-        self.type = ApiRequestType.Date
+        self.type = ApiRequestType.date
         self.month = month
         self.day = day
     }
@@ -62,13 +62,13 @@ class ApiRequest {
     
     // MARK: - Private methods
     
-    private func firstParameter() -> String {
+    fileprivate func firstParameter() -> String {
         
         var parameter: String
         
         if (isRandom) {
             parameter = random
-        } else if (type == ApiRequestType.Date) {
+        } else if (type == ApiRequestType.date) {
             parameter = "\(month)" + "/" + "\(day)"
         } else {
             parameter = "\(number)"
@@ -77,7 +77,7 @@ class ApiRequest {
         return parameter
     }
     
-    private func secondParameter() -> String {
+    fileprivate func secondParameter() -> String {
     
         return (type.rawValue as String)
     }

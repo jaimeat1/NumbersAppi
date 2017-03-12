@@ -15,44 +15,44 @@ class ConstraintHelper {
     
     // MARK: Public methods
     
-    static func viewWidth(view: UIView, equalsTo width: CGFloat) {
+    static func viewWidth(_ view: UIView, equalsTo width: CGFloat) {
         
         let widthConstraint = NSLayoutConstraint(
             item: view,
-            attribute: NSLayoutAttribute.Width,
-            relatedBy: NSLayoutRelation.Equal,
+            attribute: NSLayoutAttribute.width,
+            relatedBy: NSLayoutRelation.equal,
             toItem: nil,
-            attribute: NSLayoutAttribute.NotAnAttribute,
+            attribute: NSLayoutAttribute.notAnAttribute,
             multiplier: 1.0,
             constant: width)
         
         view.addConstraint(widthConstraint)
     }
     
-    static func viewHeight(view: UIView, equalsTo height: CGFloat) {
+    static func viewHeight(_ view: UIView, equalsTo height: CGFloat) {
         
         let heightConstraint = NSLayoutConstraint(
             item: view,
-            attribute: NSLayoutAttribute.Height,
-            relatedBy: NSLayoutRelation.Equal,
+            attribute: NSLayoutAttribute.height,
+            relatedBy: NSLayoutRelation.equal,
             toItem: nil,
-            attribute: NSLayoutAttribute.NotAnAttribute,
+            attribute: NSLayoutAttribute.notAnAttribute,
             multiplier: 1.0,
             constant: height)
         
         view.addConstraint(heightConstraint)
     }
     
-    static func topSpaceToContainer(subview: UIView, equalTo topSpace: CGFloat) {
+    static func topSpaceToContainer(_ subview: UIView, equalTo topSpace: CGFloat) {
         
         if let superview = subview.superview {
             
             let topSpaceConstraint = NSLayoutConstraint(
                 item: subview,
-                attribute: NSLayoutAttribute.Top,
-                relatedBy: NSLayoutRelation.Equal,
+                attribute: NSLayoutAttribute.top,
+                relatedBy: NSLayoutRelation.equal,
                 toItem: superview,
-                attribute: NSLayoutAttribute.Top,
+                attribute: NSLayoutAttribute.top,
                 multiplier: 1.0,
                 constant: topSpace)
             
@@ -60,16 +60,16 @@ class ConstraintHelper {
         }
     }
     
-    static func bottomSpaceToContainer(subview: UIView, equalTo bottomSpace: CGFloat) {
+    static func bottomSpaceToContainer(_ subview: UIView, equalTo bottomSpace: CGFloat) {
         
         if let superview = subview.superview {
             
             let bottomSpaceConstraint = NSLayoutConstraint(
                 item: subview,
-                attribute: NSLayoutAttribute.Bottom,
-                relatedBy: NSLayoutRelation.Equal,
+                attribute: NSLayoutAttribute.bottom,
+                relatedBy: NSLayoutRelation.equal,
                 toItem: superview,
-                attribute: NSLayoutAttribute.Bottom,
+                attribute: NSLayoutAttribute.bottom,
                 multiplier: 1.0,
                 constant: bottomSpace)
             
@@ -77,16 +77,16 @@ class ConstraintHelper {
         }
     }
     
-    static func horizontalSpaceToParent(subview: UIView, equalTo horizontalSpace: CGFloat) {
+    static func horizontalSpaceToParent(_ subview: UIView, equalTo horizontalSpace: CGFloat) {
         
         if let superview = subview.superview {
             
             let horizantalConstraint = NSLayoutConstraint(
                 item: subview,
-                attribute: NSLayoutAttribute.Left,
-                relatedBy: NSLayoutRelation.Equal,
+                attribute: NSLayoutAttribute.left,
+                relatedBy: NSLayoutRelation.equal,
                 toItem: superview,
-                attribute: NSLayoutAttribute.Left,
+                attribute: NSLayoutAttribute.left,
                 multiplier: 1.0,
                 constant: horizontalSpace)
             
@@ -94,7 +94,7 @@ class ConstraintHelper {
         }
     }
     
-     static func equalWidthInView(view1: UIView, thanInView view2: UIView) {
+     static func equalWidthInView(_ view1: UIView, thanInView view2: UIView) {
         
         // TODO: check if both views are in the same hierarchy tree, not only brothers
         
@@ -104,10 +104,10 @@ class ConstraintHelper {
                 
                 let widthConstraint = NSLayoutConstraint(
                     item: view1,
-                    attribute: NSLayoutAttribute.Width,
-                    relatedBy: NSLayoutRelation.Equal,
+                    attribute: NSLayoutAttribute.width,
+                    relatedBy: NSLayoutRelation.equal,
                     toItem: view2,
-                    attribute: NSLayoutAttribute.Width,
+                    attribute: NSLayoutAttribute.width,
                     multiplier: 1.0,
                     constant: 0)
                 
@@ -116,7 +116,7 @@ class ConstraintHelper {
         }
     }
     
-    static func equalLeadingForViews(view1: UIView, view2: UIView) {
+    static func equalLeadingForViews(_ view1: UIView, view2: UIView) {
         
         if let parentView = view1.superview {
             
@@ -124,10 +124,10 @@ class ConstraintHelper {
                 
                 let alignLeft = NSLayoutConstraint(
                     item: view1,
-                    attribute: NSLayoutAttribute.Leading,
-                    relatedBy: NSLayoutRelation.Equal,
+                    attribute: NSLayoutAttribute.leading,
+                    relatedBy: NSLayoutRelation.equal,
                     toItem: view2,
-                    attribute: NSLayoutAttribute.Leading,
+                    attribute: NSLayoutAttribute.leading,
                     multiplier: 1.0,
                     constant: 0.0)
                 
@@ -136,7 +136,7 @@ class ConstraintHelper {
         }
     }
     
-    static func centerInSuperview(subview: UIView) {
+    static func centerInSuperview(_ subview: UIView) {
         
         if subview.superview != nil {
             centerVerticalyInSuperview(subview)
@@ -144,15 +144,15 @@ class ConstraintHelper {
         }
     }
     
-    static func centerVerticalyInSuperview(subview: UIView) {
+    static func centerVerticalyInSuperview(_ subview: UIView) {
         
         if let superview = subview.superview {
             let verticalConstraint = NSLayoutConstraint(
                 item: subview,
-                attribute: NSLayoutAttribute.CenterY,
-                relatedBy: NSLayoutRelation.Equal,
+                attribute: NSLayoutAttribute.centerY,
+                relatedBy: NSLayoutRelation.equal,
                 toItem: superview,
-                attribute: NSLayoutAttribute.CenterY,
+                attribute: NSLayoutAttribute.centerY,
                 multiplier: 1,
                 constant: 0)
             
@@ -160,15 +160,15 @@ class ConstraintHelper {
         }
     }
     
-    static func centerHorizontalyInSuperview(subview: UIView) {
+    static func centerHorizontalyInSuperview(_ subview: UIView) {
         
         if let superview = subview.superview {
             let horizontalConstraint = NSLayoutConstraint(
                 item: subview,
-                attribute: NSLayoutAttribute.CenterX,
-                relatedBy: NSLayoutRelation.Equal,
+                attribute: NSLayoutAttribute.centerX,
+                relatedBy: NSLayoutRelation.equal,
                 toItem: superview,
-                attribute: NSLayoutAttribute.CenterX,
+                attribute: NSLayoutAttribute.centerX,
                 multiplier: 1,
                 constant: 0)
             
@@ -176,7 +176,7 @@ class ConstraintHelper {
         }
     }
     
-    static func sameSizeThanSuperview(subview: UIView) {
+    static func sameSizeThanSuperview(_ subview: UIView) {
         
         if subview.superview != nil {
             sameWidthThanSuperview(subview)
@@ -184,16 +184,16 @@ class ConstraintHelper {
         }
     }
     
-    static func sameWidthThanSuperview(subview: UIView) {
+    static func sameWidthThanSuperview(_ subview: UIView) {
         
         if let superview = subview.superview {
             
             let widthConstraint = NSLayoutConstraint(
                 item: subview,
-                attribute: NSLayoutAttribute.Width,
-                relatedBy: NSLayoutRelation.Equal,
+                attribute: NSLayoutAttribute.width,
+                relatedBy: NSLayoutRelation.equal,
                 toItem: superview,
-                attribute: NSLayoutAttribute.Width,
+                attribute: NSLayoutAttribute.width,
                 multiplier: 1,
                 constant: 0)
             
@@ -201,16 +201,16 @@ class ConstraintHelper {
         }
     }
     
-    static func sameHeightThanSuperview(subview: UIView) {
+    static func sameHeightThanSuperview(_ subview: UIView) {
         
         if let superview = subview.superview {
             
             let heightConstraint = NSLayoutConstraint(
                 item: subview,
-                attribute: NSLayoutAttribute.Height,
-                relatedBy: NSLayoutRelation.Equal,
+                attribute: NSLayoutAttribute.height,
+                relatedBy: NSLayoutRelation.equal,
                 toItem: superview,
-                attribute: NSLayoutAttribute.Height,
+                attribute: NSLayoutAttribute.height,
                 multiplier: 1,
                 constant: 0)
             

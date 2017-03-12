@@ -15,11 +15,11 @@ protocol MainViewControllerDelegate {
     
     func stopLoading()
     
-    func showErrorMessage(message: String)
+    func showErrorMessage(_ message: String)
     
-    func showTextResponse(text: String)
+    func showTextResponse(_ text: String)
     
-    func setNumber(number: Int)
+    func setNumber(_ number: Int)
     
-    func setDate(month month: Int, day: Int)
+    func setDate(month: Int, day: Int)
 }

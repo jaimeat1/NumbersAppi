@@ -14,18 +14,18 @@ struct WalkthroughViews {
     let maximumSize: CGFloat = 150
     let minimumAlpha: CGFloat = 0.5
     
-    private let fontSize: CGFloat = 20
+    fileprivate let fontSize: CGFloat = 20
     
-    private var textResult: UILabel
-    private var shadowView: UIView
-    private var singleTapView: UIView
-    private var singleTapInfo: UILabel
-    private var singleTapImage: UIImageView
-    private var doubleTapView: UIView
-    private var doubleTapInfo: UILabel
-    private var doubleTapImage: UIImageView
+    fileprivate var textResult: UILabel
+    fileprivate var shadowView: UIView
+    fileprivate var singleTapView: UIView
+    fileprivate var singleTapInfo: UILabel
+    fileprivate var singleTapImage: UIImageView
+    fileprivate var doubleTapView: UIView
+    fileprivate var doubleTapInfo: UILabel
+    fileprivate var doubleTapImage: UIImageView
     
-    private var timer: NSTimer?
+    fileprivate var timer: Timer?
     
     // MARK: - Lifecycle methods
     
@@ -58,35 +58,35 @@ struct WalkthroughViews {
     
     func hide() {
         
-        self.shadowView.hidden = true
-        self.singleTapView.hidden = true
-        self.singleTapInfo.hidden = true
-        self.singleTapImage.hidden = true
-        self.doubleTapView.hidden = true
-        self.doubleTapInfo.hidden = true
-        self.doubleTapView.hidden = true
+        self.shadowView.isHidden = true
+        self.singleTapView.isHidden = true
+        self.singleTapInfo.isHidden = true
+        self.singleTapImage.isHidden = true
+        self.doubleTapView.isHidden = true
+        self.doubleTapInfo.isHidden = true
+        self.doubleTapView.isHidden = true
     }
     
     mutating func showSingleTapWalkthrough() {
         
-        self.shadowView.hidden = false
+        self.shadowView.isHidden = false
         
-        self.singleTapView.hidden = false
-        self.singleTapInfo.hidden = false
-        self.singleTapImage.hidden = false
+        self.singleTapView.isHidden = false
+        self.singleTapInfo.isHidden = false
+        self.singleTapImage.isHidden = false
         
         startSingleTapAnimation()
     }
     
     mutating func showDoubleTapWalkthrough() {
         
-        self.singleTapView.hidden = true
-        self.singleTapInfo.hidden = true
-        self.singleTapImage.hidden = true
+        self.singleTapView.isHidden = true
+        self.singleTapInfo.isHidden = true
+        self.singleTapImage.isHidden = true
         
-        self.doubleTapView.hidden = false
-        self.doubleTapInfo.hidden = false
-        self.doubleTapView.hidden = false
+        self.doubleTapView.isHidden = false
+        self.doubleTapInfo.isHidden = false
+        self.doubleTapView.isHidden = false
         
         timer?.invalidate()
         startDoubleTapAnimation()
@@ -102,32 +102,32 @@ struct WalkthroughViews {
         return [textResult, shadowView, doubleTapView, doubleTapInfo, doubleTapImage]
     }
     
-    func setSingleInfoText(text: String) {
+    func setSingleInfoText(_ text: String) {
 
         singleTapInfo.text = text
     }
     
-    func setDoubleInfoText(text: String) {
+    func setDoubleInfoText(_ text: String) {
         
         doubleTapInfo.text = text
     }
     
     // MARK: Private methods
     
-    mutating private func startSingleTapAnimation() {
+    mutating fileprivate func startSingleTapAnimation() {
 
         let singleBeatAnimation = beatAnimation(
             originalImage: singleTapImage,
             changeDuration: 0.3,
             standDuration: 0.3)
  
-        timer = NSTimer.scheduledTimerWithTimeInterval(1.0,
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0,
             block: { () -> Void in
                 singleBeatAnimation()
-            }, repeats: true) as? NSTimer
+            }, repeats: true) as? Timer
     }
     
-    mutating private func startDoubleTapAnimation() {
+    mutating fileprivate func startDoubleTapAnimation() {
 
         let firstBeatAnimation = beatAnimation(
             originalImage: doubleTapImage,
@@ -139,23 +139,23 @@ struct WalkthroughViews {
             changeDuration: 0.2,
             standDuration: 0.2)
         
-        timer = NSTimer.scheduledTimerWithTimeInterval(1.0,
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0,
             block: { () -> Void in
                 
-                NSTimer.scheduledTimerWithTimeInterval(0,
+                Timer.scheduledTimer(withTimeInterval: 0,
                     block: { () -> Void in
                         firstBeatAnimation()
-                    }, repeats: false) as? NSTimer
+                    }, repeats: false) as? Timer
                 
-                NSTimer.scheduledTimerWithTimeInterval(0.3,
+                Timer.scheduledTimer(withTimeInterval: 0.3,
                     block: { () -> Void in
                         secondBeatAnimation()
-                    }, repeats: false) as? NSTimer
+                    }, repeats: false) as? Timer
                 
-            }, repeats: true) as? NSTimer
+            }, repeats: true) as? Timer
     }
     
-    private func beatAnimation(originalImage originalImage: UIImageView, changeDuration: NSTimeInterval, standDuration: NSTimeInterval) -> () -> Void  {
+    fileprivate func beatAnimation(originalImage: UIImageView, changeDuration: TimeInterval, standDuration: TimeInterval) -> () -> Void  {
         
         let imageToAnimate = UIImageView(frame: originalImage.frame)
         imageToAnimate.image = originalImage.image
@@ -170,7 +170,7 @@ struct WalkthroughViews {
         
         let myBeatAnimation: () -> Void = {
             
-            UIView.animateWithDuration(changeDuration,
+            UIView.animate(withDuration: changeDuration,
                 animations: {
                     singleIncreaseAnimation()
                 },
@@ -183,7 +183,7 @@ struct WalkthroughViews {
         return myBeatAnimation
     }
     
-    private func increaseSizeAnimation(animatedView animatedView: UIView, originalCenter: CGPoint) -> () -> Void {
+    fileprivate func increaseSizeAnimation(animatedView: UIView, originalCenter: CGPoint) -> () -> Void {
         
         let increaseSizeAnimation: () -> Void = {
             
@@ -197,14 +197,14 @@ struct WalkthroughViews {
         return increaseSizeAnimation
     }
     
-    private func standForAWhileAnimation(
-        animatedView animatedView: UIView,
-        duration: NSTimeInterval,
+    fileprivate func standForAWhileAnimation(
+        animatedView: UIView,
+        duration: TimeInterval,
         originalView: UIView) -> () -> Void {
             
             let standForAWhileAnimation: () -> Void = {
                 
-                UIView.animateWithDuration(duration,
+                UIView.animate(withDuration: duration,
                     animations: { () -> Void in
                         animatedView.alpha = 0
                     },
