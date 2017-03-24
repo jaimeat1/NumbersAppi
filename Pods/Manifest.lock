@@ -1,0 +1,18 @@
+PODS:
+  - JSONModel (1.7.0)
+  - NSTimer-Blocks (0.0.1)
+  - UIColor_Hex_Swift (3.0.2)
+
+DEPENDENCIES:
+  - JSONModel
+  - NSTimer-Blocks
+  - UIColor_Hex_Swift
+
+SPEC CHECKSUMS:
+  JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
+  NSTimer-Blocks: 88faf9aef5f250ead087f3f67ae642517083bf36
+  UIColor_Hex_Swift: 95f718452092a3efc8a827dffd2c04d3237be02d
+
+PODFILE CHECKSUM: ee5f1fa3331618bb2959469f7ee28f8680eb0e53
+
+COCOAPODS: 1.2.0
